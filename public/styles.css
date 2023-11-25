@@ -1,0 +1,190 @@
+
+/* Reset some default styles for better consistency */
+/* Body styles */
+*{
+        font-family: 'Roboto', sans-serif; /* Use the custom font in your styles */
+}
+
+@font-face {
+    font-family: 'LEMONMILK';
+    src: url('/fonts/LEMONMILK-Light.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Roboto';
+    src: url('/fonts/Roboto-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body{
+    background-color: #403636;
+}
+/* Container styles */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+
+.body-text-container {
+    width: 60%; /* Adjust the width as needed */
+}
+
+.body-text{
+    font-size: 14px;
+    padding-left: 100px;
+    padding-top: 30px;
+    text-align: left;
+    color: #403636;
+    margin-bottom: 10px;
+    margin-top: -20px;
+}
+
+/* Heading styles */
+h1, h2, h3 {
+    font-family: 'Roboto', sans-serif; /* Use the custom font in your styles */
+    color: #333;
+    margin-bottom: 10px;
+}
+
+
+.body-headers{
+    font-size: 40px;
+    padding-left: 100px;
+    padding-top: 30px;
+    text-align: left;
+    font-family: 'LEMONMILK', sans-serif; /* Use the custom font in your styles */
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.heading {
+    font-size: 80px;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+h1 {
+    font-size: 32px;
+}
+
+h2 {
+    font-size: 24px;
+}
+
+h3 {
+    font-size: 18px;
+}
+
+/* Paragraph styles */
+p {
+    line-height: 1.5;
+    margin-bottom: 15px;
+}
+
+/* Link styles */
+a {
+    color: #3399FF;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #1E62B9;
+}
+
+/* Button styles */
+button {
+    background-color: #8A4D76;
+    color: #FFFFFF;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #5C255C;
+}
+
+/* Neumorphic Navbar */
+.neumorphic-navbar {
+    background-color: rgb(208, 226, 237);
+    box-shadow: -2px -3px 36px #5b71b3;
+    border-radius: 10px;
+    height: 90px;
+}
+
+.neumorphic-navbar .navbar-brand,
+.neumorphic-navbar .navbar-nav .nav-link {
+    font-family: 'LEMONMILK', sans-serif;
+    font-size: 20px;
+    transition: #3399FF 0.3s ease;
+}
+
+.neumorphic-navbar .navbar-nav .nav-item {
+    margin-right: 20px;
+}
+
+.neumorphic-navbar .navbar-nav .nav-item:last-child {
+    margin-right: 0;
+}
+
+/* Center the navbar items */
+.neumorphic-navbar .navbar-nav {
+    margin-left: auto;
+}
+
+.navbar-brand .navbar-logo {
+    margin: -5px;
+}
+
+
+.divider img {
+    margin: -105;
+}
+
+/* Position the toggler button */
+.navbar-toggler {
+    margin-left: auto;
+}
+
+/* Styles for the round button */
+.round-button {
+    display: inline-block;
+    width: 150px; /* Adjust the width as needed */
+    margin-top: 10px;
+    padding: 10px 20px;
+    border-radius: 30px; /* Adjust the border-radius to make it more or less round */
+    background-color: rgb(208, 226, 237); /* Light blue color */
+    color: #333; 
+    text-align: center;
+    text-decoration: none;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+/* Hover effect for the button */
+.round-button:hover {
+    background-color: #c0eaf8; /* Darker blue color on hover */
+}
+
+/* Container to limit the width of the divider */
+.seperator-container {
+    width: 75%; /* Adjust the width as needed */
+    margin: auto; /* Center the container */
+}
+
+/* Style for the line divider */
+.seperator {
+    border-radius: 30px;
+    border: 4px solid #c0eaf8; /* Border style for the line */
+    margin-top: 10px; /* Adjust the margin as needed */
+}
+
