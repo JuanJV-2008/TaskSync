@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <html lang="en">
+    <head>
+        <%- include('layouts/header'); -%>
+    </head>
+    <body>
+        <%- include('layouts/navbar'); -%>
+        <div id="neoBgn" class='p-3'>
+            <form onsubmit="event.preventDefault()" id="formContainer">
+              <input class="neoInput" type="text" placeholder="First name" />
+              <input class="neoInput" type="text" placeholder="Last name" />
+              <input class="neoInput" type="text" placeholder="Phone" />
+              <input class="neoInput" type="email" placeholder="john@email.com" />
+              <input class="neoInput" type="password" placeholder="password" />
+              <div id="checkBoxHolder">
+                <input type="checkbox"  id="agreeConditions"/> <label for="agreeConditions">I agree to <a href="#">terms &amp; conditions</a></label>
+              </div>
+              <button class="submitBtn" type="submit">Submit</button>
+            </form>
+          </div>
+    </body>
+</html>
