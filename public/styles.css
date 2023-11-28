@@ -1,8 +1,6 @@
-
 /* Reset some default styles for better consistency */
-/* Body styles */
-*{
-        font-family: 'Roboto', sans-serif; /* Use the custom font in your styles */
+* {
+    font-family: 'Roboto', sans-serif;
 }
 
 @font-face {
@@ -19,9 +17,10 @@
     font-style: normal;
 }
 
-body{
+body {
     background-color: #403636;
 }
+
 /* Container styles */
 .container {
     max-width: 1200px;
@@ -29,37 +28,53 @@ body{
     padding: 20px;
 }
 
-
 .body-text-container {
-    width: 60%; /* Adjust the width as needed */
+    width: 60%;
 }
 
-.body-text{
-    font-size: 14px;
-    padding-left: 100px;
+.body-text {
+    font-size: 18px;
     padding-top: 30px;
     text-align: left;
-    color: #403636;
+    color: #000000;
+    margin-bottom: 10px;
+    margin-top: -20px;
+}
+
+.body-text-right {
+    font-size: 18px;
+    padding-top: 30px;
+    text-align: right;
+    color: #000000;
     margin-bottom: 10px;
     margin-top: -20px;
 }
 
 /* Heading styles */
 h1, h2, h3 {
-    font-family: 'Roboto', sans-serif; /* Use the custom font in your styles */
+    font-family: 'Roboto', sans-serif;
     color: #333;
     margin-bottom: 10px;
 }
 
-
-.body-headers{
+.body-headers {
     font-size: 50px;
     padding-top: 30px;
     text-align: left;
-    font-family: 'LEMONMILK', sans-serif; /* Use the custom font in your styles */
+    font-family: 'LEMONMILK', sans-serif;
     color: #333;
     margin-bottom: 5px;
 }
+
+.body-headers-right {
+    font-size: 50px;
+    padding-top: 30px;
+    text-align: right;
+    font-family: 'LEMONMILK', sans-serif;
+    color: #333;
+    margin-bottom: 5px;
+}
+
 
 .heading {
     font-size: 80px;
@@ -68,17 +83,9 @@ h1, h2, h3 {
     margin-bottom: 5px;
 }
 
-h1 {
-    font-size: 32px;
-}
-
-h2 {
-    font-size: 24px;
-}
-
-h3 {
-    font-size: 18px;
-}
+h1 { font-size: 32px; }
+h2 { font-size: 24px; }
+h3 { font-size: 18px; }
 
 /* Paragraph styles */
 p {
@@ -135,33 +142,21 @@ button:hover {
     margin-right: 0;
 }
 
-/* Center the navbar items */
 .neumorphic-navbar .navbar-nav {
     margin-left: auto;
 }
 
-.navbar-brand .navbar-logo {
-    margin: -5px;
-}
-
-
-.divider img {
-    margin: -105;
-}
-
-/* Position the toggler button */
 .navbar-toggler {
     margin-left: auto;
 }
 
-/* Styles for the round button */
 .round-button {
     display: inline-block;
-    width: 150px; /* Adjust the width as needed */
+    width: 150px;
     margin-top: 10px;
     padding: 10px 20px;
-    border-radius: 30px; /* Adjust the border-radius to make it more or less round */
-    background-color: rgb(208, 226, 237); /* Light blue color */
+    border-radius: 30px;
+    background-color: rgb(208, 226, 237);
     color: #333; 
     text-align: center;
     text-decoration: none;
@@ -169,82 +164,82 @@ button:hover {
     cursor: pointer;
 }
 
-/* Hover effect for the button */
 .round-button:hover {
-    background-color: #c0eaf8; /* Darker blue color on hover */
+    background-color: #c0eaf8;
 }
 
 /* Container to limit the width of the divider */
 .seperator-container {
-    width: 75%; /* Adjust the width as needed */
-    margin: auto; /* Center the container */
+    width: 75%;
+    margin: auto;
 }
 
 /* Style for the line divider */
 .seperator {
     border-radius: 30px;
-    border: 4px solid #c0eaf8; /* Border style for the line */
-    margin-top: 10px; /* Adjust the margin as needed */
+    border: 4px solid #c0eaf8;
+    margin-top: 10px;
 }
 
-
-.image-align-right{
+.image-align-right {
     border-radius: 30px;
     padding-left: 20px;
     margin: 50px;
 }
 
-.div-right-align{
+.div-right-align {
     margin-left: auto; 
     margin-right: 0;
 }
+
 #neoBgn {
-    background-color: #c3e0ea; /* Set the background color */
-    border-radius: 15px; /* Set the border-radius for rounded corners */
-    width: 300px; /* Set the width of the container */
-    margin: auto; /* Center the container horizontally */
-    box-shadow: 0px 0px 10px 0px #30b8e5; /* Add a subtle box shadow */
+    background-color: #c3e0ea;
+    border-radius: 15px;
+    width: 300px;
+    margin: auto;
+    box-shadow: 0px 0px 10px 0px #30b8e5;
 }
 
-   
-  .neoInput{
-    margin-top:16px;
-    outline:none;
-    width:100%;
-    height:48px;
-    padding-left:12px;
-    padding-right:12px;
+.neoInput {
+    margin-top: 16px;
+    outline: none;
+    width: 100%;
+    height: 48px;
+    padding-left: 12px;
+    padding-right: 12px;
     box-sizing: border-box;
-    border:1px solid #f9f9f9;
+    border: 1px solid #f9f9f9;
     border-radius: 4px;
     background: #f7f7f7;
-    box-shadow:  4px 4px 6px #b2b2b2,
-                 -4px -4px 6px #ffffff;
-  }
-  .neoInput:focus {
-    border:1px solid #efdcdc;
-    box-shadow: inset 4px 4px 6px #d7d7d7,
-                inset -4px -4px 6px #f1f1f1;
-  }
-  #formContainer {
-    max-width:320px;
-    margin:20px auto
-  }
-  .submitBtn {
-    margin-top:24px;
-    border:none;
-    width:100%;
+    box-shadow: 4px 4px 6px #b2b2b2, -4px -4px 6px #ffffff;
+}
+
+.neoInput:focus {
+    border: 1px solid #efdcdc;
+    box-shadow: inset 4px 4px 6px #d7d7d7, inset -4px -4px 6px #f1f1f1;
+}
+
+#formContainer {
+    max-width: 320px;
+    margin: 20px auto;
+}
+
+.submitBtn {
+    margin-top: 24px;
+    border: none;
+    width: 100%;
     border-radius: 4px;
     background: linear-gradient(180deg, #f67272, #cf6060);
-    padding:12px;
-    color:#fff;
-    box-shadow:  4px 4px 6px #b2b2b2,
-                 -4px -4px 6px #ffffff;
-  }
-  #checkBoxHolder {
-    margin-top: 20px
-  }
-  #agreeConditions {
-    margin-right:8px;
-    vertical-align:middle;
-  }
+    padding: 12px;
+    color: #fff;
+    box-shadow: 4px 4px 6px #b2b2b2, -4px -4px 6px #ffffff;
+}
+
+#checkBoxHolder {
+    margin-top: 20px;
+}
+
+#agreeConditions {
+    margin-right: 8px;
+    vertical-align: middle;
+}
