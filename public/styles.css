@@ -243,3 +243,19 @@ button:hover {
     margin-right: 8px;
     vertical-align: middle;
 }
+
+.borderRight {
+    border-right: 1px solid #000;
+    padding-right: 20px; /* Adjust the value according to your preference */
+}
+
+.navbar-img {
+    height: 50px; /* Adjust the value according to your preference */
+    width: 50px;
+    object-fit: cover; /* Ensures the image maintains its aspect ratio */
+    margin-right: 5px; /* Optional: Adjust the margin to provide spacing between image and text */
+    vertical-align: middle; /* Adjust the vertical alignment */
+    display: flex;
+    align-items: center;
+}
+

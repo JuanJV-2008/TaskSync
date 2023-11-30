@@ -17,6 +17,10 @@ app.get('/signup', (req, res) => {
     res.render('signup');
 });
 
+app.get('/analytics', (req, res) => {
+    res.render('analytics');
+});
+
 
 app.listen(port, () => {
     console.log(`App listening at http://localhost:${port}`);
