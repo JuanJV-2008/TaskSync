@@ -21,6 +21,9 @@ app.get('/analytics', (req, res) => {
     res.render('analytics');
 });
 
+app.get('/task-manager', (req, res) => {
+    res.render('task-manager');
+});
 
 app.listen(port, () => {
     console.log(`App listening at http://localhost:${port}`);
