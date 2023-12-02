@@ -1,4 +1,11 @@
 @font-face {
+  font-family: 'Poppins';
+  src: url('/fonts/Poppins-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
     font-family: 'LEMONMILK';
     src: url('/fonts/LEMONMILK-Light.otf') format('opentype');
     font-weight: normal;
@@ -50,7 +57,7 @@ body {
 
 /* Heading styles */
 h1, h2, h3 {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Poppins', sans-serif;
     color: #333;
     margin-bottom: 10px;
 }
@@ -59,7 +66,7 @@ h1, h2, h3 {
     font-size: 50px;
     padding-top: 30px;
     text-align: left;
-    font-family: 'LEMONMILK', sans-serif;
+    font-family: 'Poppins', sans-serif;
     color: #333;
     margin-bottom: 5px;
 }
@@ -68,7 +75,7 @@ h1, h2, h3 {
     font-size: 50px;
     padding-top: 30px;
     text-align: center;
-    font-family: 'LEMONMILK', sans-serif;
+    font-family: 'Poppins', sans-serif;
     color: #333;
     margin-bottom: 5px;
     
@@ -78,7 +85,7 @@ h1, h2, h3 {
     font-size: 50px;
     padding-top: 30px;
     text-align: right;
-    font-family: 'LEMONMILK', sans-serif;
+    font-family: 'Poppins', sans-serif;
     color: #333;
     margin-bottom: 5px;
 }
@@ -127,36 +134,82 @@ button:hover {
     background-color: #5C255C;
 }
 
+/* Common styles for the neumorphic navbar */
+.custom-navbar {
+  background-color: rgb(208, 226, 237);
+  box-shadow: 4px 13px 30px 1px rgba(91, 113, 179, 0.3);
+  border-radius: 10px;
+  height: 90px;
+}
+
+.custom-navbar .navbar-brand,
+.custom-navbar .navbar-nav .nav-link {
+  font-family: 'Poppins', sans-serif;
+  font-size: 20px;
+  transition: #3399FF 0.3s ease;
+}
+
+.custom-navbar .navbar-nav .nav-item {
+  margin-right: 20px;
+}
+
+.custom-navbar .navbar-nav .nav-item:last-child {
+  margin-right: 0;
+}
+
+.custom-navbar .navbar-nav {
+  margin-left: auto;
+}
+
+.navbar-toggler {
+  margin-left: auto;
+}
+
+/* Initial style for the neumorphic navbar */
+.custom-navbar {
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
+
+/* Style to show the background and shadow on scroll for the neumorphic navbar */
+.custom-navbar-scrolled {
+  background-color: rgb(208, 226, 237) !important;
+  box-shadow: 4px 13px 30px 1px rgba(91, 113, 179, 0.3) !important;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
 /* Neumorphic Navbar */
 .neumorphic-navbar {
-    background-color: rgb(208, 226, 237);
-    box-shadow: 4px 13px 30px 1px rgba(91, 113, 179, 0.4);
-    border-radius: 10px;
-    height: 90px;
+  background-color: rgb(208, 226, 237);
+  box-shadow: 4px 13px 30px 1px rgba(91, 113, 179, 0.4);
+  border-radius: 10px;
+  height: 90px;
 }
 
 .neumorphic-navbar .navbar-brand,
 .neumorphic-navbar .navbar-nav .nav-link {
-    font-family: 'LEMONMILK', sans-serif;
-    font-size: 20px;
-    transition: #3399FF 0.3s ease;
+  font-family: 'Poppins', sans-serif;
+  font-size: 20px;
+  transition: #3399FF 0.3s ease;
 }
 
 .neumorphic-navbar .navbar-nav .nav-item {
-    margin-right: 20px;
+  margin-right: 20px;
 }
 
 .neumorphic-navbar .navbar-nav .nav-item:last-child {
-    margin-right: 0;
+  margin-right: 0;
 }
 
 .neumorphic-navbar .navbar-nav {
-    margin-left: auto;
+  margin-left: auto;
 }
 
 .navbar-toggler {
-    margin-left: auto;
+  margin-left: auto;
 }
+
+
 
 .round-button {
     display: inline-block;
@@ -270,7 +323,7 @@ button:hover {
 /* Timeline Css */
 body {
     font: normal 16px/1.5 ;
-    font-family: LEMONMILK;
+    font-family: Poppins;
   }
   *,
 *::before,
@@ -307,7 +360,7 @@ body {
   width: 640px; /* 20% smaller */
   padding: 32px; /* 20% smaller */
   background: #fff;
-  box-shadow: 6.4px 20.8px 48px 1.6px rgba(208, 190, 253, 0.6); /* 20% smaller */
+  box-shadow: 6.4px 20.8px 48px 1.6px rgba(91, 113, 179, 0.4); /* 20% smaller */
 
   border-radius: 8px; /* 20% smaller */
   display: flex;
@@ -316,7 +369,7 @@ body {
 
 .timeline ul li div time {
   position: absolute;
-  background: rgba(208, 190, 253, 0.8);
+  background: rgb(190, 228, 253);
   width: 128px; /* 20% smaller */
   height: 48px; /* 20% smaller */
   top: -24px; /* 20% smaller */
