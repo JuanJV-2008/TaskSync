@@ -210,7 +210,6 @@ button:hover {
 }
 
 
-
 .round-button {
     display: inline-block;
     width: 150px;
@@ -339,7 +338,7 @@ body {
   width: 9.6px; /* 20% smaller */
   margin: 0 auto;
   padding-top: 80px; /* 20% smaller */
-  background: rgba(183, 248, 242, 1);
+  background: rgb(7, 35, 77);
 }
 
 .timeline ul li::after {
@@ -351,7 +350,7 @@ body {
   width: 32px; /* 20% smaller */
   height: 32px; /* 20% smaller */
   z-index: 2;
-  background: rgb(183, 224, 248);
+  background: rgb(118, 134, 182);
 }
 
 .timeline ul li div {
@@ -369,7 +368,7 @@ body {
 
 .timeline ul li div time {
   position: absolute;
-  background: rgb(190, 228, 253);
+  background: rgba(190, 228, 253,1);
   width: 128px; /* 20% smaller */
   height: 48px; /* 20% smaller */
   top: -24px; /* 20% smaller */
@@ -457,3 +456,43 @@ body {
     left: 72px; /* 20% smaller */
   }
 }
+
+/* Profile container */
+.profile-container {
+  position: relative;
+  display: inline-block;
+  cursor: pointer; /* Add cursor pointer to indicate it's clickable */
+}
+
+/* Dropdown menu */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  min-width: 160px;
+  z-index: 1;
+  right: 0; /* Change to 'left: 0;' to make it go to the left */
+  border-radius: 8px;
+  margin-top: 8px;
+  top: 85%; /* Adjust top position to immediately below the profile picture */
+}
+
+/* Style for each dropdown item */
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Change color on hover */
+.dropdown-content a:hover {
+  background-color: #f1f1f1;
+}
+
+/* Show the dropdown menu on hover */
+.profile-container:hover .dropdown-content {
+  display: block;
+}
+

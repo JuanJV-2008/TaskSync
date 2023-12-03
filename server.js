@@ -25,6 +25,10 @@ app.get('/task-manager', (req, res) => {
     res.render('task-manager');
 });
 
+app.get('/profile', (req, res) => {
+    res.render('profile');
+});
+
 app.listen(port, () => {
     console.log(`App listening at http://localhost:${port}`);
 });
