@@ -6,11 +6,11 @@
     <div class="container">
         <div id="neoBgn" class="p-4">
           <h1> Signup</h1>
-            <form onsubmit="event.preventDefault()" id="formContainer">
-                <input class="neoInput" type="email" placeholder="Email" required />
+            <form action=/signup onsubmit="event.preventDefault()" id="formContainer" method="post">
+                <input class="neoInput" type="name" placeholder="Name" required  />
                 <input class="neoInput" type="password" placeholder="Password" required />
-                <input class="neoInput" type="text" placeholder="Security Question" required />
-                <input class="neoInput" type="text" placeholder="Answer" required />
+                <input class="neoInput" type="security" placeholder="Security Question" required />
+                <input class="neoInput" type="answer" placeholder="Answer" required />
                 <div id="redirectLink">
                     <p>Already have an account? <a href="/login">Log in</a></p>
                 </div>

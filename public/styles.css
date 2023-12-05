@@ -175,7 +175,7 @@ button:hover {
 .custom-navbar-scrolled {
   background-color: rgb(208, 226, 237) !important;
   box-shadow: 4px 13px 30px 1px rgba(91, 113, 179, 0.3) !important;
-  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  transition: background-color 0.7s ease, box-shadow 0.7s ease;
 }
 
 /* Neumorphic Navbar */
