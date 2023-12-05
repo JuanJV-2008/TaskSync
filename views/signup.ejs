@@ -1,21 +1,24 @@
 <!DOCTYPE html>
-<html>
-    <html lang="en">
-        <%- include('layouts/header'); -%>
-    <body>
-        <%- include('layouts/navbar'); -%>
-        <div id="neoBgn" class='p-3'>
+<html lang="en">
+<%- include('layouts/header'); -%>
+<body>
+    <%- include('layouts/navbar-opaque'); -%>
+    <div class="container">
+        <div id="neoBgn" class="p-4">
+          <h1> Signup</h1>
             <form onsubmit="event.preventDefault()" id="formContainer">
-              <input class="neoInput" type="text" placeholder="First name" />
-              <input class="neoInput" type="text" placeholder="Last name" />
-              <input class="neoInput" type="text" placeholder="Phone" />
-              <input class="neoInput" type="email" placeholder="john@email.com" />
-              <input class="neoInput" type="password" placeholder="password" />
-              <div id="checkBoxHolder">
-                <input type="checkbox"  id="agreeConditions"/> <label for="agreeConditions">I agree to <a href="#">terms &amp; conditions</a></label>
-              </div>
-              <button class="submitBtn" type="submit">Submit</button>
+                <input class="neoInput" type="email" placeholder="Email" required />
+                <input class="neoInput" type="password" placeholder="Password" required />
+                <input class="neoInput" type="text" placeholder="Security Question" required />
+                <input class="neoInput" type="text" placeholder="Answer" required />
+                <div id="redirectLink">
+                    <p>Already have an account? <a href="/login">Log in</a></p>
+                </div>
+                <button class="submitBtn blue-to-purple" type="submit">Submit</button>
             </form>
-          </div>
-    </body>
+        </div>
+    </div>
+    <div style="height: 100px;"> </div>
+
+</body>
 </html>

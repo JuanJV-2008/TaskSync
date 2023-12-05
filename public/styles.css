@@ -205,6 +205,18 @@ button:hover {
   margin-left: auto;
 }
 
+/* Neumorphic-style divider */
+.neumorphic-divider {
+  width: 70%;
+  height: 10px;
+  margin: 30px auto;
+  background: linear-gradient(145deg, #dbe6f6, #a7bddb);
+  border-radius: 10px;
+  box-shadow: 0px 8px 16px #b3c8d9, 0px 0px 8px #f3ffff, 0px -8px 16px #f3ffff;
+
+}
+
+
 .navbar-toggler {
   margin-left: auto;
 }
@@ -228,18 +240,6 @@ button:hover {
     background-color: #c0eaf8;
 }
 
-/* Container to limit the width of the divider */
-.seperator-container {
-    width: 75%;
-    margin: auto;
-}
-
-/* Style for the line divider */
-.seperator {
-    border-radius: 30px;
-    border: 4px solid #c0eaf8;
-    margin-top: 10px;
-}
 
 .image-align-right {
     border-radius: 30px;
@@ -252,57 +252,62 @@ button:hover {
     margin-right: 0;
 }
 
+/* Add these styles to your existing CSS or within a <style> tag */
 #neoBgn {
-    background-color: #c3e0ea;
-    border-radius: 15px;
-    width: 300px;
-    margin: auto;
-    box-shadow: 0px 0px 10px 0px #30b8e5;
+  background-color: #c3e0ea;
+  border-radius: 15px;
+  width: 400px; /* Adjust the width as needed */
+  margin: auto;
+  box-shadow: 0px 0px 10px 0px #30b8e5;
 }
 
 .neoInput {
-    margin-top: 16px;
-    outline: none;
-    width: 100%;
-    height: 48px;
-    padding-left: 12px;
-    padding-right: 12px;
-    box-sizing: border-box;
-    border: 1px solid #f9f9f9;
-    border-radius: 4px;
-    background: #f7f7f7;
-    box-shadow: 4px 4px 6px #b2b2b2, -4px -4px 6px #ffffff;
+  margin-top: 16px;
+  outline: none;
+  width: 100%;
+  height: 48px;
+  padding-left: 12px;
+  padding-right: 12px;
+  box-sizing: border-box;
+  border: 1px solid #f9f9f9;
+  border-radius: 4px;
+  background: #f7f7f7;
+  box-shadow: 4px 4px 6px #b2b2b2, -4px -4px 6px #ffffff;
 }
 
 .neoInput:focus {
-    border: 1px solid #efdcdc;
-    box-shadow: inset 4px 4px 6px #d7d7d7, inset -4px -4px 6px #f1f1f1;
+  border: 1px solid #efdcdc;
+  box-shadow: inset 4px 4px 6px #d7d7d7, inset -4px -4px 6px #f1f1f1;
 }
 
 #formContainer {
-    max-width: 320px;
-    margin: 20px auto;
+  max-width: 400px; /* Adjust the max-width as needed */
+  margin: 20px auto;
 }
 
 .submitBtn {
-    margin-top: 24px;
-    border: none;
-    width: 100%;
-    border-radius: 4px;
-    background: linear-gradient(180deg, #f67272, #cf6060);
-    padding: 12px;
-    color: #fff;
-    box-shadow: 4px 4px 6px #b2b2b2, -4px -4px 6px #ffffff;
+  margin-top: 6px;
+  border: none;
+  width: 100%;
+  border-radius: 4px;
+  background: linear-gradient(180deg, #3f4cd8, #9535ff); /* Blue to Purple gradient */
+  padding: 12px;
+  color: #fff;
+  box-shadow: 4px 4px 6px #b2b2b2, -4px -4px 6px #ffffff;
 }
 
-#checkBoxHolder {
-    margin-top: 20px;
+#redirectLink {
+  margin-top: 12px;
 }
 
-#agreeConditions {
-    margin-right: 8px;
-    vertical-align: middle;
+
+/* Additional class for the blue-to-purple gradient transition */
+.blue-to-purple {
+  color: #000;
+  background: linear-gradient(145deg, #dbe6f6, #a7bddb);
 }
+
+
 
 .borderRight {
     border-right: 1px solid #000;
