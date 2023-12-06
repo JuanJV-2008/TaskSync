@@ -1,10 +1,13 @@
 const express = require("express");
-const session = require('express-session');
 const app = express();
+const bodyParser = require("body-parser");
+const session = require('express-session');
 const path = require("path");
-const LogInCollection = require("./db/mongo");
+const mongoose = require("mongoose");
+const LogInCollection = require("./db/mongo"); // Import your LogInCollection model
 const port = process.env.PORT || 3000;
 
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.urlencoded({ extended: false }));
 app.set("view engine", "ejs");
 app.use(express.static("public"));
@@ -18,8 +21,44 @@ app.use(session({
   saveUninitialized: true
 }));
 
+// MongoDB connection setup
+mongoose.connect("mongodb://localhost:27017/TaskSync", {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
+
+// Add this route handler at the end of your server.js file
+app.get("/password-updated", (req, res) => {
+  res.render("password-updated");
+});
+
+// Route to handle updating the password
+app.post("/update-password", async (req, res) => {
+  try {
+    const { username, newPassword } = req.body;
+
+    // Find the user by username using the LogInCollection model
+    const user = await LogInCollection.findOne({ name: username });
+
+    if (!user) {
+      // Handle case where the user is not found
+      return res.status(404).send("User not found");
+    }
+
+    // Update the user's password
+    user.password = newPassword;
+    await user.save();
+
+    // Redirect or render a success message as needed
+    res.redirect("/password-updated"); // You can create a separate view for password update success
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Internal Server Error");
+  }
+});
+
 // Add this route before your other routes
-app.get("/forgot-password", (req, res) => {
+app.get("/recover-password", (req, res) => {
   res.render("forgot-password");
 });
 
@@ -29,12 +68,63 @@ app.post("/recover-password", async (req, res) => {
     const user = await LogInCollection.findOne({ name });
 
     if (!user) {
+      return res.render("forgot-password", { errorMessage: "Username not found" });
+    }
+
+    // Set user in session for password recovery
+    req.session.user = user.name;
+
+    res.render("answer-security-question", { user });
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Internal Server Error");
+  }
+});
+
+// Uncomment this route
+app.get("/forgot-password", (req, res) => {
+  res.render("forgot-password");
+});
+
+app.post("/forgot-password", async (req, res) => {
+  try {
+    const { name } = req.body;
+    const user = await LogInCollection.findOne({ name });
+
+    if (!user) {
       // Handle case where username doesn't exist
       return res.render("forgot-password", { errorMessage: "Username not found" });
     }
 
+    // Set user in session for password recovery
+    req.session.user = user.name;
+
     // Render a new view to answer the security question
     res.render("answer-security-question", { user });
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Internal Server Error");
+  }
+});
+
+app.post("/complete-password-recovery", async (req, res) => {
+  try {
+    const { answer, newPassword } = req.body;
+    console.log("Session user:", req.session.user); // Log the session user
+    const user = await LogInCollection.findOne({ name: req.session.user });
+
+    if (!user) {
+      return res.status(404).send("User not found");
+    }
+
+    // Check if the provided answer matches the stored answer
+    if (answer === user.answer) {
+      // Render the page with the form to edit the password
+      res.render("complete-password-recovery", { user, editPassword: true });
+    } else {
+      // Display an error message or redirect to the previous step
+      res.render("answer-security-question", { user, errorMessage: "Incorrect answer" });
+    }
   } catch (error) {
     console.error(error);
     res.status(500).send("Internal Server Error");
@@ -92,8 +182,6 @@ app.get("/profile", requireLogin, async (req, res) => {
       res.status(500).send("Internal Server Error");
   }
 });
-
-
 
 app.post("/signup", async (req, res) => {
   try {
@@ -156,17 +244,6 @@ app.get("/logout", (req, res) => {
     res.redirect("/");
   });
 });
-
-// Middleware to check if the user is logged in (excluding the home page)
-function requireLogin(req, res, next) {
-  if (req.path === '/' || req.session.user) {
-    // If it's the home page or user is logged in, proceed to the next middleware or route handler
-    next();
-  } else {
-    // If user is not logged in and not on the home page, redirect to login page
-    res.redirect('/login');
-  }
-}
 
 app.listen(port, () => {
   console.log(`App listening at http://localhost:${port}`);
