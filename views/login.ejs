@@ -5,10 +5,10 @@
     <%- include('layouts/navbar-opaque'); -%>
     <div class="container">
         <div id="neoBgn" class="p-4">
-          <h1> Login</h1>
-            <form action=/login onsubmit="event.preventDefault()" id="formContainer" method="post">
-                <input class="neoInput" type="name" placeholder="Name" required />
-                <input class="neoInput" type="password" placeholder="Password" required />
+            <h1> Login</h1>
+            <form action="/login" method="post">
+                <input class="neoInput" type="text" name="name" placeholder="Name" required />
+                <input class="neoInput" type="password" name="password" placeholder="Password" required />
                 <div id="redirectLink">
                     <p><a href="/forgot-password">Forgot my password</a></p>
                 </div>
