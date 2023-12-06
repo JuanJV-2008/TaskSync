@@ -3,12 +3,25 @@
     <html lang="en">
         <%- include('layouts/header'); -%>
     <body>
-        <%- include('layouts/login-navbar'); -%>
+        <%- include('layouts/login-navbar-opaque'); -%>
+
+        <div class="container">
+            <div id="neoBgn" class="p-4">
+                <h1> Profile</h1>
+                <div>
+                    <p>Name: <%= user.name %></p>
+                    <p>Password: <%= user.password %></p>
+                    <p>Security Question: <%= user.security %></p>
+                    <p>Answer: <%= user.answer %></p>
+                </div>
+                <div id="redirectLink">
+                    <a href="/logout">Logout</a>
+                </div>
+            </div>
+        </div>
         <div style="height: 1000px;">
             <!-- Your existing content goes here -->
         </div>
-
     </body>
-    
 </html>
 

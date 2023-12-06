@@ -18,6 +18,29 @@ app.use(session({
   saveUninitialized: true
 }));
 
+// Add this route before your other routes
+app.get("/forgot-password", (req, res) => {
+  res.render("forgot-password");
+});
+
+app.post("/recover-password", async (req, res) => {
+  try {
+    const { name } = req.body;
+    const user = await LogInCollection.findOne({ name });
+
+    if (!user) {
+      // Handle case where username doesn't exist
+      return res.render("forgot-password", { errorMessage: "Username not found" });
+    }
+
+    // Render a new view to answer the security question
+    res.render("answer-security-question", { user });
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Internal Server Error");
+  }
+});
+
 // Middleware to check if the user is logged in (excluding the home page)
 function requireLogin(req, res, next) {
   if (req.path === '/' || req.session.user) {
@@ -54,9 +77,23 @@ app.get("/task-manager", requireLogin, (req, res) => {
   res.render("task-manager", { naming: req.session.user });
 });
 
-app.get("/profile", requireLogin, (req, res) => {
-  res.render("profile", { naming: req.session.user });
+app.get("/profile", requireLogin, async (req, res) => {
+  try {
+      const user = await LogInCollection.findOne({ name: req.session.user });
+
+      if (!user) {
+          // Handle the case where the user is not found
+          return res.status(404).send("User not found");
+      }
+
+      res.render("profile", { user });
+  } catch (error) {
+      console.error(error);
+      res.status(500).send("Internal Server Error");
+  }
 });
+
+
 
 app.post("/signup", async (req, res) => {
   try {

@@ -253,10 +253,11 @@ button:hover {
 }
 
 /* Add these styles to your existing CSS or within a <style> tag */
+
 #neoBgn {
   background-color: #c3e0ea;
   border-radius: 15px;
-  width: 400px; /* Adjust the width as needed */
+  width: 500px; /* Adjust the width as needed */
   margin: auto;
   box-shadow: 0px 0px 10px 0px #30b8e5;
 }
@@ -265,47 +266,48 @@ button:hover {
   margin-top: 16px;
   outline: none;
   width: 100%;
-  height: 48px;
-  padding-left: 12px;
-  padding-right: 12px;
+  height: 60px; /* Increased height */
+  padding-left: 16px; /* Increased padding */
+  padding-right: 16px; /* Increased padding */
   box-sizing: border-box;
   border: 1px solid #f9f9f9;
-  border-radius: 4px;
+  border-radius: 8px; /* Increased border-radius */
   background: #f7f7f7;
-  box-shadow: 4px 4px 6px #b2b2b2, -4px -4px 6px #ffffff;
+  box-shadow: 6px 6px 10px #b2b2b2, -6px -6px 10px #ffffff; /* Increased box-shadow */
 }
 
 .neoInput:focus {
   border: 1px solid #efdcdc;
-  box-shadow: inset 4px 4px 6px #d7d7d7, inset -4px -4px 6px #f1f1f1;
+  box-shadow: inset 6px 6px 10px #d7d7d7, inset -6px -6px 10px #f1f1f1; /* Increased inset box-shadow */
 }
 
 #formContainer {
-  max-width: 400px; /* Adjust the max-width as needed */
+  max-width: 500px; /* Adjust the max-width as needed */
   margin: 20px auto;
 }
 
 .submitBtn {
-  margin-top: 6px;
+  margin-top: 12px; /* Adjusted margin-top */
   border: none;
   width: 100%;
-  border-radius: 4px;
-  background: linear-gradient(180deg, #3f4cd8, #9535ff); /* Blue to Purple gradient */
-  padding: 12px;
+  border-radius: 8px; /* Increased border-radius */
+  background: linear-gradient(180deg, #3f4cd8, #9535ff);
+  padding: 14px; /* Increased padding */
+  font-size: 18px; /* Increased font-size */
   color: #fff;
-  box-shadow: 4px 4px 6px #b2b2b2, -4px -4px 6px #ffffff;
+  box-shadow: 6px 6px 10px #b2b2b2, -6px -6px 10px #ffffff;
 }
 
 #redirectLink {
-  margin-top: 12px;
+  margin-top: 16px; /* Adjusted margin-top */
 }
-
 
 /* Additional class for the blue-to-purple gradient transition */
 .blue-to-purple {
   color: #000;
   background: linear-gradient(145deg, #dbe6f6, #a7bddb);
 }
+
 
 
 
@@ -501,3 +503,52 @@ body {
   display: block;
 }
 
+/* Add this within your style block or external CSS file */
+.popup {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  background-color: #c3e0ea; /* Adjust background color as needed */
+  border-radius: 15px;
+  width: 400px; /* Adjust the width as needed */
+  box-shadow: 0px 0px 10px 0px #30b8e5;
+}
+
+.popup input {
+  margin-top: 16px;
+  outline: none;
+  width: 100%;
+  height: 48px;
+  padding-left: 12px;
+  padding-right: 12px;
+  box-sizing: border-box;
+  border: 1px solid #f9f9f9;
+  border-radius: 4px;
+  background: #f7f7f7;
+  box-shadow: 4px 4px 6px #b2b2b2, -4px -4px 6px #ffffff;
+}
+
+.popup input:focus {
+  border: 1px solid #efdcdc;
+  box-shadow: inset 4px 4px 6px #d7d7d7, inset -4px -4px 6px #f1f1f1;
+}
+
+.popup button {
+  margin-top: 6px;
+  border: none;
+  width: 100%;
+  border-radius: 4px;
+  background: linear-gradient(180deg, #3f4cd8, #9535ff); /* Blue to Purple gradient */
+  padding: 12px;
+  color: #fff;
+  box-shadow: 4px 4px 6px #b2b2b2, -4px -4px 6px #ffffff;
+}
+
+/* Additional class for the blue-to-purple gradient transition */
+.blue-to-purple {
+  color: #000;
+  background: linear-gradient(145deg, #dbe6f6, #a7bddb);
+}

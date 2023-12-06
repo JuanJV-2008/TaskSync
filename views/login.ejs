@@ -3,18 +3,41 @@
 <%- include('layouts/header'); -%>
 <body>
     <%- include('layouts/navbar-opaque'); -%>
-    <div class="container">
-        <div id="neoBgn" class="p-4">
-            <h1> Login</h1>
-            <form action="/login" method="post">
-                <input class="neoInput" type="text" name="name" placeholder="Name" required />
-                <input class="neoInput" type="password" name="password" placeholder="Password" required />
-                <div id="redirectLink">
-                    <p><a href="/forgot-password">Forgot my password</a></p>
-                </div>
-                <button class="submitBtn blue-to-purple" type="submit">Log In</button>
-            </form>
+    <!-- Add this within your body tag -->
+<div id="forgotPasswordPopup" class="popup">
+    <form action="/forgot-password" method="post">
+      <input class="neoInput" type="text" name="username" placeholder="Username" required />
+      <input class="neoInput" type="text" name="securityAnswer" placeholder="Answer to Security Question" required />
+      <button class="submitBtn blue-to-purple" type="submit">Submit</button>
+    </form>
+  </div>
+  
+  <div class="container">
+    <div id="neoBgn" class="p-4">
+      <h1> Login</h1>
+      <form action="/login" method="post">
+        <input class="neoInput" type="text" name="name" placeholder="Name" required />
+        <input class="neoInput" type="password" name="password" placeholder="Password" required />
+        <div id="redirectLink">
+          <p><a href="#" id="forgotPasswordLink">Forgot my password</a></p>
         </div>
+        <button class="submitBtn blue-to-purple" type="submit">Log In</button>
+      </form>
     </div>
+  </div>
+  <div style="height: 250px;"> </div>
+  <!-- Add this within your body tag -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const forgotPasswordLink = document.getElementById('forgotPasswordLink');
+      const forgotPasswordPopup = document.getElementById('forgotPasswordPopup');
+  
+      forgotPasswordLink.addEventListener('click', function (event) {
+        event.preventDefault();
+        forgotPasswordPopup.style.display = 'block';
+      });
+    });
+  </script>
 </body>
 </html>
+
