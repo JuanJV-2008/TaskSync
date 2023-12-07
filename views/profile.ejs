@@ -8,11 +8,11 @@
             <div id="neoBgn" class="p-4">
                 <h1> Profile</h1>
                 <div>
-                    <form action="/signup" method="post">
+                    <form action="/update-profile" method="post">
                         <h5 class="topHeader5"> Name </h5>
                         <input class="neoInput" type="text" name="name" value="<%= user.name %>" placeholder="Name" required />
                         <h5> Password </h5>
-                        <input class="neoInput" type="type" name="password" value="<%= user.password %>" placeholder="Password" required />
+                        <input class="neoInput" type="text" name="password" value="<%= user.password %>" placeholder="Password" required />
                         <h5> Security Question </h5>
                         <input class="neoInput" type="text" name="security" value="<%= user.security %>" placeholder="Security Question" required />
                         <h5> Answer </h5>
@@ -21,7 +21,7 @@
                         <div class="button-wrapper">
                             <button class="custom-btn blue-to-purple" type="submit">Submit</button>
                             <button class="custom-btn-right blue-to-purple" onclick="window.location.href='/logout'">Logout</button>
-                          </div>
+                        </div>
                     </form>
                
                 </div>

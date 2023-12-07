@@ -141,6 +141,40 @@ function requireLogin(req, res, next) {
   }
 }
 
+// Assume you've already defined your LogInCollection model and app instance
+
+// Update user profile route
+app.post("/update-profile", async (req, res) => {
+  try {
+      const { name, password, security, answer } = req.body;
+
+      // Find the user by current username using the LogInCollection model
+      const user = await LogInCollection.findOne({ name: req.session.user });
+
+      if (!user) {
+          // Handle case where the user is not found
+          return res.status(404).send("User not found");
+      }
+
+      // Update user details, including the username
+      user.name = name;
+      user.password = password;
+      user.security = security;
+      user.answer = answer;
+
+      await user.save();
+
+      // Update the session with the new username
+      req.session.user = name;
+
+      // Redirect or render a success message as needed
+      res.redirect("/login-home"); // Redirect to the user's profile page or another appropriate page
+  } catch (error) {
+      console.error(error);
+      res.status(500).send("Internal Server Error");
+  }
+});
+
 app.get("/", (req, res) => {
   res.render("home", { naming: req.session.user });
 });

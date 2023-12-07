@@ -287,7 +287,7 @@ button:hover {
   border: 1px solid #f9f9f9;
   border-radius: 8px; /* Increased border-radius */
   background: #f7f7f7;
-  box-shadow: 6px 6px 10px #b2b2b2, -6px -6px 10px #ffffff; /* Increased box-shadow */
+  box-shadow: 6px 6px 10px #b2b2b2, -6px -6px 10px rgba(168, 221, 252, 0.6);
 }
 
 .neoInput:focus {
@@ -308,7 +308,7 @@ button:hover {
   padding: 14px; /* Increased padding */
   font-size: 18px; /* Increased font-size */
   color: #fff;
-  box-shadow: 6px 6px 10px #b2b2b2, -6px -6px 10px #ffffff;
+  box-shadow: 6px 6px 10px #b2b2b2, -6px -6px 10px rgba(168, 221, 252, 0.6);
 }
 
 #redirectLink {
@@ -338,7 +338,7 @@ button:hover {
   padding: 14px;
   font-size: 18px;
   color: #a3a3a3; 
-  box-shadow: 6px 6px 10px #b2b2b2, -6px -6px 10px #ffffff;
+  box-shadow: 6px 6px 10px #b2b2b2, -6px -6px 10px rgba(168, 221, 252, 0.6);
 }
 
 
@@ -349,7 +349,7 @@ button:hover {
   padding: 14px;
   font-size: 18px;
   color: #a3a3a3; 
-  box-shadow: 6px 6px 10px #b2b2b2, -6px -6px 10px #ffffff;
+  box-shadow: 6px 6px 10px #b2b2b2, -6px -6px 10px rgba(168, 221, 252, 0.6);
 }
 
 .borderRight {
