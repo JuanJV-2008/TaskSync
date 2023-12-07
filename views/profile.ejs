@@ -4,22 +4,30 @@
         <%- include('layouts/header'); -%>
     <body>
         <%- include('layouts/login-navbar-opaque'); -%>
-
         <div class="container">
             <div id="neoBgn" class="p-4">
                 <h1> Profile</h1>
                 <div>
-                    <p>Name: <%= user.name %></p>
-                    <p>Password: <%= user.password %></p>
-                    <p>Security Question: <%= user.security %></p>
-                    <p>Answer: <%= user.answer %></p>
-                </div>
-                <div id="redirectLink">
-                    <a href="/logout">Logout</a>
+                    <form action="/signup" method="post">
+                        <h5 class="topHeader5"> Name </h5>
+                        <input class="neoInput" type="text" name="name" value="<%= user.name %>" placeholder="Name" required />
+                        <h5> Password </h5>
+                        <input class="neoInput" type="type" name="password" value="<%= user.password %>" placeholder="Password" required />
+                        <h5> Security Question </h5>
+                        <input class="neoInput" type="text" name="security" value="<%= user.security %>" placeholder="Security Question" required />
+                        <h5> Answer </h5>
+                        <input class="neoInput" type="text" name="answer" value="<%= user.answer %>" placeholder="Answer" required />
+                        <br><br>
+                        <div class="button-wrapper">
+                            <button class="custom-btn blue-to-purple" type="submit">Submit</button>
+                            <button class="custom-btn-right blue-to-purple" onclick="window.location.href='/logout'">Logout</button>
+                          </div>
+                    </form>
+               
                 </div>
             </div>
         </div>
-        <div style="height: 1000px;">
+        <div style="height: 100px;">
             <!-- Your existing content goes here -->
         </div>
     </body>

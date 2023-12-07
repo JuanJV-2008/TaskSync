@@ -81,7 +81,6 @@ app.post("/recover-password", async (req, res) => {
   }
 });
 
-// Uncomment this route
 app.get("/forgot-password", (req, res) => {
   res.render("forgot-password");
 });
