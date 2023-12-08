@@ -62,14 +62,15 @@ app.get("/recover-password", (req, res) => {
   res.render("forgot-password");
 });
 
+// server.js
 app.post("/recover-password", async (req, res) => {
   try {
     const { name } = req.body;
     const user = await LogInCollection.findOne({ name });
 
     if (!user) {
-      return res.render("forgot-password", { errorMessage: "Username not found" });
-    }
+      return res.render("forgot-password", { errorMessage: "Sorry, the provided username does not exist. Please check your username and try again." });
+    } 
 
     // Set user in session for password recovery
     req.session.user = user.name;
@@ -80,6 +81,8 @@ app.post("/recover-password", async (req, res) => {
     res.status(500).send("Internal Server Error");
   }
 });
+
+
 
 app.get("/forgot-password", (req, res) => {
   res.render("forgot-password");
@@ -259,12 +262,15 @@ app.post("/login", async (req, res) => {
         naming: check.name, // Use the name from the database
       });
     } else {
+      // Display an error message for incorrect username or password
       res.render("login", { errorMessage: "Incorrect username or password" });
     }
   } catch (error) {
+    // Display a generic error message for internal server error
     res.status(500).send("Internal Server Error");
   }
 });
+
 
 // Add a new route for logout
 app.get("/logout", (req, res) => {

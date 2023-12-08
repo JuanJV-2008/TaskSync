@@ -1,8 +1,8 @@
+<!-- answer-security-question.ejs -->
 <!DOCTYPE html>
 <html lang="en">
     <%- include('layouts/header'); -%>
     <body>
-    <%- include('layouts/header'); -%>
     <%- include('layouts/navbar-opaque'); -%>
     
     <div class="container">
@@ -10,8 +10,15 @@
         <h1>Answer Security Question</h1>
         <!-- Corrected line to display the security question -->
         <p>Security Question: <%= user.security %></p>
+
+        
+
         <form action="/complete-password-recovery" method="post">
           <input class="neoInput" type="text" name="answer" placeholder="Enter your answer" required />
+          <br><br>
+          <% if (typeof errorMessage !== 'undefined' && errorMessage) { %>
+            <p style="color: red;"><%= errorMessage %></p>
+          <% } %>
           <button class="submitBtn blue-to-purple" type="submit">Submit Answer</button>
         </form>
       </div>
