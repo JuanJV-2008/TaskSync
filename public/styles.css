@@ -706,6 +706,7 @@ body {
 /* Style the buttons that are used to open and close the accordion panel */
 .accordion {
   background: linear-gradient(145deg, #dbe6f6, #a7bddb);
+  box-shadow: 0px 4px 8px rgba(179, 200, 217, 1), 0px 0px 4px rgba(179, 200, 217, 1);
   color: #444;
   cursor: pointer;
   margin: auto;
@@ -729,12 +730,13 @@ body {
 .panel {
   width: 80%;
   padding: 0 18px;
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0); /* Transparent white background */
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.2s ease-out;
   border: 4px solid transparent; /* Hide the border initially */
   visibility: hidden; /* Hide the content initially */
+  margin-bottom: 0; /* Set the initial margin-bottom value */
 }
 
 .accordion.active + .panel {
@@ -742,6 +744,9 @@ body {
   visibility: visible; /* Show the content when active */
   box-shadow: 0px 8px 16px #b3c8d9, 0px 0px 8px #f3ffff, 0px -8px 16px #f3ffff;
   color: #444;
+  margin-top: 5px; /* Add margin when the panel is active */
+  margin-bottom: 10px; /* Add margin when the panel is active */
+
 }
 
 
@@ -796,6 +801,9 @@ body {
   align-items: center; /* Center vertically within the flex container */
 }
 
+.task:last-child {
+  margin-bottom: 0; /* Remove margin from the last task to avoid extra space */
+}
 .task h3 {
   text-align: left;
   font-size: 24px;
@@ -862,6 +870,7 @@ body {
 
 .dates {
   text-align: right;
-  margin-left: -600px; /* Adjust margin between dates and task-actions */
+  margin-left: -450px; /* Adjust margin between dates and task-actions */
 }
+
 
