@@ -6,70 +6,73 @@
 }
 
 @font-face {
-    font-family: 'LEMONMILK';
-    src: url('/fonts/LEMONMILK-Light.otf') format('opentype');
-    font-weight: normal;
-    font-style: normal;
+  font-family: 'LEMONMILK';
+  src: url('/fonts/LEMONMILK-Light.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
 }
 
 @font-face {
-    font-family: 'Roboto';
-    src: url('/fonts/Roboto-Regular.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
+  font-family: 'Roboto';
+  src: url('/fonts/Roboto-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
 }
 
 body {
-        background: linear-gradient(54deg,rgba(208, 190, 253, 0.4) 30%, rgba(183, 248, 242, 0.3));
-        color: #3c3f64;
-        overflow-x: hidden;
+  background: linear-gradient(54deg, rgba(208, 190, 253, 0.4) 30%, rgba(183, 248, 242, 0.3));
+  color: #3c3f64;
+  overflow-x: hidden;
 }
 
 
 /* Container styles */
 .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
 }
 
 .body-text-container {
-    width: 60%;
+  width: 60%;
 }
 
 .body-text {
-    font-size: 18px;
-    padding-top: 30px;
-    text-align: left;
-    color: #000000;
-    margin-bottom: 10px;
-    margin-top: -20px;
+  font-size: 18px;
+  padding-top: 30px;
+  text-align: left;
+  color: #000000;
+  margin-bottom: 10px;
+  margin-top: -20px;
 }
 
 .body-text-right {
-    font-size: 18px;
-    padding-top: 30px;
-    text-align: right;
-    color: #000000;
-    margin-bottom: 10px;
-    margin-top: -20px;
+  font-size: 18px;
+  padding-top: 30px;
+  text-align: right;
+  color: #000000;
+  margin-bottom: 10px;
+  margin-top: -20px;
 }
 
 /* Heading styles */
-h1, h2, h3 {
-    font-family: 'Poppins', sans-serif;
-    color: #333;
-    margin-bottom: 10px;
+h1,
+h2,
+h3 {
+  font-family: 'Poppins', sans-serif;
+  color: #333;
+  margin-bottom: 10px;
 }
 
-h4, h5 {
+h4,
+h5 {
   font-family: 'Poppins', sans-serif;
   color: #333;
   padding-top: 20px;
   margin-bottom: 10px;
 }
 
-.topHeader5{
+.topHeader5 {
   font-family: 'Poppins', sans-serif;
   color: #333;
   padding-top: 5px;
@@ -77,75 +80,83 @@ h4, h5 {
 }
 
 .body-headers {
-    font-size: 50px;
-    padding-top: 30px;
-    text-align: left;
-    font-family: 'Poppins', sans-serif;
-    color: #333;
-    margin-bottom: 5px;
+  font-size: 50px;
+  padding-top: 30px;
+  text-align: left;
+  font-family: 'Poppins', sans-serif;
+  color: #333;
+  margin-bottom: 5px;
 }
 
-.body-headers-center{
-    font-size: 50px;
-    padding-top: 30px;
-    text-align: center;
-    font-family: 'Poppins', sans-serif;
-    color: #333;
-    margin-bottom: 5px;
-    
+.body-headers-center {
+  font-size: 50px;
+  padding-top: 30px;
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+  color: #333;
+  margin-bottom: 5px;
+
 }
 
 .body-headers-right {
-    font-size: 50px;
-    padding-top: 30px;
-    text-align: right;
-    font-family: 'Poppins', sans-serif;
-    color: #333;
-    margin-bottom: 5px;
+  font-size: 50px;
+  padding-top: 30px;
+  text-align: right;
+  font-family: 'Poppins', sans-serif;
+  color: #333;
+  margin-bottom: 5px;
 }
 
 
 .heading {
-    font-size: 80px;
-    font-weight: 700;
-    color: #333;
-    margin-bottom: 5px;
+  font-size: 80px;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 5px;
 }
 
-h1 { font-size: 32px; }
-h2 { font-size: 24px; }
-h3 { font-size: 18px; }
+h1 {
+  font-size: 32px;
+}
+
+h2 {
+  font-size: 24px;
+}
+
+h3 {
+  font-size: 18px;
+}
 
 /* Paragraph styles */
 p {
-    line-height: 1.5;
-    margin-bottom: 15px;
+  line-height: 1.5;
+  margin-bottom: 15px;
 }
 
 /* Link styles */
 a {
-    color: #3399FF;
-    text-decoration: none;
-    transition: color 0.3s ease;
+  color: #3399FF;
+  text-decoration: none;
+  transition: color 0.3s ease;
 }
 
 a:hover {
-    color: #1E62B9;
+  color: #1E62B9;
 }
 
 /* Button styles */
 button {
-    background-color: #8A4D76;
-    color: #FFFFFF;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+  background-color: #8A4D76;
+  color: #FFFFFF;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 button:hover {
-    background-color: #5C255C;
+  background-color: #5C255C;
 }
 
 /* Common styles for the neumorphic navbar */
@@ -237,33 +248,33 @@ button:hover {
 
 
 .round-button {
-    display: inline-block;
-    width: 150px;
-    margin-top: 10px;
-    padding: 10px 20px;
-    border-radius: 30px;
-    background-color: rgb(208, 226, 237);
-    color: #333; 
-    text-align: center;
-    text-decoration: none;
-    font-size: 20px;
-    cursor: pointer;
+  display: inline-block;
+  width: 150px;
+  margin-top: 10px;
+  padding: 10px 20px;
+  border-radius: 30px;
+  background-color: rgb(208, 226, 237);
+  color: #333;
+  text-align: center;
+  text-decoration: none;
+  font-size: 20px;
+  cursor: pointer;
 }
 
 .round-button:hover {
-    background-color: #c0eaf8;
+  background-color: #c0eaf8;
 }
 
 
 .image-align-right {
-    border-radius: 30px;
-    padding-left: 20px;
-    margin: 50px;
+  border-radius: 30px;
+  padding-left: 20px;
+  margin: 50px;
 }
 
 .div-right-align {
-    margin-left: auto; 
-    margin-right: 0;
+  margin-left: auto;
+  margin-right: 0;
 }
 
 /* Add these styles to your existing CSS or within a <style> tag */
@@ -271,7 +282,8 @@ button:hover {
 #neoBgn {
   background-color: #c3e0ea;
   border-radius: 15px;
-  width: 500px; /* Adjust the width as needed */
+  width: 500px;
+  /* Adjust the width as needed */
   margin: auto;
   box-shadow: 0px 0px 10px 0px #30b8e5;
 }
@@ -280,52 +292,65 @@ button:hover {
   margin-top: 16px;
   outline: none;
   width: 100%;
-  height: 60px; /* Increased height */
-  padding-left: 16px; /* Increased padding */
-  padding-right: 16px; /* Increased padding */
+  height: 60px;
+  /* Increased height */
+  padding-left: 16px;
+  /* Increased padding */
+  padding-right: 16px;
+  /* Increased padding */
   box-sizing: border-box;
   border: 1px solid #f9f9f9;
-  border-radius: 8px; /* Increased border-radius */
+  border-radius: 8px;
+  /* Increased border-radius */
   background: #f7f7f7;
   box-shadow: 6px 6px 10px #b2b2b2, -6px -6px 10px rgba(168, 221, 252, 0.6);
 }
 
 .neoInput:focus {
   border: 1px solid #efdcdc;
-  box-shadow: inset 6px 6px 10px #d7d7d7, inset -6px -6px 10px #f1f1f1; /* Increased inset box-shadow */
+  box-shadow: inset 6px 6px 10px #d7d7d7, inset -6px -6px 10px #f1f1f1;
+  /* Increased inset box-shadow */
 }
 
 #formContainer {
-  max-width: 500px; /* Adjust the max-width as needed */
+  max-width: 500px;
+  /* Adjust the max-width as needed */
   margin: 20px auto;
 }
 
 .submitBtn {
-  margin-top: 12px; /* Adjusted margin-top */
+  margin-top: 12px;
+  /* Adjusted margin-top */
   border: none;
   width: 100%;
-  border-radius: 8px; /* Increased border-radius */
-  padding: 14px; /* Increased padding */
-  font-size: 18px; /* Increased font-size */
+  border-radius: 8px;
+  /* Increased border-radius */
+  padding: 14px;
+  /* Increased padding */
+  font-size: 18px;
+  /* Increased font-size */
   color: #fff;
   box-shadow: 6px 6px 10px #b2b2b2, -6px -6px 10px rgba(168, 221, 252, 0.6);
 }
 
 #redirectLink {
-  margin-top: 16px; /* Adjusted margin-top */
+  margin-top: 16px;
+  /* Adjusted margin-top */
 }
 
 /* Additional class for the blue-to-purple gradient transition */
 .blue-to-purple {
   background: linear-gradient(145deg, #dbe6f6, #a7bddb);
 }
+
 .custom-container {
   display: flex;
   justify-content: space-between;
 }
 
 .button-wrapper {
-  width: 100%; /* Adjust as needed */
+  width: 100%;
+  /* Adjust as needed */
   display: flex;
   justify-content: space-between;
 }
@@ -337,7 +362,7 @@ button:hover {
   border-radius: 8px;
   padding: 14px;
   font-size: 18px;
-  color: #a3a3a3; 
+  color: #a3a3a3;
   box-shadow: 6px 6px 10px #b2b2b2, -6px -6px 10px rgba(168, 221, 252, 0.6);
 }
 
@@ -348,30 +373,152 @@ button:hover {
   border-radius: 8px;
   padding: 14px;
   font-size: 18px;
-  color: #a3a3a3; 
+  color: #a3a3a3;
   box-shadow: 6px 6px 10px #b2b2b2, -6px -6px 10px rgba(168, 221, 252, 0.6);
 }
 
 .borderRight {
   border-right: 1px solid #000;
-  padding-right: 20px; /* Adjust the value according to your preference */
+  padding-right: 20px;
+  /* Adjust the value according to your preference */
 }
 
 .navbar-img {
-  height: 50px; /* Adjust the value according to your preference */
+  height: 50px;
+  /* Adjust the value according to your preference */
   width: 50px;
-  object-fit: cover; /* Ensures the image maintains its aspect ratio */
-  margin-right: 5px; /* Optional: Adjust the margin to provide spacing between image and text */    vertical-align: middle; /* Adjust the vertical alignment */
+  object-fit: cover;
+  /* Ensures the image maintains its aspect ratio */
+  margin-right: 5px;
+  vertical-align: middle;
+  /* Adjust the vertical alignment */
   display: flex;
   align-items: center;
 }
 
+.neoContainer {
+  background-color: #c3e0ea;
+  border-radius: 15px;
+  width: 500px;
+  margin: auto;
+  box-shadow: 0px 0px 10px 0px #30b8e5;
+}
+
+.neoInput {
+  margin-top: 16px;
+}
+
+.accordion-header {
+  outline: none;
+  width: 80%;
+  height: 60px;
+  padding-left: 16px;
+  padding-right: 16px;
+  box-sizing: border-box;
+  border: 1px solid #f9f9f9;
+  border-radius: 8px;
+  background: #f7f7f7;
+  box-shadow: 6px 6px 10px #b2b2b2, -6px -6px 10px rgba(168, 221, 252, 0.6);
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.accordion-content {
+  width: 80%;
+  display: none;
+  padding: 16px;
+}
+
+.neoInput:focus .accordion-header {
+  border: 1px solid #efdcdc;
+  box-shadow: inset 6px 6px 10px #d7d7d7, inset -6px -6px 10px #f1f1f1;
+}
+
+.neoInput:focus .accordion-content {
+  display: block;
+}
+
+/* Style the buttons that are used to open and close the accordion panel */
+.accordion {
+  background: linear-gradient(145deg, #dbe6f6, #a7bddb);
+  box-shadow: 0px 8px 16px #b3c8d9, 0px 0px 8px #f3ffff, 0px -8px 16px #f3ffff;
+  color: #444;
+  cursor: pointer;
+  margin: auto;
+  border-radius: 12px;
+  padding: 18px;
+  width: 80%;
+  text-align: left;
+  border: none;
+  outline: none;
+  transition: 0.4s;
+  position: relative;
+}
+
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+.active,
+.accordion:hover {
+  background-color: #ccc;
+}
+
+/* Style the accordion panel. Note: hidden by default */
+.panel {
+  border-radius: 12px;
+  width: 80%;
+  padding: 0 18px;
+  background-color: white;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+}
+
+.accordion:after,
+.active:after {
+  content: '\02795';
+  font-size: 50px;
+  color: #777;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 10px; /* Adjust the right padding as needed */
+}
+
+.active:after {
+  content: "\2796";
+  /* Unicode character for "minus" sign (-) */
+}
+
+
+.accordion-headers {
+  font-size: 40px;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  text-align: left;
+  font-family: 'Poppins', sans-serif;
+  color: #333;
+  margin-bottom: 5px;
+  position: relative;
+}
+
+.accordion-headers:before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 100%; /* Adjust as needed */
+  width: 0;
+}
+
+
 /* Timeline Css */
 body {
-    font: normal 16px/1.5 ;
-    font-family: Poppins;
-  }
-  *,
+  font: normal 16px/1.5;
+  font-family: Poppins;
+}
+
+*,
 *::before,
 *::after {
   margin: 0;
@@ -382,9 +529,11 @@ body {
 .timeline ul li {
   list-style-type: none;
   position: relative;
-  width: 9.6px; /* 20% smaller */
+  width: 9.6px;
+  /* 20% smaller */
   margin: 0 auto;
-  padding-top: 80px; /* 20% smaller */
+  padding-top: 80px;
+  /* 20% smaller */
   background: rgb(7, 35, 77);
 }
 
@@ -394,8 +543,10 @@ body {
   left: 50%;
   bottom: 0;
   transform: translateX(-50%) rotate(45deg);
-  width: 32px; /* 20% smaller */
-  height: 32px; /* 20% smaller */
+  width: 32px;
+  /* 20% smaller */
+  height: 32px;
+  /* 20% smaller */
   z-index: 2;
   background: rgb(118, 134, 182);
 }
@@ -403,31 +554,41 @@ body {
 .timeline ul li div {
   position: relative;
   bottom: 0;
-  width: 640px; /* 20% smaller */
-  padding: 32px; /* 20% smaller */
+  width: 640px;
+  /* 20% smaller */
+  padding: 32px;
+  /* 20% smaller */
   background: #fff;
-  box-shadow: 6.4px 20.8px 48px 1.6px rgba(91, 113, 179, 0.4); /* 20% smaller */
+  box-shadow: 6.4px 20.8px 48px 1.6px rgba(91, 113, 179, 0.4);
+  /* 20% smaller */
 
-  border-radius: 8px; /* 20% smaller */
+  border-radius: 8px;
+  /* 20% smaller */
   display: flex;
   align-items: center;
 }
 
 .timeline ul li div time {
   position: absolute;
-  background: rgba(190, 228, 253,1);
-  width: 128px; /* 20% smaller */
-  height: 48px; /* 20% smaller */
-  top: -24px; /* 20% smaller */
-  border-radius: 8px; /* 20% smaller */
+  background: rgba(190, 228, 253, 1);
+  width: 128px;
+  /* 20% smaller */
+  height: 48px;
+  /* 20% smaller */
+  top: -24px;
+  /* 20% smaller */
+  border-radius: 8px;
+  /* 20% smaller */
   display: flex;
   justify-content: center;
   align-items: center;
-  letter-spacing: 3.2px; /* 20% smaller */
+  letter-spacing: 3.2px;
+  /* 20% smaller */
 }
 
 .timeline ul li div div {
-  height: 160px; /* 20% smaller */
+  height: 160px;
+  /* 20% smaller */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -439,15 +600,18 @@ body {
 }
 
 .timeline ul li div .discovery {
-  margin-right: 16px; /* 20% smaller */
+  margin-right: 16px;
+  /* 20% smaller */
 }
 
-.timeline ul li:nth-of-type(odd) > div {
-  left: 72px; /* 20% smaller */
+.timeline ul li:nth-of-type(odd)>div {
+  left: 72px;
+  /* 20% smaller */
 }
 
-.timeline ul li:nth-of-type(even) > div {
-  left: -702.4px; /* 20% smaller */
+.timeline ul li:nth-of-type(even)>div {
+  left: -702.4px;
+  /* 20% smaller */
 }
 
 .timeline ul li div {
@@ -457,11 +621,13 @@ body {
 }
 
 .timeline ul li:nth-of-type(odd) div {
-  transform: translate3d(160px, -16px, 0) rotate(16deg); /* 20% smaller */
+  transform: translate3d(160px, -16px, 0) rotate(16deg);
+  /* 20% smaller */
 }
 
 .timeline ul li:nth-of-type(even) div {
-  transform: translate3d(-160px, -16px, 0) rotate(16deg); /* 20% smaller */
+  transform: translate3d(-160px, -16px, 0) rotate(16deg);
+  /* 20% smaller */
 }
 
 .timeline ul li.in-view div {
@@ -472,17 +638,21 @@ body {
 
 @media screen and (max-width: 900px) {
   .timeline ul li div {
-    width: 400px; /* 20% smaller */
+    width: 400px;
+    /* 20% smaller */
     flex-direction: column;
   }
 
   .timeline ul li div div {
-    width: 128px; /* 20% smaller */
-    margin: 16px; /* 20% smaller */
+    width: 128px;
+    /* 20% smaller */
+    margin: 16px;
+    /* 20% smaller */
   }
 
-  .timeline ul li:nth-of-type(even) > div {
-    left: -462.4px; /* 20% smaller */
+  .timeline ul li:nth-of-type(even)>div {
+    left: -462.4px;
+    /* 20% smaller */
   }
 }
 
@@ -492,15 +662,18 @@ body {
   }
 
   .timeline ul li {
-    margin-left: 32px; /* 20% smaller */
+    margin-left: 32px;
+    /* 20% smaller */
   }
 
   .timeline ul li div {
-    width: calc(160vw - 91px); /* 20% smaller */
+    width: calc(160vw - 91px);
+    /* 20% smaller */
   }
 
-  .timeline ul li:nth-of-type(even) > div {
-    left: 72px; /* 20% smaller */
+  .timeline ul li:nth-of-type(even)>div {
+    left: 72px;
+    /* 20% smaller */
   }
 }
 
@@ -508,7 +681,8 @@ body {
 .profile-container {
   position: relative;
   display: inline-block;
-  cursor: pointer; /* Add cursor pointer to indicate it's clickable */
+  cursor: pointer;
+  /* Add cursor pointer to indicate it's clickable */
 }
 
 /* Dropdown menu */
@@ -519,10 +693,12 @@ body {
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
   min-width: 160px;
   z-index: 1;
-  right: 0; /* Change to 'left: 0;' to make it go to the left */
+  right: 0;
+  /* Change to 'left: 0;' to make it go to the left */
   border-radius: 8px;
   margin-top: 8px;
-  top: 85%; /* Adjust top position to immediately below the profile picture */
+  top: 85%;
+  /* Adjust top position to immediately below the profile picture */
 }
 
 /* Style for each dropdown item */
@@ -551,9 +727,11 @@ body {
   left: 50%;
   transform: translate(-50%, -50%);
   padding: 20px;
-  background-color: #c3e0ea; /* Adjust background color as needed */
+  background-color: #c3e0ea;
+  /* Adjust background color as needed */
   border-radius: 15px;
-  width: 400px; /* Adjust the width as needed */
+  width: 400px;
+  /* Adjust the width as needed */
   box-shadow: 0px 0px 10px 0px #30b8e5;
 }
 
@@ -581,7 +759,8 @@ body {
   border: none;
   width: 100%;
   border-radius: 4px;
-  background: linear-gradient(180deg, #3f4cd8, #9535ff); /* Blue to Purple gradient */
+  background: linear-gradient(180deg, #3f4cd8, #9535ff);
+  /* Blue to Purple gradient */
   padding: 12px;
   color: #fff;
   box-shadow: 4px 4px 6px #b2b2b2, -4px -4px 6px #ffffff;
