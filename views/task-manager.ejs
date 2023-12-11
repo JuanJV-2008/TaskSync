@@ -6,7 +6,7 @@
     <body>
         <%- include('layouts/login-navbar-opaque'); -%>
             <center>
-                <button class="custom-btn blue-to-purple">Create New Task</button>
+                <button class="createNewTask blue-to-purple">Create New Task</button>
                 <br><br>
 
                 <button class="accordion accordion-headers" data-status="new">New Tasks</button>
@@ -59,12 +59,12 @@
                 <button class="accordion accordion-headers" data-status="rejected">Rejected</button>
                 <div class="panel" id="rejected-panel">
                 </div>
-                
+
                 <button class="accordion accordion-headers" data-status="completed">Completed</button>
                 <div class="panel" id="completed-panel">
                 </div>
             </center>
-            <div style="height: 200px;"> </div>
+            <div style="height: 100px;"> </div>
 
             <%- include('layouts/footer'); -%>
                 <script>
