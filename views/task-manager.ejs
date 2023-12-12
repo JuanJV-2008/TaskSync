@@ -1,89 +1,156 @@
 <!DOCTYPE html>
-<html>
 <html lang="en">
-<%- include('layouts/header'); -%>
+  <%- include('layouts/header'); -%>
+  <style>
+    /* Add your CSS styling for the modal here */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+    }
 
-    <body>
-        <%- include('layouts/login-navbar-opaque'); -%>
-            <center>
-                <button class="createNewTask blue-to-purple">Create New Task</button>
-                <br><br>
+    .modal-content {
+      background-color: #fefefe;
+      margin: 10% auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 80%;
+    }
 
-                <button class="accordion accordion-headers" data-status="new">New Tasks</button>
-                <div class="panel" id="new-panel">
+    .close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+    }
 
-                    <div class="task">
-                        <div class="task-header">
-                            <h3>Title 1</h3>
-                            <p class="description">Description 1...</p>
-                        </div>
-                        <div class="task-actions">
-                            <span class="delete">
-                                <img src="images/delete.png" alt="Delete Icon" width="75" height="70"> Delete
-                            </span>
-                            <span class="edit">
-                                <img src="images/edit.png" alt="Edit Icon" width="70" height="70"> Edit
-                            </span>
-                        </div>
-                        <div class="dates">
-                            <p>Start Date: MM/DD/YYYY</p>
-                            <p>Due Date: MM/DD/YYYY</p>
-                        </div>
-                    </div>
+    .close:hover,
+    .close:focus {
+      color: black;
+      text-decoration: none;
+      cursor: pointer;
+    }
+  </style>
+  <body>
+    <%- include('layouts/login-navbar-opaque'); -%>
+    <center>
+      <button class="createNewTask blue-to-purple" onclick="openModal()">Create New Task</button>
+      <br /><br />
 
-                    <div class="task">
-                        <div class="task-header">
-                            <h3>Title 1</h3>
-                            <p class="description">Description 1...</p>
-                        </div>
-                        <div class="task-actions">
-                            <span class="delete">
-                                <img src="images/delete.png" alt="Delete Icon" width="75" height="70"> Delete
-                            </span>
-                            <span class="edit">
-                                <img src="images/edit.png" alt="Edit Icon" width="70" height="70"> Edit
-                            </span>
-                        </div>
-                        <div class="dates">
-                            <p>Start Date: MM/DD/YYYY</p>
-                            <p>Due Date: MM/DD/YYYY</p>
-                        </div>
-                    </div>
+      <button class="accordion accordion-headers" data-status="new">New Tasks</button>
+      <div class="panel" id="new-panel">
+        <!-- Tasks will be dynamically added here -->
+      </div>
 
-                </div>
+      <button class="accordion accordion-headers" data-status="in-progress">In Progress </button>
+      <div class="panel" id="in-progress-panel">
+        <!-- Tasks will be dynamically added here -->
+      </div>
 
-                <button class="accordion accordion-headers" data-status="in-progress">In Progress </button>
-                <div class="panel" id="in-progress-panel">
-                </div>
+      <button class="accordion accordion-headers" data-status="rejected">Rejected</button>
+      <div class="panel" id="rejected-panel">
+        <!-- Tasks will be dynamically added here -->
+      </div>
 
-                <button class="accordion accordion-headers" data-status="rejected">Rejected</button>
-                <div class="panel" id="rejected-panel">
-                </div>
+      <button class="accordion accordion-headers" data-status="completed">Completed</button>
+      <div class="panel" id="completed-panel">
+        <!-- Tasks will be dynamically added here -->
+      </div>
 
-                <button class="accordion accordion-headers" data-status="completed">Completed</button>
-                <div class="panel" id="completed-panel">
-                </div>
-            </center>
-            <div style="height: 100px;"> </div>
+      <!-- Modal for task creation -->
+      <div id="myModal" class="modal">
+        <div class="modal-content">
+          <span class="close" onclick="closeModal()">&times;</span>
+          <h2>Create New Task</h2>
+          <label for="taskTitle">Title:</label>
+          <input type="text" id="taskTitle" />
+          <label for="taskDescription">Description:</label>
+          <textarea id="taskDescription"></textarea>
+          <label for="taskStartDate">Start Date:</label>
+          <input type="text" id="taskStartDate" placeholder="MM/DD/YYYY" />
+          <label for="taskDueDate">Due Date:</label>
+          <input type="text" id="taskDueDate" placeholder="MM/DD/YYYY" />
+          <label for="taskStatus">Status:</label>
+          <select id="taskStatus">
+            <option value="new">New</option>
+            <option value="in-progress">In Progress</option>
+            <option value="rejected">Rejected</option>
+            <option value="completed">Completed</option>
+          </select>
+          <button onclick="addTask()">Add Task</button>
+        </div>
+      </div>
+    </center>
+    <div style="height: 100px;"> </div>
+    <%- include('layouts/footer'); -%>
+    <script>
+      var acc = document.getElementsByClassName("accordion");
+      var i;
 
-            <%- include('layouts/footer'); -%>
-                <script>
-                    var acc = document.getElementsByClassName("accordion");
-                    var i;
+      for (i = 0; i < acc.length; i++) {
+        acc[i].addEventListener("click", function () {
+          this.classList.toggle("active");
+          var panel = this.nextElementSibling;
+          if (panel.style.maxHeight) {
+            panel.style.maxHeight = null;
+          } else {
+            panel.style.maxHeight = panel.scrollHeight + "px";
+          }
+        });
+      }
 
-                    for (i = 0; i < acc.length; i++) {
-                        acc[i].addEventListener("click", function () {
-                            this.classList.toggle("active");
-                            var panel = this.nextElementSibling;
-                            if (panel.style.maxHeight) {
-                                panel.style.maxHeight = null;
-                            } else {
-                                panel.style.maxHeight = panel.scrollHeight + "px";
-                            }
-                        });
-                    }
-                </script>
+      var taskCounter = 1;
 
-    </body>
+      function openModal() {
+        document.getElementById("myModal").style.display = "block";
+      }
 
+      function closeModal() {
+        document.getElementById("myModal").style.display = "none";
+      }
+
+      function addTask() {
+        var title = document.getElementById("taskTitle").value;
+        var description = document.getElementById("taskDescription").value;
+        var startDate = document.getElementById("taskStartDate").value;
+        var dueDate = document.getElementById("taskDueDate").value;
+        var status = document.getElementById("taskStatus").value;
+
+        var panel = document.getElementById(status + "-panel");
+
+        var taskDiv = document.createElement("div");
+        taskDiv.className = "task";
+        taskDiv.id = "task" + taskCounter;
+
+        var taskContent = `
+          <div class="task-header">
+            <h3>${title}</h3>
+            <p class="description">${description}</p>
+          </div>
+          <div class="task-actions">
+            <span class="delete">
+              <img src="images/delete.png" alt="Delete Icon" width="75" height="70"> Delete
+            </span>
+            <span class="edit">
+              <img src="images/edit.png" alt="Edit Icon" width="70" height="70"> Edit
+            </span>
+          </div>
+          <div class="dates">
+            <p>Start Date: ${startDate}</p>
+            <p>Due Date: ${dueDate}</p>
+          </div>
+        `;
+
+        taskDiv.innerHTML = taskContent;
+        panel.appendChild(taskDiv);
+
+        taskCounter++;
+        closeModal();
+      }
+    </script>
+  </body>
 </html>
