@@ -4,8 +4,9 @@ const bodyParser = require("body-parser");
 const session = require('express-session');
 const path = require("path");
 const mongoose = require("mongoose");
-const LogInCollection = require("./db/mongo"); // Import your LogInCollection model
+const { LogInCollection, TaskCollection } = require("./db/mongo"); // Import your LogInCollection and TaskCollection models
 const port = process.env.PORT || 3000;
+
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.urlencoded({ extended: false }));
@@ -25,6 +26,54 @@ app.use(session({
 mongoose.connect("mongodb://localhost:27017/TaskSync", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
+});
+
+app.post("/create-task", async (req, res) => {
+  try {
+    // Check if userId is present in the session
+    if (!req.session.user) {
+      return res.status(401).json({ success: false, error: "User not authenticated" });
+    }
+
+    const { title, description, startDate, dueDate, status } = req.body;
+
+    // Create a new task using the TaskCollection model
+    const newTask = await TaskCollection.create({
+      title,
+      description,
+      startDate,
+      dueDate,
+      status,
+      userId: req.session.user,
+    });
+
+    // Log the created task for debugging
+    console.log("Task created:", newTask);
+
+    // Respond with a JSON indicating success and the created task
+    res.json({ success: true, task: newTask });
+  } catch (error) {
+    // Log the error for debugging
+    console.error("Error creating task:", error);
+    // Respond with a JSON indicating failure and the error message
+    res.status(500).json({ success: false, error: "Internal Server Error", details: error.message });
+  }
+});
+
+
+// Route to handle retrieving tasks for a specific status
+app.get("/tasks/:status", async (req, res) => {
+  try {
+    const status = req.params.status;
+
+    // Retrieve tasks based on the status and user ID
+    const tasks = await TaskCollection.find({ status, userId: req.session.user });
+
+    res.render("tasks", { tasks, status });
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Internal Server Error");
+  }
 });
 
 // Add this route handler at the end of your server.js file

@@ -28,6 +28,34 @@ const logInSchema = new mongoose.Schema({
   },
 });
 
-const LogInCollection = mongoose.model("LogInCollection", logInSchema);
+const taskSchema = new mongoose.Schema({
+  title: {
+    type: String,
+    required: true,
+  },
+  description: {
+    type: String,
+    required: true,
+  },
+  startDate: {
+    type: Date,
+    required: true,
+  },
+  dueDate: {
+    type: Date,
+    required: true,
+  },
+  status: {
+    type: String,
+    required: true,
+  },
+  userId: {
+    type: String,
+    required: true,
+  },
+});
 
-module.exports = LogInCollection;
+const LogInCollection = mongoose.model("LogInCollection", logInSchema);
+const TaskCollection = mongoose.model("TaskCollection", taskSchema);
+
+module.exports = { LogInCollection, TaskCollection };
