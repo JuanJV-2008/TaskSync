@@ -808,40 +808,36 @@ body {
 .task {
   border-bottom: 2px solid #a7bddb;
   padding: 20px;
+  position: relative;
   /* Increased padding for spacing */
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  /* Center vertically within the flex container */
+  justify-content: space-between;
+  /* Ensure flex container space-between alignment */
 }
 
-.task:last-child {
-  margin-bottom: 0;
-  /* Remove margin from the last task to avoid extra space */
+.task-content {
+  flex: 1; /* Take remaining space */
 }
 
 .task h3 {
   text-align: left;
   font-size: 24px;
-  margin-bottom: 10px;
+  margin-bottom: 0; /* Remove margin bottom for h3 */
 }
 
 .description {
   text-align: left;
   font-size: 18px;
-  margin-bottom: 15px;
-}
-
-.task p {
-  text-align: left;
-  margin: 0;
-  /* Reset default margin for paragraphs */
+  margin-bottom: 10px; /* Add margin bottom for description */
+  max-width: 650px; /* Set the maximum width to your desired value */
 }
 
 .task-actions {
+  position: absolute;
+  right: 0;
   display: flex;
-  gap: 10px;
-  /* Adjust the gap as needed */
+  gap: 10px; /* Adjust the gap as needed */
 }
 
 .delete,
@@ -850,13 +846,13 @@ body {
   cursor: pointer;
   color: #777;
   font-size: 16px;
+  margin: 0; /* Reset margin for spans */
 }
 
 .dates {
   text-align: right;
+  margin-right: 10px; /* Add margin to the right */
 }
-
-/* Add more styling for dates as needed */
 
 .task-divider {
   height: 1px;
@@ -876,6 +872,10 @@ body {
   /* Increased gap for separation between delete and edit groups */
 }
 
+.delete{
+  margin: 0!important;
+}
+
 .delete,
 .edit {
   text-align: left;
@@ -883,6 +883,7 @@ body {
   color: #777;
   font-size: 16px;
   margin: 0;
+  margin-right: 200px;
   /* Reset margin for spans */
 }
 
@@ -893,9 +894,8 @@ body {
 
 .dates {
   text-align: right;
-  margin-left: -450px;
-  /* Adjust margin between dates and task-actions */
 }
+
 
 .createNewTask {
   margin-right: 24px;
@@ -909,6 +909,7 @@ body {
 }
 
 /* Add your CSS styling for the modal here */
+/* Updated CSS styling for the modal */
 .modal {
   display: none;
   position: fixed;
@@ -920,11 +921,12 @@ body {
 }
 
 .modal-content {
-  background-color: #fefefe;
+  background-color: #c3e0ea; /* Updated background color */
+  border-radius: 15px; /* Added border-radius */
+  width: 500px; /* Set the width as needed */
   margin: 10% auto;
   padding: 20px;
-  border: 1px solid #888;
-  width: 80%;
+  box-shadow: 0px 0px 10px 0px #30b8e5;
 }
 
 .close {

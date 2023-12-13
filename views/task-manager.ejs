@@ -194,29 +194,67 @@
                         var formattedDueDate = new Date(task.dueDate).toLocaleDateString();
 
                         var taskContent = `
-    <div class="task-header">
-      <h3>${task.title}</h3>
-      <p class="description">${task.description}</p>
-    </div>
-    <div class="task-actions">
-      <span class="delete">
-        <img src="images/delete.png" alt="Delete Icon" width="65" height="60"> Delete
-      </span>
-      <span class="edit">
-        <img src="images/edit.png" alt="Edit Icon" width="60" height="60"> Edit
-      </span>
-    </div>
-    <div class="dates">
-      <p>Start Date: ${formattedStartDate}</p>
-      <p>Due Date: ${formattedDueDate}</p>
-    </div>
-  `;
+  <div class="task-header">
+    <h3>${task.title}</h3>
+    <p class="description">${task.description}</p>
+  </div>
+  <div class="task-actions">
+    <span class="delete" onclick="deleteTask('${taskDiv.id}', '${task._id}')"> <!-- Pass taskId from database -->
+      <img src="images/delete.png" alt="Delete Icon" width="65" height="60"> Delete
+    </span>
+    <span class="edit">
+      <img src="images/edit.png" alt="Edit Icon" width="60" height="60"> Edit
+    </span>
+  </div>
+  <div class="dates">
+    <p>Start Date: ${formattedStartDate}</p>
+    <p>Due Date: ${formattedDueDate}</p>
+  </div>
+`;
 
                         taskDiv.innerHTML = taskContent;
                         panel.appendChild(taskDiv);
 
                         taskCounter++;
                     }
+
+                    // Function to handle task deletion
+                    function deleteTask(taskId, taskIdFromDatabase) {
+                        // Remove the task from the UI
+                        var taskToRemove = document.getElementById(taskId);
+                        taskToRemove.remove();
+
+                        // Delete the task from the database
+                        fetch("/delete-task", {
+                            method: "POST",
+                            headers: {
+                                "Content-Type": "application/json", // Change content type to JSON
+                            },
+                            body: JSON.stringify({
+                                taskId: taskIdFromDatabase,
+                            }),
+                        })
+                            .then((response) => {
+                                if (!response.ok) {
+                                    throw new Error(`HTTP error! Status: ${response.status}`);
+                                }
+                                return response.json();
+                            })
+                            .then((data) => {
+                                if (data.success) {
+                                    console.log("Task deleted successfully:", data.message);
+                                } else {
+                                    console.error("Error deleting task:", data.error);
+                                    // Add error handling logic or display an error message
+                                }
+                            })
+                            .catch((error) => {
+                                console.error("Error deleting task:", error.message);
+                                // Add error handling logic or display an error message
+                            });
+                    }
+
+
                 </script>
     </body>
 

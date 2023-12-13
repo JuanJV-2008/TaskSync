@@ -28,6 +28,7 @@ mongoose.connect("mongodb://localhost:27017/TaskSync", {
   useUnifiedTopology: true,
 });
 
+
 // Add this route handler after your other routes
 app.get("/fetch-tasks", async (req, res) => {
   try {
