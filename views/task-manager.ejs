@@ -2,220 +2,222 @@
 <html lang="en">
 <%- include('layouts/header'); -%>
 
-<body>
-    <%- include('layouts/login-navbar-opaque'); -%>
-    <center>
-        <button class="createNewTask blue-to-purple" onclick="openModal()">Create New Task</button>
-        <br /><br />
+    <body>
+        <%- include('layouts/login-navbar-opaque'); -%>
+            <center>
+                <button class="createNewTask blue-to-purple" onclick="openModal()">Create New Task</button>
+                <br /><br />
 
-        <button class="accordion accordion-headers" data-status="new">New Tasks</button>
-        <div class="panel" id="new-panel">
-            <!-- Tasks will be dynamically added here -->
-        </div>
+                <button class="accordion accordion-headers" data-status="new">New Tasks</button>
+                <div class="panel" id="new-panel">
+                    <!-- Tasks will be dynamically added here -->
+                </div>
 
-        <button class="accordion accordion-headers" data-status="in-progress">In Progress </button>
-        <div class="panel" id="in-progress-panel">
-            <!-- Tasks will be dynamically added here -->
-        </div>
+                <button class="accordion accordion-headers" data-status="in-progress">In Progress </button>
+                <div class="panel" id="in-progress-panel">
+                    <!-- Tasks will be dynamically added here -->
+                </div>
 
-        <button class="accordion accordion-headers" data-status="rejected">Rejected</button>
-        <div class="panel" id="rejected-panel">
-            <!-- Tasks will be dynamically added here -->
-        </div>
+                <button class="accordion accordion-headers" data-status="rejected">Rejected</button>
+                <div class="panel" id="rejected-panel">
+                    <!-- Tasks will be dynamically added here -->
+                </div>
 
-        <button class="accordion accordion-headers" data-status="completed">Completed</button>
-        <div class="panel" id="completed-panel">
-            <!-- Tasks will be dynamically added here -->
-        </div>
+                <button class="accordion accordion-headers" data-status="completed">Completed</button>
+                <div class="panel" id="completed-panel">
+                    <!-- Tasks will be dynamically added here -->
+                </div>
 
-        <!-- Modal for task creation -->
-        <div id="myModal" class="modal">
-            <div class="modal-content">
-                <span class="close" onclick="closeModal()">&times;</span>
-                <h2>Create New Task</h2>
-                <label for="taskTitle">Title:</label>
-                <input type="text" id="taskTitle" />
-                <label for="taskDescription">Description:</label>
-                <textarea id="taskDescription"></textarea>
-                <label for="taskStartDate">Start Date:</label>
-                <input type="text" id="taskStartDate" placeholder="MM/DD/YYYY" />
-                <label for="taskDueDate">Due Date:</label>
-                <input type="text" id="taskDueDate" placeholder="MM/DD/YYYY" />
-                <label for="taskStatus">Status:</label>
-                <select id="taskStatus">
-                    <option value="new">New</option>
-                    <option value="in-progress">In Progress</option>
-                    <option value="rejected">Rejected</option>
-                    <option value="completed">Completed</option>
-                </select>
-                <button onclick="addTask()">Add Task</button>
-            </div>
-        </div>
-    </center>
-    <div style="height: 100px;"> </div>
-    <%- include('layouts/footer'); -%>
-    <!-- Update your HTML file with this section -->
-    <script>
-        var acc = document.getElementsByClassName("accordion");
-        var i;
+                <!-- Modal for task creation -->
+                <div id="myModal" class="modal">
+                    <div class="modal-content">
+                        <span class="close" onclick="closeModal()">&times;</span>
+                        <h2>Create New Task</h2>
+                        <label for="taskTitle">Title:</label>
+                        <input type="text" id="taskTitle" />
+                        <label for="taskDescription">Description:</label>
+                        <textarea id="taskDescription"></textarea>
+                        <label for="taskStartDate">Start Date:</label>
+                        <input type="text" id="taskStartDate" placeholder="MM/DD/YYYY" />
+                        <label for="taskDueDate">Due Date:</label>
+                        <input type="text" id="taskDueDate" placeholder="MM/DD/YYYY" />
+                        <label for="taskStatus">Status:</label>
+                        <select id="taskStatus">
+                            <option value="new">New</option>
+                            <option value="in-progress">In Progress</option>
+                            <option value="rejected">Rejected</option>
+                            <option value="completed">Completed</option>
+                        </select>
+                        <button onclick="addTask()">Add Task</button>
+                    </div>
+                </div>
+            </center>
+            <div style="height: 100px;"> </div>
+            <%- include('layouts/footer'); -%>
+                <!-- Update your HTML file with this section -->
+                <script>
+                    document.addEventListener("DOMContentLoaded", function () {
+                        // Fetch and render tasks when the page loads
+                        fetchAndRenderTasks();
+                    });
+                    var acc = document.getElementsByClassName("accordion");
+                    var i;
 
-        for (i = 0; i < acc.length; i++) {
-            acc[i].addEventListener("click", function () {
-                this.classList.toggle("active");
-                var panel = this.nextElementSibling;
-                if (panel.style.maxHeight) {
-                    panel.style.maxHeight = null;
-                } else {
-                    panel.style.maxHeight = panel.scrollHeight + "px";
-                }
-            });
-        }
-
-        var taskCounter = 1;
-
-        function openModal() {
-            document.getElementById("myModal").style.display = "block";
-        }
-
-        function closeModal() {
-            document.getElementById("myModal").style.display = "none";
-        }
-
-        function fetchAndRenderTasks() {
-            fetch("/fetch-tasks")
-                .then((response) => {
-                    if (!response.ok) {
-                        throw new Error(`HTTP error! Status: ${response.status}`);
+                    for (i = 0; i < acc.length; i++) {
+                        acc[i].addEventListener("click", function () {
+                            this.classList.toggle("active");
+                            var panel = this.nextElementSibling;
+                            if (panel.style.maxHeight) {
+                                panel.style.maxHeight = null;
+                            } else {
+                                panel.style.maxHeight = panel.scrollHeight + "px";
+                            }
+                        });
                     }
-                    return response.json();
-                })
-                .then((data) => {
-                    if (data.success) {
-                        // Render tasks on the UI
-                        renderTasks(data.tasks);
-                    } else {
-                        console.error("Error fetching tasks:", data.error);
-                        // Add error handling logic or display an error message
+
+                    var taskCounter = 1;
+
+                    function openModal() {
+                        document.getElementById("myModal").style.display = "block";
                     }
-                })
-                .catch((error) => {
-                    console.error("Error fetching tasks:", error.message);
-                    // Add error handling logic or display an error message
-                });
-        }
 
-        // Call fetchAndRenderTasks() after a successful login
-        // Example:
-        // fetchAndRenderTasks();
-
-        // Function to render tasks on the UI
-        function renderTasks(tasks) {
-            // Clear existing tasks on the UI if needed
-            // ...
-
-            // Iterate through tasks and update the UI
-            tasks.forEach((task) => {
-                updateTaskUI(task);
-            });
-        }
-
-        function addTask() {
-            var title = document.getElementById("taskTitle").value;
-            var description = document.getElementById("taskDescription").value;
-            var startDate = document.getElementById("taskStartDate").value;
-            var dueDate = document.getElementById("taskDueDate").value;
-            var status = document.getElementById("taskStatus").value;
-
-            console.log("Values retrieved from input fields:");
-            console.log("Title:", title);
-            console.log("Description:", description);
-            console.log("Start Date:", startDate);
-            console.log("Due Date:", dueDate);
-            console.log("Status:", status);
-
-            // Check if any of the required fields is empty
-            if (!title || !description || !startDate || !dueDate || !status) {
-                console.error("Error creating task: All fields are required");
-                // Add error handling logic or display an error message to the user
-                return;
-            }
-
-            console.log("Request Payload:", JSON.stringify({
-                title: title,
-                description: description,
-                startDate: startDate,
-                dueDate: dueDate,
-                status: status,
-            }));
-
-            fetch("/create-task", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/x-www-form-urlencoded", // Adjust the content type
-                },
-                body: new URLSearchParams({
-                    title: title,
-                    description: description,
-                    startDate: startDate,
-                    dueDate: dueDate,
-                    status: status,
-                }),
-            })
-                .then((response) => {
-                    if (!response.ok) {
-                        throw new Error(`HTTP error! Status: ${response.status}`);
+                    function closeModal() {
+                        document.getElementById("myModal").style.display = "none";
                     }
-                    return response.json();
-                })
-                .then((data) => {
-                    if (data.success) {
-                        console.log("Task created successfully:", data.task);
-                        closeModal(); // Close the modal after successful task creation
-                        // Optionally, you may want to update the UI to display the new task
-                        updateTaskUI(data.task);
-                    } else {
-                        console.error("Error creating task:", data.error);
-                        // Add error handling logic or display an error message
+
+                    var taskCounter = 1;
+
+                    function fetchAndRenderTasks() {
+                        fetch("/fetch-tasks")
+                            .then((response) => {
+                                if (!response.ok) {
+                                    throw new Error(`HTTP error! Status: ${response.status}`);
+                                }
+                                return response.json();
+                            })
+                            .then((data) => {
+                                if (data.success) {
+                                    // Render tasks on the UI
+                                    renderTasks(data.tasks);
+                                } else {
+                                    console.error("Error fetching tasks:", data.error);
+                                    // Add error handling logic or display an error message
+                                }
+                            })
+                            .catch((error) => {
+                                console.error("Error fetching tasks:", error.message);
+                                // Add error handling logic or display an error message
+                            });
                     }
-                })
-                .catch((error) => {
-                    console.error("Error creating task:", error.message);
-                    // Add error handling logic or display an error message
-                });
-        }
 
-        function updateTaskUI(task) {
-            var panel = document.getElementById(task.status + "-panel");
+                    function renderTasks(tasks) {
+                        tasks.forEach((task) => {
+                            updateTaskUI(task);
+                        });
+                    }
 
-            var taskDiv = document.createElement("div");
-            taskDiv.className = "task";
-            taskDiv.id = "task" + taskCounter;
 
-            var taskContent = `
-        <div class="task-header">
-          <h3>${task.title}</h3>
-          <p class="description">${task.description}</p>
-        </div>
-        <div class="task-actions">
-          <span class="delete">
-            <img src="images/delete.png" alt="Delete Icon" width="65" height="60"> Delete
-          </span>
-          <span class="edit">
-            <img src="images/edit.png" alt="Edit Icon" width="60" height="60"> Edit
-          </span>
-        </div>
-        <div class="dates">
-          <p>Start Date: ${task.startDate}</p>
-          <p>Due Date: ${task.dueDate}</p>
-        </div>
-      `;
+                    function addTask() {
+                        var title = document.getElementById("taskTitle").value;
+                        var description = document.getElementById("taskDescription").value;
+                        var startDate = document.getElementById("taskStartDate").value;
+                        var dueDate = document.getElementById("taskDueDate").value;
+                        var status = document.getElementById("taskStatus").value;
 
-            taskDiv.innerHTML = taskContent;
-            panel.appendChild(taskDiv);
+                        console.log("Values retrieved from input fields:");
+                        console.log("Title:", title);
+                        console.log("Description:", description);
+                        console.log("Start Date:", startDate);
+                        console.log("Due Date:", dueDate);
+                        console.log("Status:", status);
 
-            taskCounter++;
-        }
-    </script>
-</body>
+                        // Check if any of the required fields is empty
+                        if (!title || !description || !startDate || !dueDate || !status) {
+                            console.error("Error creating task: All fields are required");
+                            // Add error handling logic or display an error message to the user
+                            return;
+                        }
+
+                        console.log("Request Payload:", JSON.stringify({
+                            title: title,
+                            description: description,
+                            startDate: startDate,
+                            dueDate: dueDate,
+                            status: status,
+                        }));
+
+                        fetch("/create-task", {
+                            method: "POST",
+                            headers: {
+                                "Content-Type": "application/x-www-form-urlencoded", // Adjust the content type
+                            },
+                            body: new URLSearchParams({
+                                title: title,
+                                description: description,
+                                startDate: startDate,
+                                dueDate: dueDate,
+                                status: status,
+                            }),
+                        })
+                            .then((response) => {
+                                if (!response.ok) {
+                                    throw new Error(`HTTP error! Status: ${response.status}`);
+                                }
+                                return response.json();
+                            })
+                            .then((data) => {
+                                if (data.success) {
+                                    console.log("Task created successfully:", data.task);
+                                    closeModal(); // Close the modal after successful task creation
+                                    // Optionally, you may want to update the UI to display the new task
+                                    updateTaskUI(data.task);
+                                } else {
+                                    console.error("Error creating task:", data.error);
+                                    // Add error handling logic or display an error message
+                                }
+                            })
+                            .catch((error) => {
+                                console.error("Error creating task:", error.message);
+                                // Add error handling logic or display an error message
+                            });
+                    }
+
+                    function updateTaskUI(task) {
+                        var panel = document.getElementById(task.status + "-panel");
+
+                        var taskDiv = document.createElement("div");
+                        taskDiv.className = "task";
+                        taskDiv.id = "task" + taskCounter;
+
+                        // Format dates using toLocaleDateString
+                        var formattedStartDate = new Date(task.startDate).toLocaleDateString();
+                        var formattedDueDate = new Date(task.dueDate).toLocaleDateString();
+
+                        var taskContent = `
+    <div class="task-header">
+      <h3>${task.title}</h3>
+      <p class="description">${task.description}</p>
+    </div>
+    <div class="task-actions">
+      <span class="delete">
+        <img src="images/delete.png" alt="Delete Icon" width="65" height="60"> Delete
+      </span>
+      <span class="edit">
+        <img src="images/edit.png" alt="Edit Icon" width="60" height="60"> Edit
+      </span>
+    </div>
+    <div class="dates">
+      <p>Start Date: ${formattedStartDate}</p>
+      <p>Due Date: ${formattedDueDate}</p>
+    </div>
+  `;
+
+                        taskDiv.innerHTML = taskContent;
+                        panel.appendChild(taskDiv);
+
+                        taskCounter++;
+                    }
+                </script>
+    </body>
 
 </html>

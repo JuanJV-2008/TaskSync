@@ -28,6 +28,28 @@ mongoose.connect("mongodb://localhost:27017/TaskSync", {
   useUnifiedTopology: true,
 });
 
+// Add this route handler after your other routes
+app.get("/fetch-tasks", async (req, res) => {
+  try {
+    // Check if userId is present in the session
+    if (!req.session.user) {
+      return res.status(401).json({ success: false, error: "User not authenticated" });
+    }
+
+    // Retrieve all tasks for the user from the TaskCollection model
+    const tasks = await TaskCollection.find({ userId: req.session.user });
+
+    // Respond with a JSON containing the tasks
+    res.json({ success: true, tasks });
+  } catch (error) {
+    // Log the error for debugging
+    console.error("Error fetching tasks:", error);
+    // Respond with a JSON indicating failure and the error message
+    res.status(500).json({ success: false, error: "Internal Server Error", details: error.message });
+  }
+});
+
+
 app.post("/create-task", async (req, res) => {
   try {
     // Check if userId is present in the session
