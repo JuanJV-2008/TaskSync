@@ -128,6 +128,7 @@
                             // Display the create new task modal
                             modal.style.display = "block";
                         }
+
                     }
 
                     function closeEditModal() {
@@ -177,8 +178,7 @@
                                 if (data.success) {
                                     console.log("Task edited successfully:", data.updatedTask);
                                     closeEditModal(); // Close the modal after successful task editing
-                                    // Optionally, you may want to update the UI to display the edited task
-                                    // You can implement a function similar to updateTaskUI for this purpose
+                                    location.reload();
                                 } else {
                                     console.error("Error editing task:", data.error);
                                     // Add error handling logic or display an error message
@@ -276,6 +276,7 @@
                                     closeModal(); // Close the modal after successful task creation
                                     // Optionally, you may want to update the UI to display the new task
                                     updateTaskUI(data.task);
+                                    location.reload();
                                 } else {
                                     console.error("Error creating task:", data.error);
                                     // Add error handling logic or display an error message
@@ -321,6 +322,7 @@
                         panel.appendChild(taskDiv);
 
                         taskCounter++;
+                        
                     }
 
                     // Function to handle task deletion
