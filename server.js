@@ -28,6 +28,41 @@ mongoose.connect("mongodb://localhost:27017/TaskSync", {
   useUnifiedTopology: true,
 });
 
+// Add this route handler after your other routes
+app.post("/edit-task", async (req, res) => {
+  try {
+    // Check if userId is present in the session
+    if (!req.session.user) {
+      return res.status(401).json({ success: false, error: "User not authenticated" });
+    }
+
+    const { taskId, title, description, startDate, dueDate, status } = req.body;
+
+    // Find the task by ID and user ID
+    const existingTask = await TaskCollection.findOne({ _id: taskId, userId: req.session.user });
+
+    if (!existingTask) {
+      return res.status(404).json({ success: false, error: "Task not found" });
+    }
+
+    // Update the task details
+    existingTask.title = title;
+    existingTask.description = description;
+    existingTask.startDate = startDate;
+    existingTask.dueDate = dueDate;
+    existingTask.status = status;
+
+    // Save the updated task
+    await existingTask.save();
+
+    // Respond with a JSON indicating success and the updated task
+    res.json({ success: true, updatedTask: existingTask });
+  } catch (error) { 
+    console.error("Error editing task:", error);
+  res.status(500).json({ success: false, error: "Internal Server Error", details: error.message });
+}
+});
+
 
 // Add this route handler after your other routes
 app.get("/fetch-tasks", async (req, res) => {

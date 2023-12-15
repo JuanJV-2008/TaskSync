@@ -51,6 +51,29 @@
                         <button onclick="addTask()">Add Task</button>
                     </div>
                 </div>
+
+                <div id="editModal" class="modal">
+                    <div class="modal-content">
+                        <span class="close" onclick="closeEditModal()">&times;</span>
+                        <h2>Edit Task</h2>
+                        <label for="editTaskTitle">Title:</label>
+                        <input type="text" id="editTaskTitle" />
+                        <label for="editTaskDescription">Description:</label>
+                        <textarea id="editTaskDescription"></textarea>
+                        <label for="editTaskStartDate">Start Date:</label>
+                        <input type="text" id="editTaskStartDate" placeholder="MM/DD/YYYY" />
+                        <label for="editTaskDueDate">Due Date:</label>
+                        <input type="text" id="editTaskDueDate" placeholder="MM/DD/YYYY" />
+                        <label for="editTaskStatus">Status:</label>
+                        <select id="editTaskStatus">
+                            <option value="new">New</option>
+                            <option value="in-progress">In Progress</option>
+                            <option value="rejected">Rejected</option>
+                            <option value="completed">Completed</option>
+                        </select>
+                        <button onclick="saveEditedTask()">Save Changes</button>
+                    </div>
+                </div>
             </center>
             <div style="height: 100px;"> </div>
             <%- include('layouts/footer'); -%>
@@ -77,12 +100,94 @@
 
                     var taskCounter = 1;
 
-                    function openModal() {
-                        document.getElementById("myModal").style.display = "block";
-                    }
+
 
                     function closeModal() {
                         document.getElementById("myModal").style.display = "none";
+                    }
+
+                    function openModal(taskId, taskTitle, taskDescription, taskStartDate, taskDueDate, taskStatus) {
+                        var modal = document.getElementById("myModal");
+                        var editModal = document.getElementById("editModal");
+
+                        // Check if taskId is provided, indicating it's an edit operation
+                        if (taskId) {
+                            // Populate the edit modal with task details
+                            document.getElementById("editTaskTitle").value = taskTitle;
+                            document.getElementById("editTaskDescription").value = taskDescription;
+                            document.getElementById("editTaskStartDate").value = taskStartDate;
+                            document.getElementById("editTaskDueDate").value = taskDueDate;
+                            document.getElementById("editTaskStatus").value = taskStatus;
+
+                            // Add a custom attribute to store the task ID for later use
+                            editModal.setAttribute("data-task-id", taskId);
+
+                            // Display the edit modal
+                            editModal.style.display = "block";
+                        } else {
+                            // Display the create new task modal
+                            modal.style.display = "block";
+                        }
+                    }
+
+                    function closeEditModal() {
+                        document.getElementById("editModal").style.display = "none";
+                    }
+                    // Function to save the edited task
+                    function saveEditedTask() {
+                        // Retrieve task details from the edit modal
+                        var taskId = document.getElementById("editModal").getAttribute("data-task-id");
+                        var title = document.getElementById("editTaskTitle").value;
+                        var description = document.getElementById("editTaskDescription").value;
+                        var startDate = document.getElementById("editTaskStartDate").value;
+                        var dueDate = document.getElementById("editTaskDueDate").value;
+                        var status = document.getElementById("editTaskStatus").value;
+
+                        console.log("Editing Task with ID:", taskId);
+
+                        // Check if any of the required fields is empty
+                        if (!title || !description || !startDate || !dueDate || !status) {
+                            console.error("Error editing task: All fields are required");
+                            // Add error handling logic or display an error message to the user
+                            return;
+                        }
+
+                        // Perform the update on the server
+                        fetch("/edit-task", {
+                            method: "POST",
+                            headers: {
+                                "Content-Type": "application/x-www-form-urlencoded", // Adjust the content type
+                            },
+                            body: new URLSearchParams({
+                                taskId: taskId,
+                                title: title,
+                                description: description,
+                                startDate: startDate,
+                                dueDate: dueDate,
+                                status: status,
+                            }),
+                        })
+                            .then((response) => {
+                                if (!response.ok) {
+                                    throw new Error(`HTTP error! Status: ${response.status}`);
+                                }
+                                return response.json();
+                            })
+                            .then((data) => {
+                                if (data.success) {
+                                    console.log("Task edited successfully:", data.updatedTask);
+                                    closeEditModal(); // Close the modal after successful task editing
+                                    // Optionally, you may want to update the UI to display the edited task
+                                    // You can implement a function similar to updateTaskUI for this purpose
+                                } else {
+                                    console.error("Error editing task:", data.error);
+                                    // Add error handling logic or display an error message
+                                }
+                            })
+                            .catch((error) => {
+                                console.error("Error editing task:", error.message);
+                                // Add error handling logic or display an error message
+                            });
                     }
 
                     var taskCounter = 1;
@@ -194,23 +299,23 @@
                         var formattedDueDate = new Date(task.dueDate).toLocaleDateString();
 
                         var taskContent = `
-  <div class="task-header">
-    <h3>${task.title}</h3>
-    <p class="description">${task.description}</p>
-  </div>
-  <div class="task-actions">
-    <span class="delete" onclick="deleteTask('${taskDiv.id}', '${task._id}')"> <!-- Pass taskId from database -->
-      <img src="images/delete.png" alt="Delete Icon" width="65" height="60"> Delete
-    </span>
-    <span class="edit">
-      <img src="images/edit.png" alt="Edit Icon" width="60" height="60"> Edit
-    </span>
-  </div>
-  <div class="dates">
-    <p>Start Date: ${formattedStartDate}</p>
-    <p>Due Date: ${formattedDueDate}</p>
-  </div>
-`;
+        <div class="task-header">
+            <h3>${task.title}</h3>
+            <p class="description">${task.description}</p>
+        </div>
+        <div class="task-actions">
+            <span class="delete" onclick="deleteTask('${taskDiv.id}', '${task._id}')">
+                <img src="images/delete.png" alt="Delete Icon" width="65" height="60"> Delete
+            </span>
+            <span class="edit" onclick="openModal('${task._id}', '${task.title}', '${task.description}', '${formattedStartDate}', '${formattedDueDate}', '${task.status}')">
+                <img src="images/edit.png" alt="Edit Icon" width="60" height="60"> Edit
+            </span>
+        </div>
+        <div class="dates">
+            <p>Start Date: ${formattedStartDate}</p>
+            <p>Due Date: ${formattedDueDate}</p>
+        </div>
+    `;
 
                         taskDiv.innerHTML = taskContent;
                         panel.appendChild(taskDiv);
