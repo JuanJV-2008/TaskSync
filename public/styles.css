@@ -942,3 +942,18 @@ body {
   text-decoration: none;
   cursor: pointer;
 }
+
+.logoutButton {
+  display: inline-block;
+  text-align: center;
+  text-decoration: none;
+  color: inherit;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.logoutButton:hover {
+  background-color: transparent;
+  color: inherit; 
+}
