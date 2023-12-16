@@ -909,7 +909,6 @@ body {
 }
 
 /* Add your CSS styling for the modal here */
-/* Updated CSS styling for the modal */
 .modal {
   display: none;
   position: fixed;
@@ -921,20 +920,29 @@ body {
 }
 
 .modal-content {
-  background-color: #c3e0ea; /* Updated background color */
-  border-radius: 15px; /* Added border-radius */
-  width: 500px; /* Set the width as needed */
+  background-color: #c3e0ea;
+  border-radius: 15px;
+  width: 800px !important;
+  height: 1000px !important;
+  max-height: 81vh; /* Set a maximum height, adjust as needed */
   margin: 10% auto;
   padding: 20px;
   box-shadow: 0px 0px 10px 0px #30b8e5;
+  margin: 5% auto; /* Adjust the top and horizontal margins */
+  margin-bottom: 20px; /* Add margin to the bottom to push the modal up */
+  padding: 20px;
 }
+
 
 .close {
   color: #aaa;
-  float: right;
   font-size: 28px;
   font-weight: bold;
+  position: absolute;
+  top: 20px; /* Adjust the top position */
+  right: 30px; /* Adjust the right position */
 }
+
 
 .close:hover,
 .close:focus {
@@ -942,6 +950,39 @@ body {
   text-decoration: none;
   cursor: pointer;
 }
+
+/* Additional styles for the input fields, select, and button */
+.modal-content label,
+.modal-content input,
+.modal-content textarea,
+.modal-content select,
+.modal-content button {
+  margin-top: 12px;
+  width: 100%;
+}
+
+.modal-content select,
+.modal-content button {
+  border-radius: 8px;
+  padding: 14px;
+  font-size: 18px;
+  color: #fff;
+  box-shadow: 6px 6px 10px #b2b2b2, -6px -6px 10px rgba(168, 221, 252, 0.6);
+}
+
+.modal-content select:focus {
+  outline: none;
+}
+
+/* Apply the blue-to-purple gradient transition to the modal content */
+.modal-content.blue-to-purple {
+  background: linear-gradient(145deg, #dbe6f6, #a7bddb);
+}
+
+.modal-content label {
+  font-size: 18px; /* Adjust the font size as needed */
+}
+
 
 .logoutButton {
   display: inline-block;
@@ -951,6 +992,10 @@ body {
   background-color: transparent;
   border: none;
   cursor: pointer;
+}
+
+.neoInput select {
+  color: #000; /* Set the text color to black or your desired color */
 }
 
 .logoutButton:hover {

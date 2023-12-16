@@ -30,48 +30,49 @@
 
                 <!-- Modal for task creation -->
                 <div id="myModal" class="modal">
-                    <div class="modal-content">
+                    <div class="modal-content blue-to-purple">
                         <span class="close" onclick="closeModal()">&times;</span>
-                        <h2>Create New Task</h2>
+                        <h2 class="body-headers-center">Create New Task</h2>
                         <label for="taskTitle">Title:</label>
-                        <input type="text" id="taskTitle" />
+                        <input type="text" id="taskTitle" class="neoInput" />
                         <label for="taskDescription">Description:</label>
-                        <textarea id="taskDescription"></textarea>
+                        <input type="text" id="taskDescription" class="neoInput" />
                         <label for="taskStartDate">Start Date:</label>
-                        <input type="text" id="taskStartDate" placeholder="MM/DD/YYYY" />
+                        <input type="text" id="taskStartDate" class="neoInput" placeholder="MM/DD/YYYY" />
                         <label for="taskDueDate">Due Date:</label>
-                        <input type="text" id="taskDueDate" placeholder="MM/DD/YYYY" />
+                        <input type="text" id="taskDueDate" class="neoInput" placeholder="MM/DD/YYYY" />
                         <label for="taskStatus">Status:</label>
-                        <select id="taskStatus">
-                            <option value="new">New</option>
-                            <option value="in-progress">In Progress</option>
-                            <option value="rejected">Rejected</option>
-                            <option value="completed">Completed</option>
-                        </select>
-                        <button onclick="addTask()">Add Task</button>
+                        <select id="taskStatus" class="neoInput" style="color: black; height: 60px; position: relative;">
+                            <option value="new" style="color: black;">New</option>
+                            <option value="in-progress" style="color: black;">In Progress</option>
+                            <option value="rejected" style="color: black;">Rejected</option>
+                            <option value="completed" style="color: black;">Completed</option>
+                          </select>
+                        <button onclick="addTask()" class="sumbit-btn blue-to-purple" style="color: black;">Add Task</button>
                     </div>
                 </div>
 
                 <div id="editModal" class="modal">
-                    <div class="modal-content">
+                    <div class="modal-content blue-to-purple">
                         <span class="close" onclick="closeEditModal()">&times;</span>
-                        <h2>Edit Task</h2>
+                        <h2 class="body-headers-center">Edit Task</h2>
                         <label for="editTaskTitle">Title:</label>
-                        <input type="text" id="editTaskTitle" />
+                        <input type="text" id="editTaskTitle" class="neoInput" />
                         <label for="editTaskDescription">Description:</label>
-                        <textarea id="editTaskDescription"></textarea>
+                        <input type="text" id="editTaskDescription" class="neoInput" />
                         <label for="editTaskStartDate">Start Date:</label>
-                        <input type="text" id="editTaskStartDate" placeholder="MM/DD/YYYY" />
+                        <input type="text" id="editTaskStartDate" class="neoInput" placeholder="MM/DD/YYYY" />
                         <label for="editTaskDueDate">Due Date:</label>
-                        <input type="text" id="editTaskDueDate" placeholder="MM/DD/YYYY" />
+                        <input type="text" id="editTaskDueDate" class="neoInput" placeholder="MM/DD/YYYY" />
                         <label for="editTaskStatus">Status:</label>
-                        <select id="editTaskStatus">
-                            <option value="new">New</option>
-                            <option value="in-progress">In Progress</option>
-                            <option value="rejected">Rejected</option>
-                            <option value="completed">Completed</option>
-                        </select>
-                        <button onclick="saveEditedTask()">Save Changes</button>
+                        <select id="editTaskStatus" class="neoInput" style="color: black; height: 60px; position: relative;">
+                            <option value="new" style="color: black;">New</option>
+                            <option value="in-progress" style="color: black;">In Progress</option>
+                            <option value="rejected" style="color: black;">Rejected</option>
+                            <option value="completed" style="color: black;">Completed</option>
+                          </select>
+                        <br>
+                        <button onclick="saveEditedTask()" class="sumbit-btn blue-to-purple" style="color: black;">Save Changes</button>
                     </div>
                 </div>
             </center>
@@ -322,7 +323,7 @@
                         panel.appendChild(taskDiv);
 
                         taskCounter++;
-                        
+
                     }
 
                     // Function to handle task deletion
