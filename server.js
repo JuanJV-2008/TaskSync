@@ -63,6 +63,27 @@ app.post("/edit-task", async (req, res) => {
 }
 });
 
+app.delete('/delete-task/:taskId', async (req, res) => {
+  const taskId = req.params.taskId;
+
+  try {
+    console.log('Deleting task with ID:', taskId);
+
+    // Use MongoDB to delete the task by ID directly
+    const result = await TaskCollection.deleteOne({ _id: taskId });
+
+    if (result.deletedCount > 0) {
+      res.json({ success: true, message: 'Task deleted successfully' });
+    } else {
+      console.log('Task not found');
+      res.status(404).json({ success: false, error: 'Task not found' });
+    }
+  } catch (error) {
+    console.error('Error deleting task:', error);
+    res.status(500).json({ success: false, error: 'Internal server error' });
+  }
+});
+
 
 // Add this route handler after your other routes
 app.get("/fetch-tasks", async (req, res) => {

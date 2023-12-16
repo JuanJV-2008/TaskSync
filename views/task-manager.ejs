@@ -326,42 +326,42 @@
 
                     }
 
-                    // Function to handle task deletion
                     function deleteTask(taskId, taskIdFromDatabase) {
                         // Remove the task from the UI
                         var taskToRemove = document.getElementById(taskId);
-                        taskToRemove.remove();
+                        if (taskToRemove) {
+                            taskToRemove.remove();
 
-                        // Delete the task from the database
-                        fetch("/delete-task", {
-                            method: "POST",
-                            headers: {
-                                "Content-Type": "application/json", // Change content type to JSON
-                            },
-                            body: JSON.stringify({
-                                taskId: taskIdFromDatabase,
-                            }),
-                        })
-                            .then((response) => {
-                                if (!response.ok) {
-                                    throw new Error(`HTTP error! Status: ${response.status}`);
-                                }
-                                return response.json();
+                            // Delete the task from the database
+                            fetch(`/delete-task/${taskIdFromDatabase}`, {
+                                method: "DELETE",
+                                headers: {
+                                    "Content-Type": "application/json",
+                                },
                             })
-                            .then((data) => {
-                                if (data.success) {
-                                    console.log("Task deleted successfully:", data.message);
-                                } else {
-                                    console.error("Error deleting task:", data.error);
+                                .then((response) => {
+                                    if (!response.ok) {
+                                        throw new Error(`HTTP error! Status: ${response.status}`);
+                                    }
+                                    return response.json();
+                                })
+                                .then((data) => {
+                                    if (data.success) {
+                                        console.log("Task deleted successfully:", data.message);
+                                    } else {
+                                        console.error("Error deleting task:", data.error);
+                                        // Add error handling logic or display an error message
+                                    }
+                                })
+                                .catch((error) => {
+                                    console.error("Error deleting task:", error.message);
                                     // Add error handling logic or display an error message
-                                }
-                            })
-                            .catch((error) => {
-                                console.error("Error deleting task:", error.message);
-                                // Add error handling logic or display an error message
-                            });
+                                });
+                        } else {
+                            console.error("Task not found in the UI. Cannot delete.");
+                            // Add error handling logic or display an error message
+                        }
                     }
-
 
                 </script>
     </body>
