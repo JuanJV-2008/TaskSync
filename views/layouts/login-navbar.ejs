@@ -105,10 +105,28 @@
 
         overdueTasks.forEach((task) => {
             // Format dates using toLocaleDateString
+            const formattedStartDate = new Date(task.startDate).toLocaleDateString();
             const formattedDueDate = new Date(task.dueDate).toLocaleDateString();
 
+            // HTML structure for each overdue task
             const taskContent = `
-                <p>${task.title} is overdue. Due Date: ${formattedDueDate}</p>
+                <div class="task-header">
+                    <h3>${task.title}</h3>
+                    <p class="description">${task.description}</p>
+                </div>
+                <div class="task-actions">
+                    <span class="delete" onclick="deleteTask('${task._id}')">
+                        <img src="images/delete.png" alt="Delete Icon" width="65" height="60"> Delete
+                    </span>
+                    <span class="edit" onclick="openModal('${task._id}', '${task.title}', '${task.description}', '${formattedStartDate}', '${formattedDueDate}', '${task.status}')">
+                        <img src="images/edit.png" alt="Edit Icon" width="60" height="60"> Edit
+                    </span>
+                </div>
+                <div class="dates">
+                    <p>Start Date: ${formattedStartDate}</p>
+                    <p>Due Date: ${formattedDueDate}</p>
+                </div>
+                <hr> <!-- Add a horizontal line between tasks for separation -->
             `;
 
             notificationMessage.innerHTML += taskContent;
