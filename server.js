@@ -29,6 +29,28 @@ mongoose.connect("mongodb://localhost:27017/TaskSync", {
 });
 
 // Add this route handler after your other routes
+app.get("/fetch-overdue-tasks", async (req, res) => {
+  try {
+    // Check if userId is present in the session
+    if (!req.session.user) {
+      return res.status(401).json({ success: false, error: "User not authenticated" });
+    }
+
+    // Fetch all tasks for the user
+    const tasks = await TaskCollection.find({ userId: req.session.user });
+    
+    // Filter tasks that are overdue (due date is before the current date)
+    const overdueTasks = tasks.filter(task => new Date(task.dueDate) < new Date());
+
+    return res.json({ success: true, overdueTasks });
+  } catch (error) {
+    console.error('Error fetching overdue tasks:', error);
+    return res.status(500).json({ success: false, error: 'Internal server error.' });
+  }
+});
+
+
+// Add this route handler after your other routes
 app.post("/edit-task", async (req, res) => {
   try {
     // Check if userId is present in the session
