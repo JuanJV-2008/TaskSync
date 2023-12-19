@@ -1009,3 +1009,32 @@ body {
   background-color: transparent;
   color: inherit; 
 }
+
+/* Add these styles to display title, description, start date, and due date in a single row */
+    .custom-task-details {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-top: 2px solid #a7bddb; /* Add top border */
+        padding: 15px 20px; /* Add padding for spacing */
+        box-sizing: border-box; /* Ensure padding is included in the total width */
+    }
+
+    .custom-task-details + .custom-hr {
+        margin-top: 0.5rem; /* Adjust the margin as needed */
+        margin-bottom: 0.5rem; /* Add bottom margin to the HR for spacing */
+    }
+
+    /* Add border to the last child */
+    .custom-task-details:last-child {
+        border-bottom: 2px solid #a7bddb; /* Add bottom border to the last child */
+    }
+
+    .custom-task-header {
+        flex: 1; /* Title and description take up the available space */
+    }
+
+    .custom-dates {
+        white-space: nowrap; /* Prevent line breaks for dates */
+        margin-left: 1rem; /* Adjust the margin as needed */
+    }
