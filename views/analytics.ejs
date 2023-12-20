@@ -5,48 +5,125 @@
     <body>
         <%- include('layouts/login-navbar-opaque'); -%>
             <div class="analytics-container">
-                <h2>Task Analytics</h2>
+                <center>
+                    <h2 class="body-headers" style = "padding-left: 20px;">Task Analytics</h2>
+                </center>
 
-                <!-- Display the total number of completed tasks -->
+                <!-- Display the count of new tasks -->
                 <div class="analytics-item">
-                    <h3>Total Tasks Completed</h3>
-                    <p id="totalCompletedTasks">Loading...</p>
+                    <h3>New Tasks</h3>
+                    <p id="newTasksCount">Loading...</p>
+                </div>
+
+                <!-- Display the count of tasks in progress -->
+                <div class="analytics-item">
+                    <h3>In Progress Tasks</h3>
+                    <p id="inProgressTasksCount">Loading...</p>
+                </div>
+
+                <!-- Display the count of rejected tasks -->
+                <div class="analytics-item">
+                    <h3>Rejected Tasks</h3>
+                    <p id="rejectedTasksCount">Loading...</p>
+                </div>
+
+                <!-- Display the count of completed tasks -->
+                <div class="analytics-item">
+                    <h3>Completed Tasks</h3>
+                    <p id="completedTasksCount">Loading...</p>
                 </div>
             </div>
-            <div style="height: 500px;"> </div>
+
+            <div class="analytics-item">
+                <h3>Task Status</h3>
+                <canvas id="taskStatusChart"></canvas>
+              </div>
+
+            <div style="height: 100px;"> </div>
 
             <%- include('layouts/footer'); -%>
 
-            <script>
-                document.addEventListener("DOMContentLoaded", function () {
-                    // Fetch and render analytics data when the page loads
-                    fetchAndRenderAnalytics();
-                });
+                <!-- Include a script to fetch analytics data and update the UI -->
+                <script>
+                    document.addEventListener("DOMContentLoaded", function () {
+                        // Fetch and render analytics data when the page loads
+                        fetchAndRenderAnalytics();
+                    });
 
-                function fetchAndRenderAnalytics() {
-                    // Fetch analytics data from the server
-                    fetch("/fetch-analytics")
-                        .then((response) => {
-                            if (!response.ok) {
-                                throw new Error(`HTTP error! Status: ${response.status}`);
-                            }
-                            return response.json();
-                        })
-                        .then((data) => {
-                            if (data.success) {
-                                // Update the UI with the total number of completed tasks
-                                document.getElementById("totalCompletedTasks").textContent = data.totalCompletedTasks;
-                            } else {
-                                console.error("Error fetching analytics:", data.error);
+                    function fetchAndRenderAnalytics() {
+                        // Fetch analytics data from the server
+                        fetch("/fetch-analytics")
+                            .then((response) => {
+                                if (!response.ok) {
+                                    throw new Error(`HTTP error! Status: ${response.status}`);
+                                }
+                                return response.json();
+                            })
+                            .then((data) => {
+                                if (data.success) {
+                                    // Update the UI with analytics data
+                                    updateAnalyticsUI(data.counts);
+                                    // Create a bar graph
+                                    createBarGraph(data.counts);
+                                } else {
+                                    console.error("Error fetching analytics:", data.error);
+                                    // Add error handling logic or display an error message
+                                }
+                            })
+                            .catch((error) => {
+                                console.error("Error fetching analytics:", error.message);
                                 // Add error handling logic or display an error message
+                            });
+                    }
+
+                    function updateAnalyticsUI(counts) {
+                        // Update the UI with counts for each status
+                        document.getElementById("newTasksCount").textContent = counts.new;
+                        document.getElementById("inProgressTasksCount").textContent = counts.inProgress;
+                        document.getElementById("rejectedTasksCount").textContent = counts.rejected;
+                        document.getElementById("completedTasksCount").textContent = counts.completed;
+                    }
+
+                    function createBarGraph(counts) {
+                        var ctx = document.getElementById("taskStatusChart").getContext("2d");
+
+                        var chartData = {
+                            labels: ["New", "In Progress", "Rejected", "Completed"],
+                            datasets: [{
+                                label: 'Task Status',
+                                data: [counts.new, counts.inProgress, counts.rejected, counts.completed],
+                                backgroundColor: [
+                                    'rgba(255, 99, 132, 0.2)',
+                                    'rgba(54, 162, 235, 0.2)',
+                                    'rgba(255, 206, 86, 0.2)',
+                                    'rgba(75, 192, 192, 0.2)',
+                                ],
+                                borderColor: [
+                                    'rgba(255, 99, 132, 1)',
+                                    'rgba(54, 162, 235, 1)',
+                                    'rgba(255, 206, 86, 1)',
+                                    'rgba(75, 192, 192, 1)',
+                                ],
+                                borderWidth: 1
+                            }]
+                        };
+
+                        var chartOptions = {
+                            scales: {
+                                y: {
+                                    beginAtZero: true
+                                }
                             }
-                        })
-                        .catch((error) => {
-                            console.error("Error fetching analytics:", error.message);
-                            // Add error handling logic or display an error message
+                        };
+
+                        new Chart(ctx, {
+                            type: 'bar',
+                            data: chartData,
+                            options: chartOptions
                         });
-                }
-            </script>
+                    }
+                </script>
+
     </body>
 
 </html>

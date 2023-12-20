@@ -35,12 +35,17 @@ app.get("/fetch-analytics", async (req, res) => {
       return res.status(401).json({ success: false, error: "User not authenticated" });
     }
 
-    // Fetch the total number of completed tasks for the user
-    const totalCompletedTasks = await TaskCollection.countDocuments({ userId: req.session.user, status: 'completed' });
+    // Fetch the counts of tasks for each status for the user
+    const counts = {
+      new: await TaskCollection.countDocuments({ userId: req.session.user, status: 'new' }),
+      inProgress: await TaskCollection.countDocuments({ userId: req.session.user, status: 'in progress' }),
+      rejected: await TaskCollection.countDocuments({ userId: req.session.user, status: 'rejected' }),
+      completed: await TaskCollection.countDocuments({ userId: req.session.user, status: 'completed' }),
+    };
 
-    console.log('Total Completed Tasks:', totalCompletedTasks); // Log the count in the console
+    console.log('Task Counts:', counts); // Log the counts in the console
 
-    return res.json({ success: true, totalCompletedTasks });
+    return res.json({ success: true, counts });
   } catch (error) {
     console.error('Error fetching analytics:', error);
     return res.status(500).json({ success: false, error: 'Internal server error.' });
