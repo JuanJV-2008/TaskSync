@@ -39,15 +39,18 @@
 
 <br><br><br><br><br>
 
-<!-- Modal structure -->
 <div class="modal">
     <div class="modal-content blue-to-purple">
-        <span class="close" onclick="closeModal()">&times;</span>
+        <span class="close">&times;</span>
         <!-- Update the modal content below -->
-        <h2>Overdue Tasks</h2>
-        <div id="notificationMessage"></div>
+        <h2 class="body-headers-center">Notifcations</h2>
+        <br>
+        <div id="notificationMessage" class="scrollable-container">
+            <!-- Overdue tasks content will be added dynamically here -->
+        </div>
     </div>
 </div>
+
 
 <!-- Update your existing JavaScript code with the following -->
 <script>
@@ -110,24 +113,18 @@
 
             // HTML structure for each overdue task
             const taskContent = `
-                <div class="task-header">
-                    <h3>${task.title}</h3>
-                    <p class="description">${task.description}</p>
-                </div>
-                <div class="task-actions">
-                    <span class="delete" onclick="deleteTask('${task._id}')">
-                        <img src="images/delete.png" alt="Delete Icon" width="65" height="60"> Delete
-                    </span>
-                    <span class="edit" onclick="openModal('${task._id}', '${task.title}', '${task.description}', '${formattedStartDate}', '${formattedDueDate}', '${task.status}')">
-                        <img src="images/edit.png" alt="Edit Icon" width="60" height="60"> Edit
-                    </span>
-                </div>
-                <div class="dates">
-                    <p>Start Date: ${formattedStartDate}</p>
-                    <p>Due Date: ${formattedDueDate}</p>
-                </div>
-                <hr> <!-- Add a horizontal line between tasks for separation -->
-            `;
+    <div class="custom-task-details">
+        <div class="custom-task-header">
+            <h3>${task.title}</h3>
+            <p class="custom-description">${task.description}</p>
+        </div>
+        <div class="custom-dates">
+            <p>Start Date: ${formattedStartDate}</p>
+            <p>Due Date: ${formattedDueDate}</p>
+        </div>
+    </div>
+    <div class="custom-hr"></div>
+`;
 
             notificationMessage.innerHTML += taskContent;
         });
