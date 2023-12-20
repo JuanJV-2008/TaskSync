@@ -1,14 +1,52 @@
 <!DOCTYPE html>
-<html>
-    <html lang="en">
-        <%- include('layouts/header'); -%>
+<html lang="en">
+<%- include('layouts/header'); -%>
+
     <body>
         <%- include('layouts/login-navbar-opaque'); -%>
-        <div style="height: 1000px;"> </div>
+            <div class="analytics-container">
+                <h2>Task Analytics</h2>
 
-        <%- include('layouts/footer'); -%>
-        
+                <!-- Display the total number of completed tasks -->
+                <div class="analytics-item">
+                    <h3>Total Tasks Completed</h3>
+                    <p id="totalCompletedTasks">Loading...</p>
+                </div>
+            </div>
+            <div style="height: 500px;"> </div>
+
+            <%- include('layouts/footer'); -%>
+
+            <script>
+                document.addEventListener("DOMContentLoaded", function () {
+                    // Fetch and render analytics data when the page loads
+                    fetchAndRenderAnalytics();
+                });
+
+                function fetchAndRenderAnalytics() {
+                    // Fetch analytics data from the server
+                    fetch("/fetch-analytics")
+                        .then((response) => {
+                            if (!response.ok) {
+                                throw new Error(`HTTP error! Status: ${response.status}`);
+                            }
+                            return response.json();
+                        })
+                        .then((data) => {
+                            if (data.success) {
+                                // Update the UI with the total number of completed tasks
+                                document.getElementById("totalCompletedTasks").textContent = data.totalCompletedTasks;
+                            } else {
+                                console.error("Error fetching analytics:", data.error);
+                                // Add error handling logic or display an error message
+                            }
+                        })
+                        .catch((error) => {
+                            console.error("Error fetching analytics:", error.message);
+                            // Add error handling logic or display an error message
+                        });
+                }
+            </script>
     </body>
-    
-</html>
 
+</html>

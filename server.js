@@ -28,6 +28,25 @@ mongoose.connect("mongodb://localhost:27017/TaskSync", {
   useUnifiedTopology: true,
 });
 
+app.get("/fetch-analytics", async (req, res) => {
+  try {
+    // Check if userId is present in the session
+    if (!req.session.user) {
+      return res.status(401).json({ success: false, error: "User not authenticated" });
+    }
+
+    // Fetch the total number of completed tasks for the user
+    const totalCompletedTasks = await TaskCollection.countDocuments({ userId: req.session.user, status: 'completed' });
+
+    console.log('Total Completed Tasks:', totalCompletedTasks); // Log the count in the console
+
+    return res.json({ success: true, totalCompletedTasks });
+  } catch (error) {
+    console.error('Error fetching analytics:', error);
+    return res.status(500).json({ success: false, error: 'Internal server error.' });
+  }
+});
+
 // Add this route handler after your other routes
 app.get("/fetch-overdue-tasks", async (req, res) => {
   try {
@@ -38,7 +57,7 @@ app.get("/fetch-overdue-tasks", async (req, res) => {
 
     // Fetch all tasks for the user
     const tasks = await TaskCollection.find({ userId: req.session.user });
-    
+
     // Filter tasks that are overdue (due date is before the current date)
     const overdueTasks = tasks.filter(task => new Date(task.dueDate) < new Date());
 
@@ -79,10 +98,10 @@ app.post("/edit-task", async (req, res) => {
 
     // Respond with a JSON indicating success and the updated task
     res.json({ success: true, updatedTask: existingTask });
-  } catch (error) { 
+  } catch (error) {
     console.error("Error editing task:", error);
-  res.status(500).json({ success: false, error: "Internal Server Error", details: error.message });
-}
+    res.status(500).json({ success: false, error: "Internal Server Error", details: error.message });
+  }
 });
 
 app.delete('/delete-task/:taskId', async (req, res) => {
@@ -220,7 +239,7 @@ app.post("/recover-password", async (req, res) => {
 
     if (!user) {
       return res.render("forgot-password", { errorMessage: "Sorry, the provided username does not exist. Please check your username and try again." });
-    } 
+    }
 
     // Set user in session for password recovery
     req.session.user = user.name;
@@ -299,32 +318,32 @@ function requireLogin(req, res, next) {
 // Update user profile route
 app.post("/update-profile", async (req, res) => {
   try {
-      const { name, password, security, answer } = req.body;
+    const { name, password, security, answer } = req.body;
 
-      // Find the user by current username using the LogInCollection model
-      const user = await LogInCollection.findOne({ name: req.session.user });
+    // Find the user by current username using the LogInCollection model
+    const user = await LogInCollection.findOne({ name: req.session.user });
 
-      if (!user) {
-          // Handle case where the user is not found
-          return res.status(404).send("User not found");
-      }
+    if (!user) {
+      // Handle case where the user is not found
+      return res.status(404).send("User not found");
+    }
 
-      // Update user details, including the username
-      user.name = name;
-      user.password = password;
-      user.security = security;
-      user.answer = answer;
+    // Update user details, including the username
+    user.name = name;
+    user.password = password;
+    user.security = security;
+    user.answer = answer;
 
-      await user.save();
+    await user.save();
 
-      // Update the session with the new username
-      req.session.user = name;
+    // Update the session with the new username
+    req.session.user = name;
 
-      // Redirect or render a success message as needed
-      res.redirect("/login-home"); // Redirect to the user's profile page or another appropriate page
+    // Redirect or render a success message as needed
+    res.redirect("/login-home"); // Redirect to the user's profile page or another appropriate page
   } catch (error) {
-      console.error(error);
-      res.status(500).send("Internal Server Error");
+    console.error(error);
+    res.status(500).send("Internal Server Error");
   }
 });
 
@@ -355,17 +374,17 @@ app.get("/task-manager", requireLogin, (req, res) => {
 
 app.get("/profile", requireLogin, async (req, res) => {
   try {
-      const user = await LogInCollection.findOne({ name: req.session.user });
+    const user = await LogInCollection.findOne({ name: req.session.user });
 
-      if (!user) {
-          // Handle the case where the user is not found
-          return res.status(404).send("User not found");
-      }
+    if (!user) {
+      // Handle the case where the user is not found
+      return res.status(404).send("User not found");
+    }
 
-      res.render("profile", { user });
+    res.render("profile", { user });
   } catch (error) {
-      console.error(error);
-      res.status(500).send("Internal Server Error");
+    console.error(error);
+    res.status(500).send("Internal Server Error");
   }
 });
 
