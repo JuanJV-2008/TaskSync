@@ -23,43 +23,76 @@
             <div class="neumorphic-divider"></div>
 
             <br>
-            <div class="row">
+            <div class="row animated slide-in-left">
                 <div class="col-xxl-6">
                     <h3 class="body-headers">Save Time</h3>
-                    <p class = "body-text">In today's fast-paced world, time is of the essence, and efficient task management has become a key factor in personal and professional success. A robust task management system is designed to streamline your workflow, helping you save valuable time and enhance productivity. By centralizing tasks, deadlines, and priorities in one accessible platform, users can easily organize their work, set priorities, and allocate time efficiently.</p>
+                    <p class="body-text">In today's fast-paced world, time is of the essence, and efficient task
+                        management has become a key factor in personal and professional success. A robust task
+                        management system is designed to streamline your workflow, helping you save valuable
+                        time and enhance productivity. By centralizing tasks, deadlines, and priorities in one
+                        accessible platform, users can easily organize their work, set priorities, and allocate
+                        time efficiently. In addition to its time-saving prowess, our robust task management
+                        system offers a user-friendly experience, ensuring that individuals and teams can
+                        navigate seamlessly through their daily responsibilities.</p>
                 </div>
                 <div class="col-xxl-6">
-                    <img src="/images/save-time.png" alt="Feature Image" class="rounded height="400px" width="600px">
+                    <img src="/images/save-time.png" alt="Feature Image" class="rounded height=" 400px"
+                        width="600px">
                 </div>
             </div>
             <br>
-            <div class="row">
+            <div class="row animated slide-in-right">
                 <div class="col-xxl-6">
-                    <img src="/images/organize-your-day.png" alt="Feature Image" class="rounded" height="400px" width="600px">
+                    <img src="/images/organize-your-day.png" alt="Feature Image" class="rounded" height="400px"
+                        width="600px">
                 </div>
                 <div class="col-xxl-6">
                     <h3 class="body-headers-right">Orangnize your day</h3>
-                    <p class = "body-text-right">In today's fast-paced world, time is of the essence, and efficient task management has become a key factor in personal and professional success. A robust task management system is designed to streamline your workflow, helping you save valuable time and enhance productivity. By centralizing tasks, deadlines, and priorities in one accessible platform, users can easily organize their work, set priorities, and allocate time efficiently.</p>
+                    <p class="body-text-right">In the hustle and bustle of today's rapid-paced lifestyle, time
+                        is a precious commodity. Achieving personal and professional success hinges on effective
+                        task management. Our task management system is meticulously crafted to be your
+                        time-saving ally in the quest for productivity. It's more than just a tool; it's a
+                        solution designed to seamlessly integrate into your routine. Centralize your tasks,
+                        deadlines, and priorities effortlessly within our accessible platform. With the power to
+                        organize your work, set priorities, and allocate time efficiently, you can now take
+                        control and optimize your day for unparalleled success.
+                    </p>
                 </div>
             </div>
             <br>
-            <div class="row">
+            <div class="row animated slide-in-left">
                 <div class="col-xxl-6">
                     <h3 class="body-headers">Recall everything</h3>
-                    <p class = "body-text">In today's fast-paced world, time is of the essence, and efficient task management has become a key factor in personal and professional success. A robust task management system is designed to streamline your workflow, helping you save valuable time and enhance productivity. By centralizing tasks, deadlines, and priorities in one accessible platform, users can easily organize their work, set priorities, and allocate time efficiently.</p>
+                    <p class="body-text">Amidst the fast-paced demands of modern life, achieving success
+                        requires efficient task management. Our meticulously crafted system becomes your
+                        dedicated ally, seamlessly weaving into your daily routine. Centralize tasks, deadlines,
+                        and priorities effortlessly within our platform, offering a unique ability to recall
+                        every detail with ease. Stay ahead with our proactive notification system, providing
+                        timely alerts and reminders that ensure you never miss a beat. Transform your approach
+                        and elevate your success with our thoughtfully designed platform, tailored for
+                        streamlined task management, meticulous recall, and proactive notifications.</p>
                 </div>
                 <div class="col-xxl-6">
-                    <img src="/images/recall.png" alt="Feature Image" class="rounded height="400px" width="600px">
+                    <img src="/images/recall.png" alt="Feature Image" class="rounded height=" 400px"
+                        width="600px">
                 </div>
             </div>
             <br>
-            <div class="row">
+            <div class="row animated slide-in-right">
                 <div class="col-xxl-6">
-                    <img src="/images/analytics.png" alt="Feature Image" class="rounded" height="400px" width="600px">
+                    <img src="/images/analytics.png" alt="Feature Image" class="rounded" height="400px"
+                        width="600px">
                 </div>
                 <div class="col-xxl-6">
                     <h3 class="body-headers-right">Analyse your data</h3>
-                    <p class = "body-text-right">In today's fast-paced world, time is of the essence, and efficient task management has become a key factor in personal and professional success. A robust task management system is designed to streamline your workflow, helping you save valuable time and enhance productivity. By centralizing tasks, deadlines, and priorities in one accessible platform, users can easily organize their work, set priorities, and allocate time efficiently.</p>
+                    <p class="body-text-right">With a powerful built-in analytics feature, we empower you to not
+                        only manage tasks seamlessly but also analyze your data with precision. Dive into a
+                        world of insights as you effortlessly navigate through analytics tools integrated
+                        directly into our system. Uncover patterns, track progress, and make informed decisions
+                        based on real-time data. It's more than just task management; it's a data analysis
+                        powerhouse. Elevate your efficiency, streamline your workflow, and master the art of
+                        data-driven decision-making with our task management system's embedded analytics.
+                    </p>
                 </div>
             </div>
             <div class="neumorphic-divider"></div>
@@ -117,16 +150,46 @@
                 </ul>
             </section>
      
-             <script src="main.js"></script>
-             <script>
+            <script src="main.js"></script>
+            <script>
                 var navbar = document.getElementById('navbar');
-            
+
                 window.addEventListener('scroll', function () {
                     if (window.scrollY > 100) {
                         navbar.classList.add('custom-navbar-scrolled');
                     } else {
                         navbar.classList.remove('custom-navbar-scrolled');
                     }
+                });
+
+
+                document.addEventListener("DOMContentLoaded", function () {
+                    var elements = document.querySelectorAll('.animated');
+
+                    elements.forEach(function (el, index) {
+                        el.style.transitionDelay = index % 2 === 0 ? '0.3s' : '0.3s';
+                    });
+
+                    function handleScroll() {
+                        elements.forEach(function (el) {
+                            if (isElementInViewport(el, 300)) {
+                                el.classList.add('visible');
+                            }
+                        });
+                    }
+
+                    function isElementInViewport(el, offset = 0) {
+                        var rect = el.getBoundingClientRect();
+                        return (
+                            rect.top >= 0 &&
+                            rect.left >= 0 &&
+                            rect.bottom - offset <= (window.innerHeight || document.documentElement.clientHeight) &&
+                            rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+                        );
+                    }
+
+                    window.addEventListener('scroll', handleScroll);
+                    handleScroll(); // Trigger the animation check on page load
                 });
             </script>
         </div>

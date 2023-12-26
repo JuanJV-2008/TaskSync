@@ -1109,3 +1109,22 @@ body {
   max-width: 660px;
 }
 
+.animated {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.slide-in-left {
+  transform: translateX(-50px);
+}
+
+.slide-in-right {
+  transform: translateX(50px);
+}
+
+.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(0);
+}
