@@ -1087,3 +1087,25 @@ body {
   padding-left: 0;
   /* Adjusted padding for headers */
 }
+
+.main-header {
+  font-size: 100px;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 5px;
+  margin-left: 0px;
+  max-width: 660px;
+}
+
+.main-header-purple { 
+  font-size: 120px;
+  font-weight: 700;
+  color: #9535ff;
+  margin-bottom: 5px;
+  margin-left: 0px;
+}
+
+.sub-header{
+  max-width: 660px;
+}
+
