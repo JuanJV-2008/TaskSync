@@ -425,12 +425,36 @@ body {
 .timeline ul li {
   list-style-type: none;
   position: relative;
-  width: 9.6px;
-  /* 20% smaller */
+  width: 8px; /* Width of the line */
+  height: 100%; /* Full height of the timeline */
   margin: 0 auto;
-  padding-top: 80px;
-  /* 20% smaller */
-  background: rgb(7, 35, 77);
+  background: transparent; /* Make the line transparent */
+  position: relative;
+}
+
+.timeline ul li::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 35%;
+  width: 2px; /* Width of the line */
+  height: 100%; /* Full height of the timeline */
+  background: rgba(91, 113, 179, 1);
+  opacity: 0; /* Start with 0 opacity */
+  animation: slideIn 2s forwards;
+  z-index: -1; /* Set a lower z-index to appear below the diamonds */
+}
+
+@keyframes slideIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .timeline ul li::after {
@@ -444,7 +468,7 @@ body {
   height: 32px;
   /* 20% smaller */
   z-index: 2;
-  background: rgb(118, 134, 182);
+  background: #9535ff; 
 }
 
 .timeline ul li div {
@@ -1127,4 +1151,23 @@ body {
   opacity: 1;
   visibility: visible;
   transform: translateX(0);
+}
+
+.section-separator {
+  height: 10px;
+  background: linear-gradient(to right, transparent 50%, #9535ff 50%);
+  background-size: 200% 100%;
+  animation: slide 8s infinite alternate; /* Use 'alternate' to make it slide back */
+  margin: 20px 0;
+  position: relative;
+}
+
+@keyframes slide {
+  0% {
+      background-position: 200% 0;
+  }
+
+  100% {
+      background-position: -200% 0;
+  }
 }
