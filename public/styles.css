@@ -282,26 +282,24 @@ button:hover {
 #neoBgn {
   background-color: #c3e0ea;
   border-radius: 15px;
-  width: 500px;
-  /* Adjust the width as needed */
+  width: 600px;
   margin: auto;
-  box-shadow: 0px 0px 10px 0px #30b8e5;
+  box-shadow: 0px 0px 15px 0px rgba(149, 53, 255, 1);
+  margin-top: 50px;
+  padding: 30px;
+  border: 3px solid rgba(149, 53, 255, 0.6); /* Add a 2px solid border with a color of your choice */
 }
 
 .neoInput {
-  margin-top: 16px;
+  margin-top: 20px;
   outline: none;
   width: 100%;
-  height: 60px;
-  /* Increased height */
+  height: 50px;
   padding-left: 16px;
-  /* Increased padding */
   padding-right: 16px;
-  /* Increased padding */
   box-sizing: border-box;
   border: 1px solid #f9f9f9;
   border-radius: 8px;
-  /* Increased border-radius */
   background: #f7f7f7;
   box-shadow: 6px 6px 10px #b2b2b2, -6px -6px 10px rgba(168, 221, 252, 0.6);
 }
@@ -309,38 +307,41 @@ button:hover {
 .neoInput:focus {
   border: 1px solid #efdcdc;
   box-shadow: inset 6px 6px 10px #d7d7d7, inset -6px -6px 10px #f1f1f1;
-  /* Increased inset box-shadow */
 }
 
 #formContainer {
   max-width: 500px;
-  /* Adjust the max-width as needed */
   margin: 20px auto;
 }
 
 .submitBtn {
-  margin-top: 12px;
-  /* Adjusted margin-top */
+  margin-top: 20px;
   border: none;
   width: 100%;
   border-radius: 8px;
-  /* Increased border-radius */
-  padding: 14px;
-  /* Increased padding */
+  padding: 16px;
   font-size: 18px;
-  /* Increased font-size */
   color: #fff;
   box-shadow: 6px 6px 10px #b2b2b2, -6px -6px 10px rgba(168, 221, 252, 0.6);
+  background: linear-gradient(145deg, #dbe6f6, #a7bddb);
+  transition: background 0.3s ease;
+}
+
+.submitBtn:hover {
+  background: linear-gradient(145deg, #a7bddb, #dbe6f6);
 }
 
 #redirectLink {
-  margin-top: 16px;
-  /* Adjusted margin-top */
+  margin-top: 20px;
 }
 
-/* Additional class for the blue-to-purple gradient transition */
 .blue-to-purple {
   background: linear-gradient(145deg, #dbe6f6, #a7bddb);
+  transition: background 0.3s ease; /* Add a smooth transition effect */
+}
+
+.blue-to-purple:hover {
+  background: linear-gradient(145deg, #a7bddb, #dbe6f6); /* Adjust the colors as needed */
 }
 
 .custom-container {
@@ -425,10 +426,13 @@ body {
 .timeline ul li {
   list-style-type: none;
   position: relative;
-  width: 8px; /* Width of the line */
-  height: 100%; /* Full height of the timeline */
+  width: 8px;
+  /* Width of the line */
+  height: 100%;
+  /* Full height of the timeline */
   margin: 0 auto;
-  background: transparent; /* Make the line transparent */
+  background: transparent;
+  /* Make the line transparent */
   position: relative;
 }
 
@@ -437,12 +441,16 @@ body {
   position: absolute;
   top: 0;
   left: 35%;
-  width: 2px; /* Width of the line */
-  height: 100%; /* Full height of the timeline */
+  width: 2px;
+  /* Width of the line */
+  height: 100%;
+  /* Full height of the timeline */
   background: rgba(91, 113, 179, 1);
-  opacity: 0; /* Start with 0 opacity */
+  opacity: 0;
+  /* Start with 0 opacity */
   animation: slideIn 2s forwards;
-  z-index: -1; /* Set a lower z-index to appear below the diamonds */
+  z-index: -1;
+  /* Set a lower z-index to appear below the diamonds */
 }
 
 @keyframes slideIn {
@@ -468,7 +476,7 @@ body {
   height: 32px;
   /* 20% smaller */
   z-index: 2;
-  background: #9535ff; 
+  background: #9535ff;
 }
 
 .timeline ul li div {
@@ -1026,8 +1034,6 @@ body {
   position: absolute;
 }
 
-
-
 .logoutButton {
   display: inline-block;
   text-align: center;
@@ -1121,7 +1127,7 @@ body {
   max-width: 660px;
 }
 
-.main-header-purple { 
+.main-header-purple {
   font-size: 100px;
   font-weight: 700;
   color: #9535ff;
@@ -1129,7 +1135,7 @@ body {
   margin-left: 0px;
 }
 
-.sub-header{
+.sub-header {
   max-width: 660px;
 }
 
@@ -1157,17 +1163,44 @@ body {
   height: 10px;
   background: linear-gradient(to right, transparent 50%, #9535ff 50%);
   background-size: 200% 100%;
-  animation: slide 8s infinite alternate; /* Use 'alternate' to make it slide back */
+  animation: slide 8s infinite alternate;
+  /* Use 'alternate' to make it slide back */
   margin: 20px 0;
   position: relative;
 }
 
 @keyframes slide {
   0% {
-      background-position: 200% 0;
+    background-position: 200% 0;
   }
 
   100% {
-      background-position: -200% 0;
+    background-position: -200% 0;
+  }
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 80vh;
+}
+
+.signup-container {
+  opacity: 0;
+  animation: foldIn 1.5s forwards;
+  transform-origin: center center;
+  overflow: hidden;
+}
+
+@keyframes foldIn {
+  0% {
+    transform: perspective(800px) rotateX(90deg);
+    opacity: 0;
+  }
+
+  100% {
+    transform: perspective(800px) rotateX(0deg);
+    opacity: 1;
   }
 }
