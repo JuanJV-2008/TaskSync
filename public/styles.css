@@ -284,10 +284,11 @@ button:hover {
   border-radius: 15px;
   width: 600px;
   margin: auto;
-  box-shadow: 0px 0px 15px 0px rgba(149, 53, 255, 1);
+  box-shadow: 0px 0px 30px 0px rgba(91, 113, 179, 1);
   margin-top: 50px;
   padding: 30px;
-  border: 3px solid rgba(149, 53, 255, 0.6); /* Add a 2px solid border with a color of your choice */
+  border: 2px solid rgba(67, 105, 218, 0.4);
+  /* Add a 2px solid border with a color of your choice */
 }
 
 .neoInput {
@@ -337,11 +338,13 @@ button:hover {
 
 .blue-to-purple {
   background: linear-gradient(145deg, #dbe6f6, #a7bddb);
-  transition: background 0.3s ease; /* Add a smooth transition effect */
+  transition: background 0.3s ease;
+  /* Add a smooth transition effect */
 }
 
 .blue-to-purple:hover {
-  background: linear-gradient(145deg, #a7bddb, #dbe6f6); /* Adjust the colors as needed */
+  background: linear-gradient(145deg, #a7bddb, #dbe6f6);
+  /* Adjust the colors as needed */
 }
 
 .custom-container {
@@ -794,7 +797,7 @@ body {
 .active:after {
   content: '\02795';
   font-size: 50px;
-  color: #777;
+  color: #9535ff;
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -966,7 +969,8 @@ body {
   max-height: 90vh;
   /* Set a maximum height, adjust as needed */
   padding: 20px;
-  box-shadow: 0px 0px 10px 0px #30b8e5;
+  box-shadow: 0px 0px 30px 0px rgba(91, 113, 179, 1);
+  border: 2px solid rgba(67, 105, 218, 0.4);
   margin: 2.5% auto;
   /* Adjust the top and horizontal margins */
   padding: 20px;
@@ -1204,3 +1208,31 @@ body {
     opacity: 1;
   }
 }
+
+/* Add the fold-in animation to the modal container */
+.modal-container {
+  opacity: 0;
+  animation: foldInModal 1s forwards;
+  transform-origin: top center;
+  overflow: hidden;
+}
+
+@keyframes foldInModal {
+  0% {
+    transform: perspective(800px) rotateX(-90deg);
+    opacity: 0;
+  }
+
+  100% {
+    transform: perspective(800px) rotateX(0deg);
+    opacity: 1;
+  }
+}
+
+.modal-content {
+  opacity: 0;
+  animation: foldInModal 1s forwards;
+  transform-origin: top center;
+  overflow: hidden;
+}
+

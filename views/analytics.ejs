@@ -6,7 +6,7 @@
         <%- include('layouts/login-navbar-opaque'); -%>
             <div class="analytics-container">
                 <center>
-                    <h2 class="body-headers" style = "padding-left: 20px;">Task Analytics</h2>
+                    <h2 class="body-headers" style="padding-left: 20px;">Task Analytics</h2>
                 </center>
 
                 <!-- Display the count of new tasks -->
@@ -36,8 +36,8 @@
 
             <div class="analytics-item">
                 <h3>Task Status</h3>
-                <canvas id="taskStatusChart"></canvas>
-              </div>
+                <canvas id="taskStatusChart" style="width: 30%; height: 30%;"></canvas>
+            </div>
 
             <div style="height: 100px;"> </div>
 
@@ -78,11 +78,12 @@
 
                     function updateAnalyticsUI(counts) {
                         // Update the UI with counts for each status
-                        document.getElementById("newTasksCount").textContent = counts.new;
-                        document.getElementById("inProgressTasksCount").textContent = counts.inProgress;
-                        document.getElementById("rejectedTasksCount").textContent = counts.rejected;
-                        document.getElementById("completedTasksCount").textContent = counts.completed;
+                        document.getElementById("newTasksCount").textContent = counts.new || 0;
+                        document.getElementById("inProgressTasksCount").textContent = counts.inProgress || 0;
+                        document.getElementById("rejectedTasksCount").textContent = counts.rejected || 0;
+                        document.getElementById("completedTasksCount").textContent = counts.completed || 0;
                     }
+
 
                     function createBarGraph(counts) {
                         var ctx = document.getElementById("taskStatusChart").getContext("2d");
@@ -116,14 +117,13 @@
                             }
                         };
 
-                                new Chart(ctx, {
-                                    type: 'bar',
-                                    data: chartData,
-                                    options: chartOptions
-                                });
-                            }
+                        new Chart(ctx, {
+                            type: 'bar',
+                            data: chartData,
+                            options: chartOptions
+                        });
+                    }
                 </script>
-
     </body>
 
 </html>
