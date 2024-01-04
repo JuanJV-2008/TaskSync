@@ -1,24 +1,45 @@
+<!-- The following code represents a neumorphic-style navigation bar and an empty div for spacing -->
+
+<!-- Neumorphic Navigation Bar -->
 <nav class="navbar navbar-expand-lg navbar-light neumorphic-navbar fixed-top" id="navbar">
+    <!-- Container to hold the navigation content -->
     <div class="container-fluid">
+        <!-- TaskSync+ logo with a link to the home page -->
         <a href="/"><img src="/images/logo.png" width="100" height="100"></a>
+
+        <!-- TaskSync+ brand name with a link to the home page -->
         <a class="navbar-brand" href="/">TaskSync+</a>
+
+        <!-- Navbar toggler for responsive design -->
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
+
+        <!-- Collapsible Navbar content -->
         <div class="collapse navbar-collapse" id="navbarNav">
+            <!-- Navbar items aligned to the right -->
             <ul class="navbar-nav ms-auto">
+                <!-- Task Manager link -->
                 <li class="nav-item">
                     <a class="nav-link" href="/signup">Task Manager</a>
                 </li>
+
+                <!-- Analytics link with a border to separate items -->
                 <li class="nav-item borderRight">
                     <a class="nav-link" href="/signup">Analytics</a>
                 </li>
+
+                <!-- Log In link -->
                 <li class="nav-item">
                     <a class="nav-link" href="/login">Log In</a>
                 </li>
+
+                <!-- Sign Up link with a border to separate items -->
                 <li class="nav-item borderRight">
                     <a class="nav-link" href="/signup">Sign Up</a>
                 </li>
+
+                <!-- Notification bell icon with a link -->
                 <li class="nav-item">
                     <a class="nav-link navbar-img" href="/signup">
                         <img src="/images/bell.png" alt="Notifications" width="40" height="40">
@@ -29,5 +50,5 @@
     </div>
 </nav>
 
-<div style="height: 100px;">
-</div>
+<!-- Empty div for creating space below the navigation bar -->
+<div style="height: 100px;"></div>
