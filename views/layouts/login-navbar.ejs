@@ -1,24 +1,37 @@
+<!-- Navigation Bar -->
 <nav class="navbar navbar-expand-lg navbar-light custom-navbar fixed-top" id="navbar">
     <div class="container-fluid">
+        <!-- Logo and Brand -->
         <a href="/login-home"><img src="/images/logo.png" width="100" height="100"></a>
         <a class="navbar-brand" href="/login-home">TaskSync+</a>
+        
+        <!-- Navbar Toggle Button -->
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
+        
+        <!-- Navbar Content -->
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
+                <!-- Task Manager Link -->
                 <li class="nav-item">
                     <a class="nav-link" href="/task-manager">Task Manager</a>
                 </li>
+                
+                <!-- Analytics Link -->
                 <li class="nav-item borderRight">
                     <a class="nav-link" href="/analytics">Analytics</a>
                 </li>
+                
+                <!-- Notifications Bell Icon -->
                 <li class="nav-item borderRight">
                     <a class="nav-link navbar-img" href="#">
                         <img src="/images/bell.png" alt="Notifications" width="40" height="40">
                     </a>
                 </li>
+                
+                <!-- Profile Dropdown -->
                 <li class="nav-item">
                     <!-- Profile container with dropdown menu -->
                     <div class="profile-container">
@@ -37,35 +50,42 @@
     </div>
 </nav>
 
-<div style="height: 110px;">
-</div>
+<!-- Spacing -->
+<div style="height: 110px;"></div>
 
+<!-- Notifications Modal -->
 <div class="modal">
     <div class="modal-content blue-to-purple modal-container">
+        <!-- Close Button -->
         <span class="close">&times;</span>
-        <!-- Update the modal content below -->
+        
+        <!-- Modal Header -->
         <h2 class="body-headers-center">Notifications</h2>
         <br>
+        
+        <!-- Notification Messages Container -->
         <div id="notificationMessage" class="scrollable-container">
             <!-- Overdue tasks content will be added dynamically here -->
         </div>
     </div>
 </div>
 
-
-<!-- Update your existing JavaScript code with the following -->
+<!-- JavaScript Code -->
 <script>
+    // Document Ready Event Listener
     document.addEventListener('DOMContentLoaded', function () {
         const bellIcon = document.querySelector('.navbar-img');
         const modal = document.querySelector('.modal');
         const closeModal = document.querySelector('.close');
 
+        // Bell Icon Click Event Listener
         bellIcon.addEventListener('click', function () {
             // Fetch and render overdue tasks when the bell icon is clicked
             fetchAndRenderOverdueTasks();
             modal.style.display = 'block';
         });
 
+        // Close Modal Event Listener
         closeModal.addEventListener('click', function () {
             modal.style.display = 'none';
         });
@@ -89,8 +109,9 @@
             })
             .then((data) => {
                 if (data.success) {
-                    // Render overdue tasks on the UI
-                    renderOverdueTasks(data.overdueTasks);
+                    // Filter and render overdue tasks on the UI
+                    const overdueTasks = data.overdueTasks.filter(task => task.status !== 'completed' && task.status !== 'rejected');
+                    renderOverdueTasks(overdueTasks);
                 } else {
                     console.error("Error fetching overdue tasks:", data.error);
                     // Add error handling logic or display an error message
@@ -108,12 +129,14 @@
         notificationMessage.innerHTML = ''; // Clear previous content
 
         overdueTasks.forEach((task) => {
-            // Format dates using toLocaleDateString
-            const formattedStartDate = new Date(task.startDate).toLocaleDateString();
-            const formattedDueDate = new Date(task.dueDate).toLocaleDateString();
+            // Check if the status is neither 'completed' nor 'rejected'
+            if (task.status !== 'completed' && task.status !== 'rejected') {
+                // Format dates using toLocaleDateString
+                const formattedStartDate = new Date(task.startDate).toLocaleDateString();
+                const formattedDueDate = new Date(task.dueDate).toLocaleDateString();
 
-            // HTML structure for each overdue task
-            const taskContent = `
+                // HTML structure for each overdue task
+                const taskContent = `
     <div class="custom-task-details">
         <div class="custom-task-header">
             <h3>${task.title}</h3>
@@ -127,7 +150,8 @@
     <div class="custom-hr"></div>
 `;
 
-            notificationMessage.innerHTML += taskContent;
+                notificationMessage.innerHTML += taskContent;
+            }
         });
     }
 </script>
