@@ -3,11 +3,16 @@
 <%- include('layouts/header'); -%>
 
     <body>
+        <!-- Include the login navigation bar -->
         <%- include('layouts/login-navbar-opaque'); -%>
+
+            <!-- Center-aligned content -->
             <center>
+                <!-- Button to open the modal for creating a new task -->
                 <button class="createNewTask blue-to-purple" onclick="openModal()">Create New Task</button>
                 <br /><br />
 
+                <!-- Accordion buttons for different task statuses -->
                 <button class="accordion accordion-headers" data-status="new">New Tasks</button>
                 <div class="panel" id="new-panel">
                     <!-- Tasks will be dynamically added here -->
@@ -33,16 +38,22 @@
                     <div class="modal-content blue-to-purple">
                         <span class="close" onclick="closeModal()">&times;</span>
                         <!-- Update the modal content below -->
+                        <!-- Form for creating a new task -->
                         <h2 class="body-headers-center">Create New Task</h2>
                         <label for="taskTitle">Title:</label>
+                        <!-- Input field for task title -->
                         <input type="text" id="taskTitle" class="neoInput" />
                         <label for="taskDescription">Description:</label>
+                        <!-- Input field for task description -->
                         <input type="text" id="taskDescription" class="neoInput" />
                         <label for="taskStartDate">Start Date:</label>
+                        <!-- Input field for task start date -->
                         <input type="text" id="taskStartDate" class="neoInput" placeholder="MM/DD/YYYY" />
                         <label for="taskDueDate">Due Date:</label>
+                        <!-- Input field for task due date -->
                         <input type="text" id="taskDueDate" class="neoInput" placeholder="MM/DD/YYYY" />
                         <label for="taskStatus">Status:</label>
+                        <!-- Dropdown for task status -->
                         <select id="taskStatus" class="neoInput"
                             style="color: black; height: 60px; position: relative;">
                             <option value="new" style="color: black;">New</option>
@@ -50,25 +61,33 @@
                             <option value="rejected" style="color: black;">Rejected</option>
                             <option value="completed" style="color: black;">Completed</option>
                         </select>
+                        <!-- Button to add the task -->
                         <button onclick="addTask()" class="sumbit-btn blue-to-purple" style="color: black;">Add
                             Task</button>
                     </div>
                 </div>
 
+                <!-- Modal for editing a task -->
                 <div id="editModal" class="modal">
                     <div class="modal-content blue-to-purple">
                         <span class="close" onclick="closeEditModal()">&times;</span>
                         <!-- Update the modal content below -->
+                        <!-- Form for editing an existing task -->
                         <h2 class="body-headers-center">Edit Task</h2>
                         <label for="editTaskTitle">Title:</label>
+                        <!-- Input field for edited task title -->
                         <input type="text" id="editTaskTitle" class="neoInput" />
                         <label for="editTaskDescription">Description:</label>
+                        <!-- Input field for edited task description -->
                         <input type="text" id="editTaskDescription" class="neoInput" />
                         <label for="editTaskStartDate">Start Date:</label>
+                        <!-- Input field for edited task start date -->
                         <input type="text" id="editTaskStartDate" class="neoInput" placeholder="MM/DD/YYYY" />
                         <label for="editTaskDueDate">Due Date:</label>
+                        <!-- Input field for edited task due date -->
                         <input type="text" id="editTaskDueDate" class="neoInput" placeholder="MM/DD/YYYY" />
                         <label for="editTaskStatus">Status:</label>
+                        <!-- Dropdown for edited task status -->
                         <select id="editTaskStatus" class="neoInput"
                             style="color: black; height: 60px; position: relative;">
                             <option value="new" style="color: black;">New</option>
@@ -77,22 +96,28 @@
                             <option value="completed" style="color: black;">Completed</option>
                         </select>
                         <br>
+                        <!-- Button to save the edited task -->
                         <button onclick="saveEditedTask()" class="sumbit-btn blue-to-purple" style="color: black;">Save
                             Changes</button>
                     </div>
                 </div>
             </center>
+
+            <!-- Spacer to provide space below the centered content -->
             <div style="height: 100px;"> </div>
+
+            <!-- Include the footer -->
             <%- include('layouts/footer'); -%>
-                <!-- Update your HTML file with this section -->
+                <!-- JavaScript script for dynamic task management -->
                 <script>
                     document.addEventListener("DOMContentLoaded", function () {
                         // Fetch and render tasks when the page loads
                         fetchAndRenderTasks();
                     });
+
+                    // Accordion functionality for task panels
                     var acc = document.getElementsByClassName("accordion");
                     var i;
-
                     for (i = 0; i < acc.length; i++) {
                         acc[i].addEventListener("click", function () {
                             this.classList.toggle("active");
@@ -105,17 +130,21 @@
                         });
                     }
 
+                    // Counter for tasks
                     var taskCounter = 1;
 
+                    // Function to close the task creation modal
                     function closeModal() {
                         document.getElementById("myModal").style.display = "none";
                     }
 
+                    // Function to open the task creation or editing modal
                     function openModal(taskId, taskTitle, taskDescription, taskStartDate, taskDueDate, taskStatus) {
+                        // Retrieve modal elements
                         var modal = document.getElementById("myModal");
                         var editModal = document.getElementById("editModal");
 
-                        // Check if taskId is provided, indicating it's an edit operation
+                        // Check if taskId is provided, indicating an edit operation
                         if (taskId) {
                             // Populate the edit modal with task details
                             document.getElementById("editTaskTitle").value = taskTitle;
@@ -135,11 +164,11 @@
                         }
                     }
 
+                    // Function to close the task editing modal
                     function closeEditModal() {
                         document.getElementById("editModal").style.display = "none";
                     }
 
-                    // Function to save the edited task
                     // Function to save the edited task
                     function saveEditedTask() {
                         // Reset any previous validation errors
@@ -204,6 +233,7 @@
                             });
                     }
 
+                    // Function to reset validation error messages
                     function resetValidationErrors() {
                         // Remove any previous validation error messages
                         var validationErrorElements = document.getElementsByClassName("validation-error");
@@ -212,6 +242,7 @@
                         }
                     }
 
+                    // Function to display a validation error message
                     function displayValidationError(message) {
                         var validationError = document.createElement("p");
                         validationError.className = "validation-error";
@@ -246,9 +277,7 @@
                         );
                     }
 
-
-                    var taskCounter = 1;
-
+                    // Function to fetch and render tasks
                     function fetchAndRenderTasks() {
                         fetch("/fetch-tasks")
                             .then((response) => {
@@ -272,12 +301,12 @@
                             });
                     }
 
+                    // Function to render tasks on the UI
                     function renderTasks(tasks) {
                         tasks.forEach((task) => {
                             updateTaskUI(task);
                         });
                     }
-
 
                     // Function to add a new task
                     function addTask() {
@@ -361,6 +390,7 @@
                         return new Date(date).toLocaleDateString(undefined, options);
                     }
 
+                    // Function to update the UI with a new task
                     function updateTaskUI(task) {
                         var panel = document.getElementById(task.status + "-panel");
 
@@ -397,6 +427,7 @@
                         taskCounter++;
                     }
 
+                    // Function to delete a task
                     function deleteTask(taskId, taskIdFromDatabase) {
                         // Remove the task from the UI
                         var taskToRemove = document.getElementById(taskId);
@@ -433,7 +464,6 @@
                             // Add error handling logic or display an error message
                         }
                     }
-
                 </script>
     </body>
 

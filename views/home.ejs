@@ -4,18 +4,23 @@
 <%- include('layouts/header'); -%>
 
     <body>
+        <!-- Include standard navbar -->
         <%- include('layouts/navbar'); -%>
+
             <div class="container-xl">
                 <div class="row align-items-center">
                     <div class="col-xxl-7">
+                        <!-- Main header and sub-header -->
                         <h1 class="main-header">Simplify, Prioritize, and Achieve with <span
                                 class="main-header-purple">TaskSync+</span></h1>
                         <h2 class="sub-header">Seamless Organization for a Harmonized, Productive, and Fulfilling Life
                         </h2>
+                        <!-- Sign Up button -->
                         <a href="/signup"><button class="round-button">Sign Up</button></a>
                         <br><br><br><br>
                     </div>
                     <div class="col-xxl-5 text-end">
+                        <!-- List image -->
                         <div class="img-container" style="width: 100%; max-width: 800px;">
                             <img src="/images/list.png" alt="List Image" class="img-fluid"
                                 style="width: 120%; height: auto; margin-bottom: 70px;">
@@ -25,11 +30,13 @@
                     <br>
                     <br>
 
+                    <!-- Section separator -->
                     <div class="section-separator"></div>
 
                     <br>
                     <div class="row animated slide-in-left">
                         <div class="col-xxl-6">
+                            <!-- Feature: Save Time -->
                             <h3 class="body-headers">Save Time</h3>
                             <p class="body-text">In today's fast-paced world, time is of the essence, and efficient task
                                 management has become a key factor in personal and professional success. A robust task
@@ -41,6 +48,7 @@
                                 navigate seamlessly through their daily responsibilities.</p>
                         </div>
                         <div class="col-xxl-6">
+                            <!-- Image for Save Time feature -->
                             <img src="/images/save-time.png" alt="Feature Image" class="rounded height=" 400px"
                                 width="600px">
                         </div>
@@ -48,11 +56,13 @@
                     <br>
                     <div class="row animated slide-in-right">
                         <div class="col-xxl-6">
+                            <!-- Image for Organize your day feature -->
                             <img src="/images/organize-your-day.png" alt="Feature Image" class="rounded" height="400px"
                                 width="600px">
                         </div>
                         <div class="col-xxl-6">
-                            <h3 class="body-headers-right">Orangnize your day</h3>
+                            <!-- Feature: Organize your day -->
+                            <h3 class="body-headers-right">Organize your day</h3>
                             <p class="body-text-right">In the hustle and bustle of today's rapid-paced lifestyle, time
                                 is a precious commodity. Achieving personal and professional success hinges on effective
                                 task management. Our task management system is meticulously crafted to be your
@@ -67,6 +77,7 @@
                     <br>
                     <div class="row animated slide-in-left">
                         <div class="col-xxl-6">
+                            <!-- Feature: Recall everything -->
                             <h3 class="body-headers">Recall everything</h3>
                             <p class="body-text">Amidst the fast-paced demands of modern life, achieving success
                                 requires efficient task management. Our meticulously crafted system becomes your
@@ -78,6 +89,7 @@
                                 streamlined task management, meticulous recall, and proactive notifications.</p>
                         </div>
                         <div class="col-xxl-6">
+                            <!-- Image for Recall everything feature -->
                             <img src="/images/recall.png" alt="Feature Image" class="rounded height=" 400px"
                                 width="600px">
                         </div>
@@ -85,10 +97,12 @@
                     <br>
                     <div class="row animated slide-in-right">
                         <div class="col-xxl-6">
+                            <!-- Image for Analyse your data feature -->
                             <img src="/images/analytics.png" alt="Feature Image" class="rounded" height="400px"
                                 width="600px">
                         </div>
                         <div class="col-xxl-6">
+                            <!-- Feature: Analyse your data -->
                             <h3 class="body-headers-right">Analyse your data</h3>
                             <p class="body-text-right">With a powerful built-in analytics feature, we empower you to not
                                 only manage tasks seamlessly but also analyze your data with precision. Dive into a
@@ -104,6 +118,7 @@
 
                     <div style="height: 70px;"></div>
 
+                    <!-- Timeline section -->
                     <section class="timeline">
                         <ul>
                             <!-- 12 time li -->
@@ -150,11 +165,13 @@
                         </ul>
                     </section>
 
+                    <!-- JS file and custom script for timeline animation-->
                     <script src="main.js"></script>
                     <script>
                         var navbar = document.getElementById('navbar');
 
                         window.addEventListener('scroll', function () {
+                            // Change navbar style on scroll
                             if (window.scrollY > 100) {
                                 navbar.classList.add('custom-navbar-scrolled');
                             } else {
@@ -162,8 +179,8 @@
                             }
                         });
 
-
                         document.addEventListener("DOMContentLoaded", function () {
+                            // Animated elements on scroll
                             var elements = document.querySelectorAll('.animated');
 
                             elements.forEach(function (el, index) {
@@ -172,6 +189,7 @@
 
                             function handleScroll() {
                                 elements.forEach(function (el) {
+                                    // Add 'visible' class to elements in the viewport
                                     if (isElementInViewport(el, 300)) {
                                         el.classList.add('visible');
                                     }
@@ -191,11 +209,11 @@
                             window.addEventListener('scroll', handleScroll);
                             handleScroll(); // Trigger the animation check on page load
                         });
-
                     </script>
                 </div>
                 <div style="height: 100px;"></div>
 
+                <!-- Include footer -->
                 <%- include('layouts/footer'); -%>
 
     </body>

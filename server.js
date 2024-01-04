@@ -1,3 +1,4 @@
+// Import required modules and set up Express
 const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
@@ -7,7 +8,7 @@ const mongoose = require("mongoose");
 const { LogInCollection, TaskCollection } = require("./db/mongo"); // Import your LogInCollection and TaskCollection models
 const port = process.env.PORT || 3000;
 
-
+// Middleware and configuration settings
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.urlencoded({ extended: false }));
 app.set("view engine", "ejs");
@@ -28,6 +29,7 @@ mongoose.connect("mongodb://localhost:27017/TaskSync", {
   useUnifiedTopology: true,
 });
 
+// Fetch analytics data endpoint
 app.get("/fetch-analytics", async (req, res) => {
   try {
     // Check if userId is present in the session
@@ -52,7 +54,7 @@ app.get("/fetch-analytics", async (req, res) => {
   }
 });
 
-// Add this route handler after your other routes
+// Fetch overdue tasks endpoint
 app.get("/fetch-overdue-tasks", async (req, res) => {
   try {
     // Check if userId is present in the session
@@ -73,8 +75,7 @@ app.get("/fetch-overdue-tasks", async (req, res) => {
   }
 });
 
-
-// Add this route handler after your other routes
+// Edit task endpoint
 app.post("/edit-task", async (req, res) => {
   try {
     // Check if userId is present in the session
@@ -109,6 +110,7 @@ app.post("/edit-task", async (req, res) => {
   }
 });
 
+// Delete task endpoint
 app.delete('/delete-task/:taskId', async (req, res) => {
   const taskId = req.params.taskId;
 
@@ -130,8 +132,7 @@ app.delete('/delete-task/:taskId', async (req, res) => {
   }
 });
 
-
-// Add this route handler after your other routes
+// Fetch all tasks endpoint
 app.get("/fetch-tasks", async (req, res) => {
   try {
     // Check if userId is present in the session
@@ -152,7 +153,7 @@ app.get("/fetch-tasks", async (req, res) => {
   }
 });
 
-
+// Create task endpoint
 app.post("/create-task", async (req, res) => {
   try {
     // Check if userId is present in the session
@@ -185,8 +186,7 @@ app.post("/create-task", async (req, res) => {
   }
 });
 
-
-// Route to handle retrieving tasks for a specific status
+// Route to retrieve tasks for a specific status
 app.get("/tasks/:status", async (req, res) => {
   try {
     const status = req.params.status;
@@ -201,7 +201,7 @@ app.get("/tasks/:status", async (req, res) => {
   }
 });
 
-// Add this route handler at the end of your server.js file
+// Route for password update success
 app.get("/password-updated", (req, res) => {
   res.render("password-updated");
 });
@@ -231,12 +231,12 @@ app.post("/update-password", async (req, res) => {
   }
 });
 
-// Add this route before your other routes
+// Route to handle password recovery initiation
 app.get("/recover-password", (req, res) => {
   res.render("forgot-password");
 });
 
-// server.js
+// Route to handle password recovery initiation (POST method)
 app.post("/recover-password", async (req, res) => {
   try {
     const { name } = req.body;
@@ -256,33 +256,7 @@ app.post("/recover-password", async (req, res) => {
   }
 });
 
-
-
-app.get("/forgot-password", (req, res) => {
-  res.render("forgot-password");
-});
-
-app.post("/forgot-password", async (req, res) => {
-  try {
-    const { name } = req.body;
-    const user = await LogInCollection.findOne({ name });
-
-    if (!user) {
-      // Handle case where username doesn't exist
-      return res.render("forgot-password", { errorMessage: "Username not found" });
-    }
-
-    // Set user in session for password recovery
-    req.session.user = user.name;
-
-    // Render a new view to answer the security question
-    res.render("answer-security-question", { user });
-  } catch (error) {
-    console.error(error);
-    res.status(500).send("Internal Server Error");
-  }
-});
-
+// Route to handle password recovery completion
 app.post("/complete-password-recovery", async (req, res) => {
   try {
     const { answer, newPassword } = req.body;
@@ -313,12 +287,10 @@ function requireLogin(req, res, next) {
     // If it's the home page or user is logged in, proceed to the next middleware or route handler
     next();
   } else {
-    // If user is not logged in and not on the home page, redirect to login page
+    // If the user is not logged in and not on the home page, redirect to the login page
     res.redirect('/login');
   }
 }
-
-// Assume you've already defined your LogInCollection model and app instance
 
 // Update user profile route
 app.post("/update-profile", async (req, res) => {
@@ -352,33 +324,42 @@ app.post("/update-profile", async (req, res) => {
   }
 });
 
+// Route definitions
+
+// Home page
 app.get("/", (req, res) => {
   res.render("home", { naming: req.session.user });
 });
 
-// Use the updated middleware for other pages
+// Home page after login
 app.get("/login-home", requireLogin, (req, res) => {
   res.render("login-home", { naming: req.session.user });
 });
 
+// Login page
 app.get("/login", (req, res) => {
   res.render("login", { errorMessage: "" });
 });
 
+// Signup page
 app.get("/signup", (req, res) => {
   res.render("signup", { errorMessage: "" });
 });
 
+// Analytics page
 app.get("/analytics", requireLogin, (req, res) => {
   res.render("analytics", { naming: req.session.user });
 });
 
+// Task Manager page
 app.get("/task-manager", requireLogin, (req, res) => {
   res.render("task-manager", { naming: req.session.user });
 });
 
+// Handle GET request to "/profile"
 app.get("/profile", requireLogin, async (req, res) => {
   try {
+    // Find the user by username using the LogInCollection model
     const user = await LogInCollection.findOne({ name: req.session.user });
 
     if (!user) {
@@ -393,6 +374,7 @@ app.get("/profile", requireLogin, async (req, res) => {
   }
 });
 
+// Handle POST request to "/signup"
 app.post("/signup", async (req, res) => {
   try {
     console.log("Form submitted");
@@ -405,16 +387,23 @@ app.post("/signup", async (req, res) => {
 
     console.log("Data to be inserted:", data);
 
+    // Check if the username already exists
     const checking = await LogInCollection.findOne({ name: req.body.name });
 
     console.log("Existing user check:", checking);
 
     if (checking) {
+      // Render signup page with error message if username exists
       res.render("signup", { errorMessage: "User details already exist" });
     } else {
+      // Insert new user data into LogInCollection
       await LogInCollection.insertMany([data]);
       console.log("Data inserted successfully");
-      req.session.user = req.body.name; // Set user in session upon successful signup
+
+      // Set user in session upon successful signup
+      req.session.user = req.body.name;
+
+      // Render login-home page with user's name
       res.status(201).render("login-home", { naming: req.session.user });
     }
   } catch (error) {
@@ -423,28 +412,29 @@ app.post("/signup", async (req, res) => {
   }
 });
 
-// Update the "/login" route
+// Handle POST request to "/login"
 app.post("/login", async (req, res) => {
   try {
+    // Find user by username
     const check = await LogInCollection.findOne({ name: req.body.name });
 
     if (check && check.password === req.body.password) {
       // Set user in session upon successful login
       req.session.user = check.name;
-      // Render the login-home page with the user's name
+
+      // Render login-home page with user's name
       res.status(201).render("login-home", {
         naming: check.name, // Use the name from the database
       });
     } else {
-      // Display an error message for incorrect username or password
+      // Render login page with error message for incorrect username or password
       res.render("login", { errorMessage: "Incorrect username or password" });
     }
   } catch (error) {
-    // Display a generic error message for internal server error
+    // Render generic error message for internal server error
     res.status(500).send("Internal Server Error");
   }
 });
-
 
 // Add a new route for logout
 app.get("/logout", (req, res) => {
@@ -458,6 +448,7 @@ app.get("/logout", (req, res) => {
   });
 });
 
+// Start the server
 app.listen(port, () => {
   console.log(`App listening at http://localhost:${port}`);
 });

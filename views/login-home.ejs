@@ -1,22 +1,25 @@
 <!DOCTYPE html>
-<html>
 <html lang="en">
 <%- include('layouts/header'); -%>
 
     <body>
+        <!-- Include login navbar -->
         <%- include('layouts/login-navbar'); -%>
 
             <div class="container-xl">
                 <div class="row align-items-center">
                     <div class="col-xxl-7">
+                        <!-- Main header section -->
                         <h1 class="main-header">Simplify, Prioritize, and Achieve with <span
                                 class="main-header-purple">TaskSync+</span></h1>
                         <h2 class="sub-header">Welcome Back, <%= naming %>
                         </h2>
+                        <!-- Get Started button -->
                         <a href="/task-manager"><button class="round-button">Get Started</button></a>
                         <br><br><br><br>
                     </div>
                     <div class="col-xxl-5 text-end">
+                        <!-- List Image section -->
                         <div class="img-container" style="width: 100%; max-width: 800px;">
                             <img src="/images/list.png" alt="List Image" class="img-fluid"
                                 style="width: 120%; height: auto; margin-bottom: 70px;">
@@ -26,9 +29,11 @@
                     <br>
                     <br>
 
+                    <!-- Section separator -->
                     <div class="section-separator"></div>
 
                     <br>
+                    <!-- Save Time section -->
                     <div class="row animated slide-in-left">
                         <div class="col-xxl-6">
                             <h3 class="body-headers">Save Time</h3>
@@ -42,18 +47,20 @@
                                 navigate seamlessly through their daily responsibilities.</p>
                         </div>
                         <div class="col-xxl-6">
+                            <!-- Save Time Image -->
                             <img src="/images/save-time.png" alt="Feature Image" class="rounded height=" 400px"
                                 width="600px">
                         </div>
                     </div>
                     <br>
+                    <!-- Organize Your Day section -->
                     <div class="row animated slide-in-right">
                         <div class="col-xxl-6">
                             <img src="/images/organize-your-day.png" alt="Feature Image" class="rounded" height="400px"
                                 width="600px">
                         </div>
                         <div class="col-xxl-6">
-                            <h3 class="body-headers-right">Orangnize your day</h3>
+                            <h3 class="body-headers-right">Organize your day</h3>
                             <p class="body-text-right">In the hustle and bustle of today's rapid-paced lifestyle, time
                                 is a precious commodity. Achieving personal and professional success hinges on effective
                                 task management. Our task management system is meticulously crafted to be your
@@ -61,11 +68,11 @@
                                 solution designed to seamlessly integrate into your routine. Centralize your tasks,
                                 deadlines, and priorities effortlessly within our accessible platform. With the power to
                                 organize your work, set priorities, and allocate time efficiently, you can now take
-                                control and optimize your day for unparalleled success.
-                            </p>
+                                control and optimize your day for unparalleled success.</p>
                         </div>
                     </div>
                     <br>
+                    <!-- Recall Everything section -->
                     <div class="row animated slide-in-left">
                         <div class="col-xxl-6">
                             <h3 class="body-headers">Recall everything</h3>
@@ -79,35 +86,38 @@
                                 streamlined task management, meticulous recall, and proactive notifications.</p>
                         </div>
                         <div class="col-xxl-6">
+                            <!-- Recall Everything Image -->
                             <img src="/images/recall.png" alt="Feature Image" class="rounded height=" 400px"
                                 width="600px">
                         </div>
                     </div>
                     <br>
+                    <!-- Analyze Your Data section -->
                     <div class="row animated slide-in-right">
                         <div class="col-xxl-6">
                             <img src="/images/analytics.png" alt="Feature Image" class="rounded" height="400px"
                                 width="600px">
                         </div>
                         <div class="col-xxl-6">
-                            <h3 class="body-headers-right">Analyse your data</h3>
+                            <h3 class="body-headers-right">Analyze your data</h3>
                             <p class="body-text-right">With a powerful built-in analytics feature, we empower you to not
                                 only manage tasks seamlessly but also analyze your data with precision. Dive into a
                                 world of insights as you effortlessly navigate through analytics tools integrated
                                 directly into our system. Uncover patterns, track progress, and make informed decisions
                                 based on real-time data. It's more than just task management; it's a data analysis
                                 powerhouse. Elevate your efficiency, streamline your workflow, and master the art of
-                                data-driven decision-making with our task management system's embedded analytics.
-                            </p>
+                                data-driven decision-making with our task management system's embedded analytics.</p>
                         </div>
                     </div>
+                    <!-- Section separator -->
                     <div class="section-separator"></div>
 
                     <div style="height: 70px;"></div>
 
+                    <!-- Timeline section -->
                     <section class="timeline">
                         <ul>
-                            <!-- 12 time li -->
+                            <!-- Timeline steps -->
                             <li class="animated">
                                 <div>
                                     <time>Step 1</time>
@@ -151,11 +161,13 @@
                         </ul>
                     </section>
 
+                    <!-- JS file and custom script for timeline animation-->
                     <script src="main.js"></script>
                     <script>
                         var navbar = document.getElementById('navbar');
 
                         window.addEventListener('scroll', function () {
+                            // Change navbar style on scroll
                             if (window.scrollY > 100) {
                                 navbar.classList.add('custom-navbar-scrolled');
                             } else {
@@ -163,8 +175,8 @@
                             }
                         });
 
-
                         document.addEventListener("DOMContentLoaded", function () {
+                            // Animated elements on scroll
                             var elements = document.querySelectorAll('.animated');
 
                             elements.forEach(function (el, index) {
@@ -173,6 +185,7 @@
 
                             function handleScroll() {
                                 elements.forEach(function (el) {
+                                    // Add 'visible' class to elements in the viewport
                                     if (isElementInViewport(el, 300)) {
                                         el.classList.add('visible');
                                     }
@@ -192,11 +205,13 @@
                             window.addEventListener('scroll', handleScroll);
                             handleScroll(); // Trigger the animation check on page load
                         });
-
                     </script>
                 </div>
                 <div style="height: 100px;"></div>
 
+                <!-- Include footer -->
                 <%- include('layouts/footer'); -%>
-
+            </div>
     </body>
+
+</html>

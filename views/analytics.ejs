@@ -4,8 +4,10 @@
 
     <body>
         <%- include('layouts/login-navbar-opaque'); -%>
+            <!-- Analytics Container -->
             <div class="analytics-container">
                 <center>
+                    <!-- Title for Analytics -->
                     <h2 class="body-headers" style="padding-left: 20px;">Task Analytics</h2>
                 </center>
 
@@ -34,11 +36,13 @@
                 </div>
             </div>
 
+            <!-- Display the bar graph for task status -->
             <div class="analytics-item">
                 <h3>Task Status</h3>
                 <canvas id="taskStatusChart" style="width: 30%; height: 30%;"></canvas>
             </div>
 
+            <!-- Spacing -->
             <div style="height: 100px;"> </div>
 
             <%- include('layouts/footer'); -%>
@@ -84,10 +88,10 @@
                         document.getElementById("completedTasksCount").textContent = counts.completed || 0;
                     }
 
-
                     function createBarGraph(counts) {
                         var ctx = document.getElementById("taskStatusChart").getContext("2d");
 
+                        // Data for the bar graph
                         var chartData = {
                             labels: ["New", "In Progress", "Rejected", "Completed"],
                             datasets: [{
@@ -109,6 +113,7 @@
                             }]
                         };
 
+                        // Options for the bar graph
                         var chartOptions = {
                             scales: {
                                 y: {
@@ -117,6 +122,7 @@
                             }
                         };
 
+                        // Create a new bar graph using Chart.js library
                         new Chart(ctx, {
                             type: 'bar',
                             data: chartData,

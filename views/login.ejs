@@ -1,26 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 <%- include('layouts/header'); -%>
-<body>
-    <%- include('layouts/navbar-opaque'); -%>
-    <div class="container">
-        <div id="neoBgn" class="p-4 signup-container">
-            <h1>Login</h1>
-            
-            <form action="/login" method="post">
-                <input class="neoInput" type="text" name="name" placeholder="Name" required />
-                <input class="neoInput" type="password" name="password" placeholder="Password" required />
-                <!-- Remove the popup and directly link to the forgot password page -->
-                <div id="redirectLink">
-                    <p><a href="/forgot-password">Forgot my password</a></p>
+
+    <body>
+        <!-- Include opaque navbar -->
+        <%- include('layouts/navbar-opaque'); -%>
+
+            <div class="container">
+                <div id="neoBgn" class="p-4 signup-container">
+                    <!-- Login heading -->
+                    <h1>Login</h1>
+
+                    <form action="/login" method="post">
+                        <!-- Input fields for name and password -->
+                        <input class="neoInput" type="text" name="name" placeholder="Name" required />
+                        <input class="neoInput" type="password" name="password" placeholder="Password" required />
+
+                        <!-- Link to the forgot password page -->
+                        <div id="redirectLink">
+                            <p><a href="/forgot-password">Forgot my password</a></p>
+                        </div>
+
+                        <% if (errorMessage) { %>
+                            <!-- Display error message if exists -->
+                            <p style="color: red;">
+                                <%= errorMessage %>
+                            </p>
+                            <% } %>
+
+                                <!-- Login button -->
+                                <button class="submitBtn blue-to-purple" type="submit">Log In</button>
+                    </form>
                 </div>
-                <% if (errorMessage) { %>
-                    <p style="color: red;"><%= errorMessage %></p>
-                <% } %>
-                <button class="submitBtn blue-to-purple" type="submit">Log In</button>
-            </form>
-        </div>
-    </div>
-    <div style="height: 250px;"></div>
-</body>
+            </div>
+
+            <div style="height: 250px;"></div>
+    </body>
+
 </html>
