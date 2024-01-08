@@ -792,21 +792,22 @@ body {
 
 }
 
-
 .accordion:after,
 .active:after {
-  content: '\02795';
-  font-size: 50px;
+  content: '+';
+  font-size: 100px;
+  border-radius: 42px;
   color: #9535ff;
   position: absolute;
   top: 50%;
+  border-radius: 10%;
   transform: translateY(-50%);
   right: 10px;
   /* Adjust the right padding as needed */
 }
 
 .active:after {
-  content: "\2796";
+  content: "-";
   /* Unicode character for "minus" sign (-) */
 }
 
@@ -1235,4 +1236,3 @@ body {
   transform-origin: top center;
   overflow: hidden;
 }
-

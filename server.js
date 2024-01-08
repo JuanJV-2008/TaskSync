@@ -448,6 +448,31 @@ app.get("/logout", (req, res) => {
   });
 });
 
+app.get("/forgot-password", (req, res) => {
+  res.render("forgot-password");
+});
+
+app.post("/forgot-password", async (req, res) => {
+  try {
+    const { name } = req.body;
+    const user = await LogInCollection.findOne({ name });
+
+    if (!user) {
+      // Handle case where username doesn't exist
+      return res.render("forgot-password", { errorMessage: "Username not found" });
+    }
+
+    // Set user in session for password recovery
+    req.session.user = user.name;
+
+    // Render a new view to answer the security question
+    res.render("answer-security-question", { user });
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Internal Server Error");
+  }
+});
+
 // Start the server
 app.listen(port, () => {
   console.log(`App listening at http://localhost:${port}`);
