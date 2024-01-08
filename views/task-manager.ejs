@@ -10,6 +10,8 @@
             <center>
                 <!-- Button to open the modal for creating a new task -->
                 <button class="createNewTask blue-to-purple" onclick="openModal()">Create New Task</button>
+                <button class="createNewTask toggleAll blue-to-purple" onclick="openAllPanels()"
+                    style="width: 200px;">Open All</button>
                 <br /><br />
 
                 <!-- Accordion buttons for different task statuses -->
@@ -464,6 +466,34 @@
                             // Add error handling logic or display an error message
                         }
                     }
+
+                    // Function to open all accordion panels
+                    function openAllPanels() {
+                        var acc = document.getElementsByClassName("accordion");
+                        for (var i = 0; i < acc.length; i++) {
+                            var panel = acc[i].nextElementSibling;
+                            panel.style.maxHeight = panel.scrollHeight + "px";
+                            acc[i].classList.add("active");
+                        }
+                    }
+
+
+                    // Function to toggle (open or close) all accordion panels
+                    function toggleAllPanels() {
+                        var acc = document.getElementsByClassName("accordion");
+                        for (var i = 0; i < acc.length; i++) {
+                            var panel = acc[i].nextElementSibling;
+                            if (panel.style.maxHeight) {
+                                panel.style.maxHeight = null;
+                                acc[i].classList.remove("active");
+                            } else {
+                                panel.style.maxHeight = panel.scrollHeight + "px";
+                                acc[i].classList.add("active");
+                            }
+                        }
+                    }
+
+
                 </script>
     </body>
 
