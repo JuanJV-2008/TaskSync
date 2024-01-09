@@ -40,7 +40,7 @@ app.get("/fetch-analytics", async (req, res) => {
     // Fetch the counts of tasks for each status for the user
     const counts = {
       new: await TaskCollection.countDocuments({ userId: req.session.user, status: 'new' }),
-      inProgress: await TaskCollection.countDocuments({ userId: req.session.user, status: 'in progress' }),
+      inProgress: await TaskCollection.countDocuments({ userId: req.session.user, status: 'in-progress' }),
       rejected: await TaskCollection.countDocuments({ userId: req.session.user, status: 'rejected' }),
       completed: await TaskCollection.countDocuments({ userId: req.session.user, status: 'completed' }),
     };
