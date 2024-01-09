@@ -13,26 +13,22 @@
 
                 <!-- Display the count of new tasks -->
                 <div class="analytics-item">
-                    <h3>New Tasks</h3>
-                    <p id="newTasksCount">Loading...</p>
+                    <h3>New Tasks (<span id="newTasksCount" class="purple-number">Loading...</span>)</h3>
                 </div>
 
                 <!-- Display the count of tasks in progress -->
                 <div class="analytics-item">
-                    <h3>In Progress Tasks</h3>
-                    <p id="inProgressTasksCount">Loading...</p>
+                    <h3>In Progress Tasks (<span id="inProgressTasksCount" class="purple-number">Loading...</span>)</h3>
                 </div>
 
                 <!-- Display the count of rejected tasks -->
                 <div class="analytics-item">
-                    <h3>Rejected Tasks</h3>
-                    <p id="rejectedTasksCount">Loading...</p>
+                    <h3>Rejected Tasks (<span id="rejectedTasksCount" class="purple-number">Loading...</span>)</h3>
                 </div>
 
                 <!-- Display the count of completed tasks -->
                 <div class="analytics-item">
-                    <h3>Completed Tasks</h3>
-                    <p id="completedTasksCount">Loading...</p>
+                    <h3>Completed Tasks (<span id="completedTasksCount" class="purple-number">Loading...</span>)</h3>
                 </div>
             </div>
 
@@ -47,7 +43,7 @@
 
             <%- include('layouts/footer'); -%>
 
-                <!--  Script to fetch analytics data and update the UI -->
+                <!-- Script to fetch analytics data and update the UI -->
                 <script>
                     document.addEventListener("DOMContentLoaded", function () {
                         // Fetch and render analytics data when the page loads
@@ -86,6 +82,9 @@
                         document.getElementById("inProgressTasksCount").textContent = counts.inProgress || 0;
                         document.getElementById("rejectedTasksCount").textContent = counts.rejected || 0;
                         document.getElementById("completedTasksCount").textContent = counts.completed || 0;
+
+                        // Create a bar graph after updating the UI
+                        createBarGraph(counts);
                     }
 
                     function createBarGraph(counts) {
@@ -98,15 +97,15 @@
                                 label: 'Task Status',
                                 data: [counts.new, counts.inProgress, counts.rejected, counts.completed],
                                 backgroundColor: [
-                                    'rgba(255, 99, 132, 0.2)',
-                                    'rgba(54, 162, 235, 0.2)',
-                                    'rgba(255, 206, 86, 0.2)',
+                                    'rgba(149, 53, 255, 0.2)',
+                                    'rgba(91, 113, 179, 0.2)',
+                                    'rgba(30, 184, 229, 0.2)',
                                     'rgba(75, 192, 192, 0.2)',
                                 ],
                                 borderColor: [
-                                    'rgba(255, 99, 132, 1)',
-                                    'rgba(54, 162, 235, 1)',
-                                    'rgba(255, 206, 86, 1)',
+                                    'rgba(149, 53, 255, 1)',
+                                    'rgba(91, 113, 179, 1)',
+                                    'rgba(30, 184, 229, 1)',
                                     'rgba(75, 192, 192, 1)',
                                 ],
                                 borderWidth: 1
@@ -116,8 +115,17 @@
                         // Options for the bar graph
                         var chartOptions = {
                             scales: {
+                                x: {
+                                    stacked: true
+                                },
                                 y: {
-                                    beginAtZero: true
+                                    beginAtZero: true,
+                                    precision: 0
+                                }
+                            },
+                            plugins: {
+                                legend: {
+                                    display: false
                                 }
                             }
                         };
@@ -130,6 +138,7 @@
                         });
                     }
                 </script>
+
     </body>
 
 </html>

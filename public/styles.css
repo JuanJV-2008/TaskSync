@@ -1236,3 +1236,8 @@ body {
   transform-origin: top center;
   overflow: hidden;
 }
+
+
+.purple-number{
+  color: #9535ff;
+}
