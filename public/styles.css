@@ -1,4 +1,5 @@
-/* Font styles */
+/* Import Font Styles*/
+
 @font-face {
   font-family: 'Poppins';
   src: url('/fonts/Poppins-Regular.ttf') format('truetype');
@@ -20,14 +21,16 @@
   font-style: normal;
 }
 
-/* Body styles */
+/* Background Gradient*/
+
 body {
   background: linear-gradient(54deg, rgba(208, 190, 253, 0.4) 30%, rgba(183, 248, 242, 0.3));
   color: #3c3f64;
   overflow-x: hidden;
 }
 
-/* Container styles */
+
+/* Container and Text Styles */
 .container {
   max-width: 1200px;
   margin: 0 auto;
@@ -38,7 +41,6 @@ body {
   width: 60%;
 }
 
-/* Body text styles */
 .body-text {
   font-size: 18px;
   padding-top: 30px;
@@ -97,6 +99,7 @@ h5 {
   font-family: 'Poppins', sans-serif;
   color: #333;
   margin-bottom: 5px;
+
 }
 
 .body-headers-right {
@@ -107,6 +110,7 @@ h5 {
   color: #333;
   margin-bottom: 5px;
 }
+
 
 .heading {
   font-size: 80px;
@@ -144,34 +148,7 @@ a:hover {
   color: #1E62B9;
 }
 
-/* Addiontal Text Styles */
-
-.purple-number {
-  color: #9535ff;
-}
-
-.main-header {
-  font-size: 90px;
-  font-weight: 700;
-  color: #333;
-  margin-bottom: 5px;
-  margin-left: 0px;
-  max-width: 660px;
-}
-
-.main-header-purple {
-  font-size: 100px;
-  font-weight: 700;
-  color: #9535ff;
-  margin-bottom: 5px;
-  margin-left: 0px;
-}
-
-.sub-header {
-  max-width: 660px;
-}
-
-/* Button styles */
+/* Few Button styles */
 button {
   background-color: #8A4D76;
   color: #FFFFFF;
@@ -257,11 +234,7 @@ button:hover {
   margin-left: auto;
 }
 
-.navbar-toggler {
-  margin-left: auto;
-}
-
-/* Section Dividers */
+/* Neumorphic-style divider */
 .neumorphic-divider {
   width: 70%;
   height: 10px;
@@ -269,20 +242,35 @@ button:hover {
   background: linear-gradient(145deg, #dbe6f6, #a7bddb);
   border-radius: 10px;
   box-shadow: 0px 8px 16px #b3c8d9, 0px 0px 8px #f3ffff, 0px -8px 16px #f3ffff;
+
 }
 
-.section-separator {
-  height: 10px;
-  background: linear-gradient(to right, transparent 50%, #9535ff 50%);
-  background-size: 200% 100%;
-  animation: slide 8s infinite alternate;
-  /* Use 'alternate' to make it slide back */
-  margin: 20px 0;
-  position: relative;
+
+.navbar-toggler {
+  margin-left: auto;
 }
 
-/* Aligning Tools */
+/* Few Button Styles*/
 
+.round-button {
+  display: inline-block;
+  width: 150px;
+  margin-top: 10px;
+  padding: 10px 20px;
+  border-radius: 30px;
+  background-color: rgb(208, 226, 237);
+  color: #333;
+  text-align: center;
+  text-decoration: none;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.round-button:hover {
+  background-color: #c0eaf8;
+}
+
+/* Alignment Styles  */
 
 .image-align-right {
   border-radius: 30px;
@@ -295,7 +283,8 @@ button:hover {
   margin-right: 0;
 }
 
-/* Additional Neumorphic styles */
+/* More Neumorphic Styles*/
+
 #neoBgn {
   background-color: #c3e0ea;
   border-radius: 15px;
@@ -331,6 +320,8 @@ button:hover {
   margin: 20px auto;
 }
 
+/* More Button Styles*/
+
 .submitBtn {
   margin-top: 20px;
   border: none;
@@ -352,6 +343,8 @@ button:hover {
   margin-top: 20px;
 }
 
+/* Common Gradient Color used*/
+
 .blue-to-purple {
   background: linear-gradient(145deg, #dbe6f6, #a7bddb);
   transition: background 0.3s ease;
@@ -361,8 +354,8 @@ button:hover {
   background: linear-gradient(145deg, #a7bddb, #dbe6f6);
 }
 
+/* More Container Styles */
 
-/* Custom container and button styles */
 .custom-container {
   display: flex;
   justify-content: space-between;
@@ -374,23 +367,7 @@ button:hover {
   justify-content: space-between;
 }
 
-.round-button {
-  display: inline-block;
-  width: 150px;
-  margin-top: 10px;
-  padding: 10px 20px;
-  border-radius: 30px;
-  background-color: rgb(208, 226, 237);
-  color: #333;
-  text-align: center;
-  text-decoration: none;
-  font-size: 20px;
-  cursor: pointer;
-}
-
-.round-button:hover {
-  background-color: #c0eaf8;
-}
+/* Button Styles */
 
 .custom-btn {
   margin-right: 24px;
@@ -403,6 +380,7 @@ button:hover {
   box-shadow: 6px 6px 10px #b2b2b2, -6px -6px 10px rgba(168, 221, 252, 0.6);
 }
 
+
 .custom-btn-right {
   border: none;
   width: calc(50% - 6px);
@@ -413,7 +391,8 @@ button:hover {
   box-shadow: 6px 6px 10px #b2b2b2, -6px -6px 10px rgba(168, 221, 252, 0.6);
 }
 
-/* Additional styles for the right border and image */
+/* Some Border/Alignment/Neumorphic Styles */
+
 .borderRight {
   border-right: 1px solid #000;
   padding-right: 20px;
@@ -429,7 +408,6 @@ button:hover {
   align-items: center;
 }
 
-/* Styles for the neomorphic container and input */
 .neoContainer {
   background-color: #c3e0ea;
   border-radius: 15px;
@@ -442,10 +420,18 @@ button:hover {
   margin-top: 16px;
 }
 
-/* Timeline styles */
+/* Timeline Css */
 body {
   font: normal 16px/1.5;
   font-family: Poppins;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 .timeline ul li {
@@ -598,13 +584,14 @@ body {
   }
 }
 
-/* Profile container and dropdown styles */
+/* Profile container */
 .profile-container {
   position: relative;
   display: inline-block;
   cursor: pointer;
 }
 
+/* Dropdown menu */
 .dropdown-content {
   display: none;
   position: absolute;
@@ -617,6 +604,8 @@ body {
   margin-top: 8px;
   top: 85%;
 }
+
+/* Style for each dropdown item */
 
 .dropdown-content a {
   color: black;
@@ -633,7 +622,8 @@ body {
   display: block;
 }
 
-/* Popup styles */
+/* Popup Styles */
+
 .popup {
   display: none;
   position: fixed;
@@ -677,13 +667,13 @@ body {
   box-shadow: 4px 4px 6px #b2b2b2, -4px -4px 6px #ffffff;
 }
 
-/* Additional class for the blue-to-purple gradient transition */
+/* Blue-to-purple gradient transition */
 .blue-to-purple {
   color: #000;
   background: linear-gradient(145deg, #dbe6f6, #a7bddb);
 }
 
-/* Task Manager CSS */
+/* Task Manger CSS*/
 
 .accordion-header {
   outline: none;
@@ -734,7 +724,6 @@ body {
   position: relative;
 }
 
-/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
 .active,
 .accordion:hover {
   background-color: #ccc;
@@ -745,29 +734,21 @@ body {
   width: 80%;
   padding: 0 18px;
   background-color: rgba(255, 255, 255, 0);
-  /* Transparent white background */
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.2s ease-out;
   border: 4px solid transparent;
-  /* Hide the border initially */
   visibility: hidden;
-  /* Hide the content initially */
   margin-bottom: 0;
-  /* Set the initial margin-bottom value */
 }
 
 .accordion.active+.panel {
   border-color: #a7bddb;
-  /* Border for the entire panel when active */
   visibility: visible;
-  /* Show the content when active */
   box-shadow: 0px 8px 16px #b3c8d9, 0px 0px 8px #f3ffff, 0px -8px 16px #f3ffff;
   color: #444;
   margin-top: 5px;
-  /* Add margin when the panel is active */
   margin-bottom: 10px;
-  /* Add margin when the panel is active */
 }
 
 .accordion:after,
@@ -785,7 +766,6 @@ body {
 
 .active:after {
   content: "-";
-  /* Unicode character for "minus" sign (-) */
 }
 
 .accordion-headers {
@@ -808,9 +788,10 @@ body {
   width: 0;
 }
 
+/* Tasks Panel and Indvidiual Task Styles*/
+
 #newTasksPanel {
   border: 4px solid #a7bddb;
-  /* Border for the entire panel */
   background-color: #dae7f8 !important;
   box-shadow: 0px 8px 16px #b3c8d9, 0px 0px 8px #f3ffff, 0px -8px 16px #f3ffff;
   color: #444;
@@ -820,32 +801,26 @@ body {
   border-bottom: 2px solid #a7bddb;
   padding: 20px;
   position: relative;
-  /* Increased padding for spacing */
   display: flex;
   align-items: center;
   justify-content: space-between;
-  /* Ensure flex container space-between alignment */
 }
 
 .task-content {
   flex: 1;
-  /* Take remaining space */
 }
 
 .task h3 {
   text-align: left;
   font-size: 24px;
   margin-bottom: 0;
-  /* Remove margin bottom for h3 */
 }
 
 .description {
   text-align: left;
   font-size: 18px;
   margin-bottom: 10px;
-  /* Add margin bottom for description */
   max-width: 650px;
-  /* Set the maximum width to your desired value */
 }
 
 .task-actions {
@@ -906,6 +881,8 @@ body {
   text-align: right;
 }
 
+/* Create new task mode */
+
 .createNewTask {
   margin-right: 24px;
   border: none;
@@ -917,7 +894,6 @@ body {
   box-shadow: 6px 6px 10px #b2b2b2, -6px -6px 10px rgba(168, 221, 252, 0.4);
 }
 
-/* Styling for modals */
 .modal {
   display: none;
   position: fixed;
@@ -939,13 +915,6 @@ body {
   border: 2px solid rgba(67, 105, 218, 0.4);
   margin: 2.5% auto;
   padding: 20px;
-}
-
-.modal-content {
-  opacity: 0;
-  animation: foldInModal 1s forwards;
-  transform-origin: top center;
-  overflow: hidden;
 }
 
 .close {
@@ -987,7 +956,6 @@ body {
   outline: none;
 }
 
-/* Apply the blue-to-purple gradient transition to the modal content */
 .modal-content.blue-to-purple {
   background: linear-gradient(145deg, #dbe6f6, #a7bddb);
 }
@@ -998,7 +966,6 @@ body {
 
 #notificationMessage {
   overflow-y: auto;
-  /* Enable vertical scrolling if the content exceeds the maximum height */
 }
 
 .task-actions {
@@ -1039,23 +1006,20 @@ body {
   margin-bottom: 0.5rem;
 }
 
-/* Add border to the last child */
 .custom-task-details:last-child {
   border-bottom: 2px solid #a7bddb;
 }
 
 .custom-task-header {
   flex: 1;
-  /* Title and description take up the available space */
 }
 
 .custom-dates {
   white-space: nowrap;
-  /* Prevent line breaks for dates */
   margin-left: 1rem;
-  /* Adjust the margin as needed */
 }
 
+/* Styles for Analytics Page */
 .analytics-container {
   display: flex;
   flex-wrap: wrap;
@@ -1065,7 +1029,7 @@ body {
 .analytics-item {
   width: 100%;
   box-sizing: border-box;
-  padding-left: 20px;
+  padding: 20px;
   border-radius: 8px;
 }
 
@@ -1081,7 +1045,30 @@ body {
   padding-left: 0;
 }
 
-/* Add the slide animation to the features texts and timeline in home page*/
+/* Home Page Heading Styles */
+
+.main-header {
+  font-size: 90px;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 5px;
+  margin-left: 0px;
+  max-width: 660px;
+}
+
+.main-header-purple {
+  font-size: 100px;
+  font-weight: 700;
+  color: #9535ff;
+  margin-bottom: 5px;
+  margin-left: 0px;
+}
+
+.sub-header {
+  max-width: 660px;
+}
+
+/* Animation Styles for Home Page*/
 
 .animated {
   opacity: 0;
@@ -1103,6 +1090,17 @@ body {
   transform: translateX(0);
 }
 
+/* Animated Section Divider */
+
+.section-separator {
+  height: 10px;
+  background: linear-gradient(to right, transparent 50%, #9535ff 50%);
+  background-size: 200% 100%;
+  animation: slide 8s infinite alternate;
+  margin: 20px 0;
+  position: relative;
+}
+
 @keyframes slide {
   0% {
     background-position: 200% 0;
@@ -1113,8 +1111,21 @@ body {
   }
 }
 
-/* Add the fold-in animation to the login/signup/forgot-password containers */
+/* Signup/Login Animation */
 
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 80vh;
+}
+
+.signup-container {
+  opacity: 0;
+  animation: foldIn 1.5s forwards;
+  transform-origin: center center;
+  overflow: hidden;
+}
 
 @keyframes foldIn {
   0% {
@@ -1128,7 +1139,13 @@ body {
   }
 }
 
-/* Add the fold-in animation to the modal container */
+/* Fold-in animation for modal containers */
+.modal-container {
+  opacity: 0;
+  animation: foldInModal 1s forwards;
+  transform-origin: top center;
+  overflow: hidden;
+}
 
 @keyframes foldInModal {
   0% {
@@ -1140,4 +1157,16 @@ body {
     transform: perspective(800px) rotateX(0deg);
     opacity: 1;
   }
+}
+
+.modal-content {
+  opacity: 0;
+  animation: foldInModal 1s forwards;
+  transform-origin: top center;
+  overflow: hidden;
+}
+
+/* Purple Color*/
+.purple-number{
+  color: #9535ff;
 }
