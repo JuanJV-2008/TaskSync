@@ -372,7 +372,6 @@
                                 if (data.success) {
                                     console.log("Task created successfully:", data.task);
                                     closeModal(); // Close the modal after successful task creation
-                                    // Optionally, you may want to update the UI to display the new task
                                     updateTaskUI(data.task);
                                     location.reload();
                                 } else {
